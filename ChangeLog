@@ -6,3 +6,4 @@
 	* Update version number to 1.1.1
 	* Default to local installation
 	* Fixed bug #10132: sr_freecap seems to work only with default language
+	* Follow-up to issue #10132: Adding comments

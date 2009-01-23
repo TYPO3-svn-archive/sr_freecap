@@ -76,6 +76,10 @@ $GLOBALS['TSFE'] = new $TSFEclassName($TYPO3_CONF_VARS, $id, '0', 1, '', '','','
 $GLOBALS['TSFE']->connectToDB();
 $GLOBALS['TSFE']->initFEuser();
 $GLOBALS['TSFE']->determineId();
+// *******************************************
+// Get compressed $TCA-Array();
+// After this, we should now have a valid $TCA, though minimized
+// *******************************************
 $GLOBALS['TSFE']->getCompressedTCarray();
 $GLOBALS['TSFE']->initTemplate();
 $GLOBALS['TSFE']->tmpl->getFileName_backPath = PATH_site;
