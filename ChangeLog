@@ -3,3 +3,4 @@
 	* Initial upload to TYPO3 Forge
 	* Cleanup: Use UNIX line separators in all files
 	* Fix for current TYPO3 trunk (4.3-dev) caching
+	* Update version number to 1.1.1
