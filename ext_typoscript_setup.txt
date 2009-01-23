@@ -1,0 +1,40 @@
+plugin.tx_srfreecap_pi1 {
+
+	imageHeight = {$plugin.tx_srfreecap.imageHeight}
+	imageFormat = {$plugin.tx_srfreecap.imageFormat}
+
+	backgroundType = {$plugin.tx_srfreecap.backgroundType}
+	backgroundBlur = {$plugin.tx_srfreecap.backgroundBlur}
+	backgroundMorph = {$plugin.tx_srfreecap.backgroundMorph}
+
+	maxWordLength = {$plugin.tx_srfreecap.maxWordLength}
+	useWordsList = {$plugin.tx_srfreecap.useWordsList}
+	generateNumbers = {$plugin.tx_srfreecap.generateNumbers}
+	
+	textColor = {$plugin.tx_srfreecap.textColor}
+	mergeWithBackground = {$plugin.tx_srfreecap.mergeWithBackground}
+	morphFactor = {$plugin.tx_srfreecap.morphFactor}
+	defaultWordsList = {$plugin.tx_srfreecap.defaultWordsList}
+	fontFiles = {$plugin.tx_srfreecap.fontFiles}
+
+	maxAttempts = {$plugin.tx_srfreecap.maxAttempts}
+	
+	accessibleOutput = {$plugin.tx_srfreecap.accessibleOutput}
+	
+	siteTag = {$plugin.tx_srfreecap.siteTag}
+	siteTagDomain = {$plugin.tx_srfreecap.siteTagDomain}
+	siteTagPosition = {$plugin.tx_srfreecap.siteTagPosition}
+}
+
+plugin.tx_srfreecap_pi2 {
+
+	salutation = {$plugin.tx_srfreecap.salutation}
+	accessibleOutput = {$plugin.tx_srfreecap.accessibleOutput}
+
+	_CSS_DEFAULT_STYLE (
+		.tx-srfreecap-pi2-image { margin-left: 1em; }
+		.tx-srfreecap-pi2-cant-read { font-size: .9em; color:#35006d; }
+		.tx-srfreecap-pi2-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
+	)
+}
+
