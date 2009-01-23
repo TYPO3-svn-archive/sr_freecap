@@ -60,7 +60,7 @@ if (!defined ('TYPO3_db'))  die ('The configuration file was not included.');
 if (isset($_GET['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_FILES['GLOBALS']) || isset($_COOKIE['GLOBALS'])) die('You cannot set the GLOBALS-array from outside this script.');
 
 require_once(PATH_t3lib.'class.t3lib_db.php');
-$TYPO3_DB = t3lib_div::makeInstance('t3lib_DB');
+$GLOBALS['TYPO3_DB'] = t3lib_div::makeInstance('t3lib_DB');
 
 require_once(PATH_t3lib.'class.t3lib_timetrack.php');
 $GLOBALS['TT'] = new t3lib_timeTrack;
@@ -72,25 +72,26 @@ $TSFEclassName = t3lib_div::makeInstanceClassName('tslib_fe');
 $id = t3lib_div::_GET('id');
 if (!isset($id)) $id = 0;
 $id = htmlspecialchars($id);
-$TSFE = new $TSFEclassName($TYPO3_CONF_VARS, $id, '0', 1, '', '','','');
-$TSFE->connectToDB();
-$TSFE->initFEuser();
-$TSFE->determineId();
-$TSFE->initTemplate();
-$TSFE->tmpl->getFileName_backPath = PATH_site;
+$GLOBALS['TSFE'] = new $TSFEclassName($TYPO3_CONF_VARS, $id, '0', 1, '', '','','');
+$GLOBALS['TSFE']->connectToDB();
+$GLOBALS['TSFE']->initFEuser();
+$GLOBALS['TSFE']->determineId();
+$GLOBALS['TSFE']->getCompressedTCarray();
+$GLOBALS['TSFE']->initTemplate();
+$GLOBALS['TSFE']->tmpl->getFileName_backPath = PATH_site;
 
 // ******************************************************
 // Get config if not already gotten
 // After this, we should have a valid config-array ready
 // ******************************************************
-$TSFE->getConfigArray();
+$GLOBALS['TSFE']->getConfigArray();
 
 // *******************************************
 // Setting language and locale
 // *******************************************
 $GLOBALS['TT']->push('Setting language and locale','');
-	$TSFE->settingLanguage();
-	$TSFE->settingLocale();
+	$GLOBALS['TSFE']->settingLanguage();
+	$GLOBALS['TSFE']->settingLocale();
 $GLOBALS['TT']->pull();
 
 // *******************************************
@@ -98,6 +99,6 @@ $GLOBALS['TT']->pull();
 // *******************************************
 $freecap = t3lib_div::makeInstance('tx_srfreecap_pi3');
 $freecap->cObj = t3lib_div::makeInstance('tslib_cObj');
-$conf = $TSFE->tmpl->setup['plugin.'][$freecap->prefixId.'.'];
+$conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$freecap->prefixId.'.'];
 $freecap->main($conf);
 ?>
