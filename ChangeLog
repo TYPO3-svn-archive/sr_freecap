@@ -4,3 +4,4 @@
 	* Cleanup: Use UNIX line separators in all files
 	* Fix for current TYPO3 trunk (4.3-dev) caching
 	* Update version number to 1.1.1
+	* Default to local installation

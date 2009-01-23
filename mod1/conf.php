@@ -1,7 +1,7 @@
 <?php
 	// DO NOT REMOVE OR CHANGE THESE 3 LINES:
-define('TYPO3_MOD_PATH', 'ext/sr_freecap/mod1/');
-$BACK_PATH='../../../';
+define('TYPO3_MOD_PATH', '../typo3conf/ext/sr_freecap/mod1/');
+$BACK_PATH='../../../../typo3/';
 $MCONF['name'] = 'tools_txsrfreecapM1';
 
 //$MCONF['script']='frameset.php';
