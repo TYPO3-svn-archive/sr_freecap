@@ -98,8 +98,21 @@
         </languageKey>
         <languageKey index="cz" type="array">
         </languageKey>
-        <languageKey index="pl" type="array">
-        </languageKey>
+	<languageKey index="pl" type="array">
+		<label index="altText">Obrazek zabezpieczający przed spamem</label>
+		<label index="notice">Wprowadź kod widoczny na obrazku</label>
+		<label index="notice_informal">Wprowadź kod widoczny na obrazku</label>
+		<label index="explain">To służy ochronie przed spamem</label>
+		<label index="cant_read1">Jeśli nie możesz przeczytać kodu,</label>
+		<label index="cant_read1_informal">Jeśli nie możesz przeczytać kodu,</label>
+		<label index="click_here">kliknij tu</label>
+		<label index="click_here_informal">kliknij tu</label>
+		<label index="click_here_accessible">kliknij tu aby odsłuchać kod</label>
+		<label index="click_here_accessible_informal">kliknij tu aby odsłuchać kod</label>
+		<label index="cant_read2">.</label>
+		<label index="noImageMessage">Przepraszamy ale nie możemy załadować nowego obrazka. Kliknij dalej a nowy obrazek załaduje się automatycznie.</label>
+		<label index="noPlayMessage">Przepraszamy, nie możemy odtworzyć wyświetlonego kodu</label>
+	</languageKey>
         <languageKey index="si" type="array">
         </languageKey>
         <languageKey index="fi" type="array">
