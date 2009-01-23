@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2008-2009 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -65,35 +65,6 @@ $TYPO3_DB = t3lib_div::makeInstance('t3lib_DB');
 require_once(PATH_t3lib.'class.t3lib_timetrack.php');
 $GLOBALS['TT'] = new t3lib_timeTrack;
 
-if (t3lib_div::int_from_ver( TYPO3_version ) >= 4003000) {
-	// ***********************************
-	// Initializing the Caching System
-	// ***********************************
-	$GLOBALS['TT']->push('Initializing the Caching System','');
-		require_once(PATH_t3lib . 'class.t3lib_cache.php');
-
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_abstractbackend.php');
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_abstractcache.php');
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_exception.php');
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_factory.php');
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_manager.php');
-		require_once(PATH_t3lib . 'cache/class.t3lib_cache_variablecache.php');
-
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_classalreadyloaded.php');
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_duplicateidentifier.php');
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_invalidbackend.php');
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_invalidcache.php');
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_invaliddata.php');
-		require_once(PATH_t3lib . 'cache/exception/class.t3lib_cache_exception_nosuchcache.php');
-
-		$typo3CacheManager = t3lib_div::makeInstance('t3lib_cache_Manager');
-		$cacheFactoryClass = t3lib_div::makeInstanceClassName('t3lib_cache_Factory');
-		$typo3CacheFactory = new $cacheFactoryClass($typo3CacheManager);
-
-		unset($cacheFactoryClass);
-	$GLOBALS['TT']->pull();
-}
-
 // ***********************************
 // Creating a $TSFE object
 // ***********************************
@@ -102,10 +73,6 @@ $id = t3lib_div::_GET('id');
 if (!isset($id)) $id = 0;
 $id = htmlspecialchars($id);
 $TSFE = new $TSFEclassName($TYPO3_CONF_VARS, $id, '0', 1, '', '','','');
-if (t3lib_div::int_from_ver( TYPO3_version ) >= 4003000) {
-	$TSFE->initCaches();
-}
-$TSFE->set_no_cache();
 $TSFE->connectToDB();
 $TSFE->initFEuser();
 $TSFE->determineId();
