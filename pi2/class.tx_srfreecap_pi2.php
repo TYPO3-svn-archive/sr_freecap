@@ -81,9 +81,9 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$audioURL = t3lib_extMgm::siteRelPath($this->extKey).'pi3/audioCaptcha.php?id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
 		
 		$markerArray = array();
-		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img ' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="'.t3lib_extMgm::siteRelPath($this->extKey).'pi1/captcha.php?id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
+		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="'.t3lib_extMgm::siteRelPath($this->extKey).'pi1/captcha.php?id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
 		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $this->pi_getLL('notice') . ' ' . $this->pi_getLL('explain');
-		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span ' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
+		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $this->pi_getLL('cant_read2') . '</span>';
 		if ($this->conf['accessibleOutput']  && in_array('mcrypt', get_loaded_extensions())) {
