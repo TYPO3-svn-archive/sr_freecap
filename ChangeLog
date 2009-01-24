@@ -8,3 +8,4 @@
 	* Fixed bug #10132: sr_freecap seems to work only with default language. Thanks to Dan Grünzig.
 	* Follow-up to issue #10132: Adding comments
 	* Added Polish translation. Thanks to Daniel Ciunkiewicz.
+	* Correction to the manual. Thanks to Niklas Kanthak.
