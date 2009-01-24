@@ -11,3 +11,4 @@
 	* Correction to the manual. Thanks to Niklas Kanthak.
 	* Remove superfluous spaces in rendered html. Thanks to Niklas Kanthak.
 	* ###SR_FREECAP_ACCESSIBLE### marker should produce inline html. Audio object wrapper changed from div to span. Thanks to Niklas Kanthak.
+	* Updated manual: random background type does not exist anymore with freecap 1.4.
