@@ -143,8 +143,15 @@
 		<label index="click_here_accessible_informal">Clique aqui para ouvir uma versão audio do código a digitar.</label>
 		<label index="cant_read2">.</label>
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="notice">Просим заполнить слово, которое показано в отображение.</label>
+		<label index="notice_informal">Просим заполнить слово, которое показано в отображение.</label>
+		<label index="explain">Это необходимо для защиты от спама.</label>
+		<label index="cant_read1">Если Вы не можете прочитать, просим</label>
+		<label index="click_here">щелкнуть здесь</label>
+		<label index="cant_read1_informal">Если Вы не можете прочитать, просим</label>
+		<label index="click_here_informal">щелкнуть здесь</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
