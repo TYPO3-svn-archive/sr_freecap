@@ -1,3 +1,7 @@
+2009-04-07  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #3052: "onclick" should be used instead of "onClick". Thanks to Gerald Schwarz.
+
 2009-04-01  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Removed some words from the default word list.

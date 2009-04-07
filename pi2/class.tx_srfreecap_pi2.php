@@ -87,7 +87,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $this->pi_getLL('cant_read2') . '</span>';
 		if ($this->conf['accessibleOutput']  && in_array('mcrypt', get_loaded_extensions())) {
-			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<img alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="'.t3lib_extMgm::siteRelPath($this->extKey).'res/images/audio.png" onClick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;"'.$this->pi_classParam('image-accessible').' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<img alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="'.t3lib_extMgm::siteRelPath($this->extKey).'res/images/audio.png" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;"'.$this->pi_classParam('image-accessible').' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
 		} else {
 			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '';
 		}
