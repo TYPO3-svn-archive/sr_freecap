@@ -885,10 +885,12 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	 * Encodes a string.
 	 * Returns an array with the string as the first element and the initialization vector as the second element
 	 */
-	function easy_crypt($string, $key)	{
+	function easy_crypt($string, $key) {
+			// When using MCRYPT_RAND, remember to call srand() before mcrypt_create_iv() to initialize the random number generator;
+			// it is not seeded automatically like rand() is.
+		srand((double) microtime() * 1000000);
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_CBC), MCRYPT_RAND);
 		$string = mcrypt_encrypt(MCRYPT_BLOWFISH, $key, $string, MCRYPT_MODE_CBC, $iv);
-		
 		return array(base64_encode($string), base64_encode($iv));
 	}
 	
