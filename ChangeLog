@@ -1,3 +1,7 @@
+2009-04-15  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added Russian translation. Thanks to Андрей Аксенов.
+
 2009-04-07  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #3052: "onclick" should be used instead of "onClick". Thanks to Gerald Schwarz.
@@ -22,7 +26,7 @@
 	* Fix for current TYPO3 trunk (4.3-dev) caching
 	* Update version number to 1.1.1
 	* Default to local installation
-	* Fixed bug #10132: sr_freecap seems to work only with default language. Thanks to Dan Gr�nzig.
+	* Fixed bug #10132: sr_freecap seems to work only with default language. Thanks to Dan Grünzig.
 	* Follow-up to issue #10132: Adding comments
 	* Added Polish translation. Thanks to Daniel Ciunkiewicz.
 	* Correction to the manual. Thanks to Niklas Kanthak.

@@ -49,8 +49,10 @@
         <languageKey index="pt" type="array">
 	    <label index="max_attempts">Desculpe, o serviço foi suspenso.</label>
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="max_attempts">Извините, сервис недоступен.</label>
+		<label index="site_tag">НЕ вводите текст|если это не %1$s сайт</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -144,8 +146,10 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="max_attempts" type="integer">148562863</label>
+		<label index="site_tag" type="integer">133561446</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -233,8 +237,10 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="max_attempts">Sorry, service is interrupted.</label>
+		<label index="site_tag">Please do NOT enter the text|if this site is not %1$s</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">

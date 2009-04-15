@@ -74,8 +74,26 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="title">Сделать GD шрифт для freeCap CAPTCHA</label>
+		<label index="charactersToIncludeInFont">Символы, включенные в шрифт:</label>
+		<label index="numbers-only">Только числа (0-9)</label>
+		<label index="ASCII-lowercase-letters">Символы ASCII в нижнем регистре (a-z)</label>
+		<label index="ANSI-extended-ASCII-lowercase-letters">Символы ASCII, дополненные ANSI в нижнем регистре (a-z,ß-ÿ)</label>
+		<label index="characterWidth">Ширина символов:</label>
+		<label index="characterHeight">Высота символов:</label>
+		<label index="endianness">Порядок байтов:</label>
+		<label index="littleEndian">Прямой порядок</label>
+		<label index="bigEndian">Обратный порядок</label>
+		<label index="pathToTTFFile">Путь к исходному файлу TTF шрифта относительно сайта TYPO3:</label>
+		<label index="gdFontFilePrefix">Префикс к создаваемому GD файлу шрифта:</label>
+		<label index="makeFont">Сделать шрифт</label>
+		<label index="usingFontFile">В качестве источника использован следующий TTF файл шрифта:</label>
+		<label index="ttfFontFileNotFound">Невожможно найти исходный TTF файл шрифта:</label>
+		<label index="pngImageCreated">Было создано следующее PNG изобрижение:</label>
+		<label index="gdFontFileCreated">Следующий файл GD шрифта был создан из этого изображения:</label>
+		<label index="gdFontFileNotCreated">Невозможно создать следующий файл GD шрифта:</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -162,8 +180,26 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="title" type="integer">61567927</label>
+		<label index="charactersToIncludeInFont" type="integer">210289146</label>
+		<label index="numbers-only" type="integer">35120664</label>
+		<label index="ASCII-lowercase-letters" type="integer">177955745</label>
+		<label index="ANSI-extended-ASCII-lowercase-letters" type="integer">204896417</label>
+		<label index="characterWidth" type="integer">9831725</label>
+		<label index="characterHeight" type="integer">80808820</label>
+		<label index="endianness" type="integer">225480972</label>
+		<label index="littleEndian" type="integer">126328161</label>
+		<label index="bigEndian" type="integer">71604824</label>
+		<label index="pathToTTFFile" type="integer">172571425</label>
+		<label index="gdFontFilePrefix" type="integer">14550101</label>
+		<label index="makeFont" type="integer">257942114</label>
+		<label index="usingFontFile" type="integer">5180164</label>
+		<label index="ttfFontFileNotFound" type="integer">16644114</label>
+		<label index="pngImageCreated" type="integer">218088421</label>
+		<label index="gdFontFileCreated" type="integer">16559326</label>
+		<label index="gdFontFileNotCreated" type="integer">55366573</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -250,8 +286,26 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="title">Make GD Font for freeCap CAPTCHA</label>
+		<label index="charactersToIncludeInFont">Characters included in font:</label>
+		<label index="numbers-only">Numbers only (0-9)</label>
+		<label index="ASCII-lowercase-letters">ASCII lowercase letters (a-z)</label>
+		<label index="ANSI-extended-ASCII-lowercase-letters">ANSI-extended ASCII lowercase letters (a-z,ß-ÿ)</label>
+		<label index="characterWidth">Character width:</label>
+		<label index="characterHeight">Character height:</label>
+		<label index="endianness">Byte order (Endianness):</label>
+		<label index="littleEndian">Little-endian</label>
+		<label index="bigEndian">Big-endian</label>
+		<label index="pathToTTFFile">Path to source TTF font file relative to TYPO3 site:</label>
+		<label index="gdFontFilePrefix">Prefix of GD font file name to create:</label>
+		<label index="makeFont">Make font</label>
+		<label index="usingFontFile">The following TTF font file is used as source:</label>
+		<label index="ttfFontFileNotFound">The source TTF font file could not be found:</label>
+		<label index="pngImageCreated">The following PNG image was created:</label>
+		<label index="gdFontFileCreated">The following GD font file was created from the above image:</label>
+		<label index="gdFontFileNotCreated">The following GD font file could not be created:</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">

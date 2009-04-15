@@ -144,13 +144,19 @@
 		<label index="cant_read2">.</label>
         </languageKey>
 	<languageKey index="ru" type="array">
-		<label index="notice">Просим заполнить слово, которое показано в отображение.</label>
-		<label index="notice_informal">Просим заполнить слово, которое показано в отображение.</label>
+		<label index="altText">Изображение CAPTCHA для предотвращения спама</label>
+		<label index="notice">Введите слово, показанное на картинке.</label>
+		<label index="notice_informal">Введите слово, показанное на картинке.</label>
 		<label index="explain">Это необходимо для защиты от спама.</label>
-		<label index="cant_read1">Если Вы не можете прочитать, просим</label>
-		<label index="click_here">щелкнуть здесь</label>
-		<label index="cant_read1_informal">Если Вы не можете прочитать, просим</label>
-		<label index="click_here_informal">щелкнуть здесь</label>
+		<label index="cant_read1">Если слово непонятно,</label>
+		<label index="cant_read1_informal">Если слово непонятно,</label>
+		<label index="click_here">нажмите здесь.</label>
+		<label index="click_here_informal">нажмите здесь.</label>
+		<label index="click_here_accessible">Нажмите здесь, чтобы прослушать вводимое слово.</label>
+		<label index="click_here_accessible_informal">Нажмите здесь, чтобы прослушать вводимое слово.</label>
+		<label index="cant_read2">.</label>
+		<label index="noImageMessage">Извините, но невозможно перезагрузить новое изображение. Подтвердите форму, чтобы появилось другое изображение.</label>
+		<label index="noPlayMessage">Извините, невозможно воспроизвести изображенное слово.</label>
 	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
@@ -301,8 +307,21 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="altText" type="integer">147175052</label>
+		<label index="notice" type="integer">42390561</label>
+		<label index="notice_informal" type="integer">42390561</label>
+		<label index="explain" type="integer">42597147</label>
+		<label index="cant_read1" type="integer">252707028</label>
+		<label index="cant_read1_informal" type="integer">252707028</label>
+		<label index="click_here" type="integer">172927260</label>
+		<label index="click_here_informal" type="integer">172927260</label>
+		<label index="click_here_accessible" type="integer">254851007</label>
+		<label index="click_here_accessible_informal" type="integer">254851007</label>
+		<label index="cant_read2" type="integer">84250394</label>
+		<label index="noImageMessage" type="integer">27629808</label>
+		<label index="noPlayMessage" type="integer">10498153</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -398,8 +417,21 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="altText">CAPTCHA image for SPAM prevention</label>
+		<label index="notice">Please enter here the word as displayed in the picture.</label>
+		<label index="notice_informal">Please enter here the word as displayed in the picture.</label>
+		<label index="explain">This is to prevent spamming.</label>
+		<label index="cant_read1">If you can't read the word,</label>
+		<label index="cant_read1_informal">If you can't read the word,</label>
+		<label index="click_here">click here</label>
+		<label index="click_here_informal">click here</label>
+		<label index="click_here_accessible">Click here for audio version of the word to enter.</label>
+		<label index="click_here_accessible_informal">Click here for audio version of the word to enter.</label>
+		<label index="cant_read2">.</label>
+		<label index="noImageMessage">Sorry, we cannot autoreload a new image. Submit the form and a new image will be loaded.</label>
+		<label index="noPlayMessage">Sorry, we cannot play the word of the image.</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">

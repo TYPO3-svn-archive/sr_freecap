@@ -44,8 +44,11 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="mlang_labels_tablabel">Изготовитель GD шрифта для freeCap CAPTCHA</label>
+		<label index="mlang_labels_tabdescr">Производит файлы GD шрифта для использования во freeCap CAPTCHA.</label>
+		<label index="mlang_tabs_tab">Изготовитель GD шрифта</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -132,8 +135,11 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="mlang_labels_tablabel" type="integer">256709966</label>
+		<label index="mlang_labels_tabdescr" type="integer">215785178</label>
+		<label index="mlang_tabs_tab" type="integer">86977615</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
@@ -220,8 +226,11 @@
         </languageKey>
         <languageKey index="pt" type="array">
         </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
+	<languageKey index="ru" type="array">
+		<label index="mlang_labels_tablabel">GD Font Maker for freeCap CAPTCHA</label>
+		<label index="mlang_labels_tabdescr">Makes GD font files for use by freeCap CAPTCHA.</label>
+		<label index="mlang_tabs_tab">GD Font Maker</label>
+	</languageKey>
         <languageKey index="ro" type="array">
         </languageKey>
         <languageKey index="ch" type="array">
