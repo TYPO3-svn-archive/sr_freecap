@@ -1,3 +1,7 @@
+2009-05-07  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature #3244: User can set the width of the generated captcha-image. Thanks to Simon Schick.
+
 2009-04-15  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added Russian translation. Thanks to Андрей Аксенов.
@@ -26,7 +30,7 @@
 	* Fix for current TYPO3 trunk (4.3-dev) caching
 	* Update version number to 1.1.1
 	* Default to local installation
-	* Fixed bug #10132: sr_freecap seems to work only with default language. Thanks to Dan Grünzig.
+	* Fixed bug #10132: sr_freecap seems to work only with default language. Thanks to Dan GrÃ¼nzig.
 	* Follow-up to issue #10132: Adding comments
 	* Added Polish translation. Thanks to Daniel Ciunkiewicz.
 	* Correction to the manual. Thanks to Niklas Kanthak.

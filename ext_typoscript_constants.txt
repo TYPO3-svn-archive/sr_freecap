@@ -3,6 +3,9 @@ plugin.tx_srfreecap {
     # cat=plugin.tx_srfreecap/dims/02; type=int+; label= CAPTCHA image height: Height of the generated image.
 	imageHeight = 90
 
+    # cat=plugin.tx_srfreecap/dims/03; type=int+; label= CAPTCHA image additional width: The width, in pixels, of the generated image is based on the maximum possible length of the word plus the value of this property.
+	imageAdditionalWidth = 75
+
     # cat=plugin.tx_srfreecap/dims/01; type=int+; label= Maximun word length: Maximun length of the randomly generated CAPTCHA string.
 	maxWordLength = 5
 

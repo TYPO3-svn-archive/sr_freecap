@@ -241,7 +241,7 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		}
 			// modify image width depending on maximum possible length of word
 			// you shouldn't need to use words > 6 chars in length really.
-		$width = ($this->max_word_length*(array_sum($this->font_widths)/sizeof($this->font_widths))+75);
+		$width = ($this->max_word_length*(array_sum($this->font_widths)/sizeof($this->font_widths))) + (isset($this->conf['imageAdditionalWidth']) ? intval($this->conf['imageAdditionalWidth']) : 75);
 		$height = $this->conf['imageHeight'] ? $this->conf['imageHeight'] : 90;
 		
 		$this->im = ImageCreate($width, $height);

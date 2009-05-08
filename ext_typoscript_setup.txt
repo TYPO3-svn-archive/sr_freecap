@@ -1,6 +1,7 @@
 plugin.tx_srfreecap_pi1 {
 
 	imageHeight = {$plugin.tx_srfreecap.imageHeight}
+	imageAdditionalWidth = {$plugin.tx_srfreecap.imageAdditionalWidth}
 	imageFormat = {$plugin.tx_srfreecap.imageFormat}
 
 	backgroundType = {$plugin.tx_srfreecap.backgroundType}
