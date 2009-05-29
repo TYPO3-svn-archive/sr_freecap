@@ -58,6 +58,14 @@ require_once(PATH_t3lib.'class.t3lib_cs.php');
 if (!defined ('TYPO3_db'))  die ('The configuration file was not included.');
 if (isset($_GET['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_FILES['GLOBALS']) || isset($_COOKIE['GLOBALS'])) die('You cannot set the GLOBALS-array from outside this script.');
 
+// *********************
+// Autoloader
+// *********************
+if (t3lib_div::int_from_ver($GLOBALS['TYPO_VERSION']) >= 4003000) {
+	require_once(PATH_t3lib . 'class.t3lib_autoloader.php');
+	t3lib_autoloader::registerAutoloader();
+}
+
 require_once(PATH_t3lib.'class.t3lib_db.php');
 $GLOBALS['TYPO3_DB'] = t3lib_div::makeInstance('t3lib_DB');
 

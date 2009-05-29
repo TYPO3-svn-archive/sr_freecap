@@ -1,3 +1,7 @@
+2009-05-29  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #3472: No image rendering in T3 V4.3 alpha3.
+
 2009-05-07  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added feature #3244: User can set the width of the generated captcha-image. Thanks to Simon Schick.
