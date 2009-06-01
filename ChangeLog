@@ -3,6 +3,7 @@
 	* Added feature #3526: Use eID API for graphical and audio captcha generation.
 	* Follow-up to #3526 for TYPO3 < 4.3: Use eID API for graphical and audio captcha generation.
 	* Fixed bug #3530: Morphed image blocks background type not working.
+	* Follow-up to feature #3526: Cleanup parameters of new captcha image
 
 2009-05-29  Stanislas Rolland  <typo3@sjbr.ca>
 
