@@ -1,3 +1,7 @@
+2009-06-01  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature #3526: Use eID API for graphical and audio captcha generation.
+
 2009-05-29  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #3472: No image rendering in T3 V4.3 alpha3.

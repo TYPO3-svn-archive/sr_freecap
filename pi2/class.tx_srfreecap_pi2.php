@@ -64,24 +64,24 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	
 	function makeCaptcha() {
 		global $TSFE;
-		
+
 		$this->tslib_pibase();
-		
 			//Make sure that labels in locallang.php may be overridden
 		$this->conf = $TSFE->tmpl->setup['plugin.'][$this->prefixId.'.'];
 		$this->pi_loadLL();
 		$this->pi_USER_INT_obj = 1;  // Disable caching
-		
+		$siteURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
+
 		$L = t3lib_div::_GP('L');
 		if (isset($L)) {
 			$L = htmlspecialchars($L);
 		}
 		$fakeId = t3lib_div::shortMD5(uniqid (rand()),5);
-		$TSFE->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';		
-		$audioURL = t3lib_extMgm::siteRelPath($this->extKey).'pi3/audioCaptcha.php?id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
-		
+		$TSFE->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';
+		$audioURL = $siteURL . 'index.php?eID=sr_freecap_audioCaptcha&id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
+
 		$markerArray = array();
-		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="'.t3lib_extMgm::siteRelPath($this->extKey).'pi1/captcha.php?id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
+		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . $siteURL . 'index.php?eID=sr_freecap_captcha&amp;id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
 		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $this->pi_getLL('notice') . ' ' . $this->pi_getLL('explain');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
