@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2008 Stanislas Rolland (typo3(arobas)sjbr.ca)
+*  (c) 2005-2009 Stanislas Rolland (typo3(arobas)sjbr.ca)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -212,7 +212,13 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		
 		// for bg_type 3, which images should we use?
 		// if you add your own, make sure they're fairly 'busy' images (ie a lot of shapes in them)
-		$this->bg_images = Array("../res/images/.ht_freecap_im1.jpg","../res/images/.ht_freecap_im2.jpg","../res/images/.ht_freecap_im3.jpg","../res/images/.ht_freecap_im4.jpg","../res/images/.ht_freecap_im5.jpg");
+		$this->bg_images = Array(
+			'EXT:sr_freecap/res/images/.ht_freecap_im1.jpg',
+			'EXT:sr_freecap/res/images/.ht_freecap_im2.jpg',
+			'EXT:sr_freecap/res/images/.ht_freecap_im3.jpg',
+			'EXT:sr_freecap/res/images/.ht_freecap_im4.jpg',
+			'EXT:sr_freecap/res/images/.ht_freecap_im5.jpg'
+			);
 		
 		// for non-transparent backgrounds only:
 		// if 0, merges CAPTCHA with bg
@@ -594,7 +600,7 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 
 				for($i=0 ; $i<sizeof($this->bg_images) ; $i++) {
 					// read each image and its size
-					$temp_im[$i] = ImageCreateFromJPEG($this->bg_images[$i]);
+					$temp_im[$i] = ImageCreateFromJPEG(t3lib_div::getFileAbsFileName($this->bg_images[$i]));
 					$temp_width[$i] = imagesx($temp_im[$i]);
 					$temp_height[$i] = imagesy($temp_im[$i]);
 				}
