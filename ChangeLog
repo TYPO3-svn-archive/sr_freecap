@@ -1,6 +1,7 @@
 2009-06-01  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added feature #3526: Use eID API for graphical and audio captcha generation.
+	* Follow-up to #3526 for TYPO3 < 4.3: Use eID API for graphical and audio captcha generation.
 
 2009-05-29  Stanislas Rolland  <typo3@sjbr.ca>
 
