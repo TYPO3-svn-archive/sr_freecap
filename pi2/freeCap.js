@@ -60,22 +60,54 @@ function newFreeCap(id, noImageMessage) {
  * @param	string		wavURL: url of the wave file generating script
  *
  * @return	void
+ *
+ * Note: In order for this to work with IE8, [SYS][cookieDomain] must be set using the TYPO3 Install Tool
  */
 function playCaptcha(id, wavURL, noPlayMessage) {
 	if (document.getElementById) {
 		var theAudio = document.getElementById("tx_srfreecap_pi2_captcha_playAudio_"+id);
-		var wavURLForOpera = wavURL + "&amp;nocache=" + Math.random();
-		theAudio.innerHTML = '<object type="audio/x-wav" data="' + wavURLForOpera + '" style="visibility: hidden;" height="0">'
-			+ '<param name="type" value="audio/x-wav" />'
-			+ '<param name="src" value="' + wavURLForOpera + '" />'
-			+ '<param name="filename" value="' + wavURLForOpera + '" />'
-			+ '<param name="autoplay" value="true" />'
-			+ '<param name="autoStart" value="1" />'
-			+ '<param name="hidden" value="true" />'
-			+ '<param name="controller" value="false" />'
-			+ 'alt : <a href="' + wavURLForOpera + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>'
-			+ '</object>';
+		var wavURLForOpera = wavURL + "&nocache=" + Math.random();
+		while (theAudio.firstChild) {
+			theAudio.removeChild(theAudio.firstChild);
+		}
+		var objectElement = document.createElement("object");
+		objectElement.setAttribute("id", "audio/x-wav");
+		objectElement.setAttribute("type", "audio/x-wav");
+		objectElement.setAttribute("data", wavURLForOpera);
+		objectElement.setAttribute("height", 0);
+		objectElement.setAttribute("width", 0);
+		try {
+			objectElement.innerHTML = '<a href="' + wavURLForOpera + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
+		} catch (e) {
+				// IE8 does not allow any element other than param as child of object
+			objectElement.setAttribute("altHTML", '<a href="' + wavURLForOpera + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
+		}
+		theAudio.appendChild(objectElement);
+			// IE8 needs a delay before the param children are appended...
+		window.setTimeout("addAudioCaptchaParams(" + id + ");", 50);
 	} else {
 		alert(noPlayMessage ? noPlayMessage : "Sorry, we cannot play the word of the image.");
+	}
+}
+
+function addAudioCaptchaParams(id) {
+	var theAudio = document.getElementById("tx_srfreecap_pi2_captcha_playAudio_"+id);
+	var objectElement = theAudio.firstChild;
+	var parameters = {
+		"type"		: "audio/x-wav",
+		"filename"	: wavURLForOpera,
+		"src"		: wavURLForOpera,
+		"autoplay"	: true,
+		"autoStart"	: 1,
+		"hidden"	: true,
+		"controller"	: false
+	};
+	for (var parameter in parameters) {
+		if (parameters.hasOwnProperty(parameter)) {
+			var paramElement = document.createElement("param");
+			paramElement.setAttribute("value", parameters[parameter]);
+			paramElement.setAttribute("name", parameter);
+			paramElement = objectElement.appendChild(paramElement);
+		}
 	}
 }

@@ -1,3 +1,7 @@
+2009-06-03  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #3056: Audio Captcha is not rendered in IE8
+
 2009-06-01  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added feature #3526: Use eID API for graphical and audio captcha generation.

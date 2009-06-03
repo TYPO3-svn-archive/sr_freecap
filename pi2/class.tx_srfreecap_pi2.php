@@ -78,7 +78,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		}
 		$fakeId = t3lib_div::shortMD5(uniqid (rand()),5);
 		$TSFE->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';
-		$audioURL = $siteURL . 'index.php?eID=sr_freecap_audioCaptcha&id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
+		$audioURL = $siteURL . 'index.php?eID=sr_freecap_audioCaptcha&amp;id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
 
 		$markerArray = array();
 		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . $siteURL . 'index.php?eID=sr_freecap_captcha&amp;id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
