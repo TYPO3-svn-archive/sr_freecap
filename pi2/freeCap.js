@@ -71,7 +71,7 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 			theAudio.removeChild(theAudio.firstChild);
 		}
 		var objectElement = document.createElement("object");
-		objectElement.setAttribute("id", "audio/x-wav");
+		objectElement.setAttribute("id", "tx_srfreecap_pi2_captcha_playAudio_object"+id);
 		objectElement.setAttribute("type", "audio/x-wav");
 		objectElement.setAttribute("data", wavURLForOpera);
 		objectElement.setAttribute("height", 0);
@@ -84,7 +84,7 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 		}
 		theAudio.appendChild(objectElement);
 			// IE8 needs a delay before the param children are appended...
-		window.setTimeout("addAudioCaptchaParams(" + id + ");", 50);
+		window.setTimeout("addAudioCaptchaParams('" + id + "');", 50);
 	} else {
 		alert(noPlayMessage ? noPlayMessage : "Sorry, we cannot play the word of the image.");
 	}
@@ -93,10 +93,11 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 function addAudioCaptchaParams(id) {
 	var theAudio = document.getElementById("tx_srfreecap_pi2_captcha_playAudio_"+id);
 	var objectElement = theAudio.firstChild;
+	var url = objectElement.getAttribute("data");
 	var parameters = {
 		"type"		: "audio/x-wav",
-		"filename"	: wavURLForOpera,
-		"src"		: wavURLForOpera,
+		"filename"	: url,
+		"src"		: url,
 		"autoplay"	: true,
 		"autoStart"	: 1,
 		"hidden"	: true,
