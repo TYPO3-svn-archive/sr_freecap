@@ -4,6 +4,9 @@ plugin.tx_srfreecap_pi1 {
 	imageAdditionalWidth = {$plugin.tx_srfreecap.imageAdditionalWidth}
 	imageFormat = {$plugin.tx_srfreecap.imageFormat}
 
+	textHorizontalPosition = {$plugin.tx_srfreecap.textHorizontalPosition}
+	textVerticalPosition = {$plugin.tx_srfreecap.textVerticalPosition}
+
 	backgroundType = {$plugin.tx_srfreecap.backgroundType}
 	backgroundBlur = {$plugin.tx_srfreecap.backgroundBlur}
 	backgroundMorph = {$plugin.tx_srfreecap.backgroundMorph}

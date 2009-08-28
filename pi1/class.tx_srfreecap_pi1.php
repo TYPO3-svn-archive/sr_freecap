@@ -53,7 +53,7 @@
 *
 *
 \************************************************************/
-
+error_reporting (E_ALL ^ E_NOTICE);
 require_once(PATH_tslib.'class.tslib_pibase.php');
 
 class tx_srfreecap_pi1 extends tslib_pibase {
@@ -203,7 +203,13 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 				$this->bg_type = 2;
 				break;
 		}
-		
+
+		// text position X
+		$this->textHorizontalPosition = $this->conf['textHorizontalPosition'] ? intval($this->conf['textHorizontalPosition']) : 32;
+
+		// text position Y
+		$this->textVerticalPosition = $this->conf['textVerticalPosition'] ? intval($this->conf['textVerticalPosition']) : 15;
+
 		// text morh factor
 		$this->morphFactor = $this->conf['morphFactor'] ? $this->conf['morphFactor'] : 1;
 		
@@ -672,9 +678,9 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		//////////////////////////////////////////////////////
 		
 		// write word in random starting X position
-		$word_start_x = $this->rand_func(5,32);
+		$word_start_x = $this->rand_func(5, $this->textHorizontalPosition);
 		// y positions jiggled about later
-		$word_start_y = 15;
+		$word_start_y = $this->textVerticalPosition;
 		
 		if($this->col_type==0) {
 			$text_r = $this->rand_color();
