@@ -2,6 +2,7 @@
 
 	* Follow-up to #3056: Audio Captcha is not rendered in IE8
 	* Added feature: Two new TS constants: textHorizontalPosition and textVerticalPosition. Thanks to Julia Pardanaud.
+	* Added Turkish word list.
 
 2009-06-03  Stanislas Rolland  <typo3@sjbr.ca>
 
