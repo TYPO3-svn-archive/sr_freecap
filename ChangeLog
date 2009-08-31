@@ -1,3 +1,7 @@
+2009-08-31  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature: new TS constant accessibleOutputImage and textual version.
+
 2009-08-29  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Follow-up to #3056: Audio Captcha is not rendered in IE8

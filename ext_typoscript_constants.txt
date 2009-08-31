@@ -57,6 +57,9 @@ plugin.tx_srfreecap {
     # cat=plugin.tx_srfreecap/enable/03; type=boolean; label= Accessible output: If enabled, the CAPTCHA will include an audio version.
 	accessibleOutput = 0
 
+    # cat=plugin.tx_srfreecap/file/03; type=string; label= Accessible output image: File name of the accessible output image. If null, a textual message is used.
+	accessibleOutputImage = EXT:sr_freecap/res/images/audio.png
+
     # cat=plugin.tx_srfreecap/enable/07; type=boolean; label= Use site tag: If set, a site tag is added in the background of the CAPTCHA image.
 	siteTag = 0
 

@@ -81,13 +81,20 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$audioURL = $siteURL . 'index.php?eID=sr_freecap_audioCaptcha&amp;id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
 
 		$markerArray = array();
-		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . $siteURL . 'index.php?eID=sr_freecap_captcha&amp;id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . '" style="vertical-align: middle; "/>';
+		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . $siteURL . 'index.php?eID=sr_freecap_captcha&amp;id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . ' "/>';
 		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $this->pi_getLL('notice') . ' ' . $this->pi_getLL('explain');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $this->pi_getLL('cant_read2') . '</span>';
-		if ($this->conf['accessibleOutput']  && in_array('mcrypt', get_loaded_extensions())) {
-			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<img alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="'.t3lib_extMgm::siteRelPath($this->extKey).'res/images/audio.png" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;"'.$this->pi_classParam('image-accessible').' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+		if ($this->conf['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions())) {
+			if ($this->conf['accessibleOutputImage']) {
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<img alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="' . $siteURL .str_replace(PATH_site, '', t3lib_div::getFileAbsFileName($this->conf['accessibleOutputImage'])) . '" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;"' . $this->pi_classParam('image-accessible') . ' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+			} else {
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span id="tx_srfreecap_pi2_captcha_playLink_'.$fakeId.'"' . $this->pi_classParam('accessible-link') . '>'.$this->pi_getLL('click_here_accessible_before_link');
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<a onClick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;" title="' . $this->pi_getLL('click_here_accessible') . '">'.$this->pi_getLL('click_here_accessible_link').'</a>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= $this->pi_getLL('click_here_accessible_after_link').'</span>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span ' .$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+			}
 		} else {
 			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '';
 		}
