@@ -1,6 +1,7 @@
 2009-10-20  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug: Mishandling of session data. Thanks to Wolo Wolski.
+	* Updated ext_emconf from TER version 1.2.2
 
 2009-08-31  Stanislas Rolland  <typo3@sjbr.ca>
 
