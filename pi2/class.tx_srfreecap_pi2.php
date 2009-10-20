@@ -109,7 +109,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 */
 	function checkWord($word) {
 			// Load session data
-		$this->sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses','tx_'.$this->extKey);
+		$this->sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses','tx_' . $this->extKey);
 		if (!empty($this->sessionData[$this->extKey . '_word_hash']) && !empty($word)) {
 			// all freeCap words are lowercase.
 			// font #4 looks uppercase, but trust me, it's not...
@@ -120,6 +120,10 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 					// defeats re-use of known image with spoofed session id
 					$this->sessionData[$this->extKey . '_attempts'] = 0;
 					$this->sessionData[$this->extKey . '_word_hash'] = false;
+					$this->sessionData[$this->extKey . '_word_accessible'] = false;
+					$this->sessionData[$this->extKey . '_hash_func'] = false;
+					$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_' . $this->extKey, $this->sessionData);
+					$GLOBALS['TSFE']->storeSessionData();
 					return true;
 				}
 			}

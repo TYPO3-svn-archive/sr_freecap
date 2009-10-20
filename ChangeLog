@@ -1,3 +1,7 @@
+2009-10-20  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug: Mishandling of session data. Thanks to Wolo Wolski.
+
 2009-08-31  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added feature: new TS constant accessibleOutputImage and textual version.

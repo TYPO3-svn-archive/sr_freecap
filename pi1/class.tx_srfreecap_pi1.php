@@ -277,6 +277,10 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 			// accessible via the web or use random string option
 			if ($this->sessionData[$this->extKey . '_attempts'] > $this->max_attempts) {
 				$this->sessionData[$this->extKey . '_word_hash'] = false;
+				$this->sessionData[$this->extKey . '_word_accessible'] = false;
+				$this->sessionData[$this->extKey . '_hash_func'] = false;
+				$GLOBALS['TSFE']->fe_user->setKey('ses','tx_'.$this->extKey,$this->sessionData);
+				$GLOBALS['TSFE']->storeSessionData();
 				$string = $this->pi_getLL('max_attempts');
 				$font = 5;
 				$width  = imagefontwidth($font) * strlen($string);
