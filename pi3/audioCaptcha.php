@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008-2009 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2008-2010 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -39,11 +39,10 @@ if (t3lib_div::int_from_ver($GLOBALS['TYPO_VERSION']) < 4003000) {
 // ***********************************
 // Creating a $TSFE object
 // ***********************************
-$TSFEclassName = t3lib_div::makeInstanceClassName('tslib_fe');
 $id = t3lib_div::_GET('id');
 if (!isset($id)) $id = 0;
 $id = htmlspecialchars($id);
-$GLOBALS['TSFE'] = new $TSFEclassName($TYPO3_CONF_VARS, $id, '0', 1, '', '','','');
+$GLOBALS['TSFE'] = t3lib_div::makeInstance('tslib_fe', $TYPO3_CONF_VARS, $id, '0', 1, '', '','','');
 $GLOBALS['TSFE']->connectToDB();
 $GLOBALS['TSFE']->initFEuser();
 $GLOBALS['TSFE']->determineId();
