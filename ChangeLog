@@ -2,6 +2,7 @@
 
 	* Fixed bug #10223: BE module not shown anymore with TYPO3 4.4
 	* Fixed bug #8528: Typo in Dutch localization of label in pi2/locallang.xml
+	* Fixed bug #7987: maxWordLength problem
 
 2010-04-16  Stanislas Rolland  <typo3@sjbr.ca>
 

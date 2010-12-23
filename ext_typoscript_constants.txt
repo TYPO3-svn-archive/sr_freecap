@@ -12,7 +12,7 @@ plugin.tx_srfreecap {
     # cat=plugin.tx_srfreecap/dims/05; type=int+; label= The vertical (Y) starting position of the word relative to the top of the image, in pixels.
     	textVerticalPosition = 15
 
-    # cat=plugin.tx_srfreecap/dims/01; type=int+; label= Maximun word length: Maximun length of the randomly generated CAPTCHA string.
+    # cat=plugin.tx_srfreecap/dims/01; type=int[5-50]; label= Maximun word length: Maximun length of the randomly generated CAPTCHA string.
 	maxWordLength = 5
 
     # cat=plugin.tx_srfreecap/color; type=boolean; label= Color of the text: 0=one random colour for all letters, 1=different random colour for each letter.
