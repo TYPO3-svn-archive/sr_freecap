@@ -1,3 +1,7 @@
+2011-02-01  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature #12714: Add TS constants to control darkness of the captcha text. Thanks to Julia Pardanaud.
+
 2010-12-21  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #10223: BE module not shown anymore with TYPO3 4.4

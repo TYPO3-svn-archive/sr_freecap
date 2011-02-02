@@ -14,7 +14,9 @@ plugin.tx_srfreecap_pi1 {
 	maxWordLength = {$plugin.tx_srfreecap.maxWordLength}
 	useWordsList = {$plugin.tx_srfreecap.useWordsList}
 	generateNumbers = {$plugin.tx_srfreecap.generateNumbers}
-	
+
+	colorMaximumDarkness = {$plugin.tx_srfreecap.colorMaximumDarkness}
+	colorMaximumLightness = {$plugin.tx_srfreecap.colorMaximumLightness}
 	textColor = {$plugin.tx_srfreecap.textColor}
 	mergeWithBackground = {$plugin.tx_srfreecap.mergeWithBackground}
 	morphFactor = {$plugin.tx_srfreecap.morphFactor}

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2009 Stanislas Rolland (typo3(arobas)sjbr.ca)
+*  (c) 2005-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -213,6 +213,14 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// text morh factor
 		$this->morphFactor = $this->conf['morphFactor'] ? $this->conf['morphFactor'] : 1;
 		
+		// Limits for text colour
+		if (isset($this->conf['colorMaximumDarkness'])) {
+			$this->colorMaximumDarkness = intval($this->conf['colorMaximumDarkness']);
+		}
+		if (isset($this->conf['colorMaximumLightness'])) {
+			$this->colorMaximumLightness = intval($this->conf['colorMaximumLightness']);
+		}
+		
 		// should we blur the background? (looks nicer, makes text easier to read, takes longer)
 		$this->blur_bg = $this->conf['backgroundBlur'] ? true : false;
 		
@@ -355,10 +363,13 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	function rand_color() {
 		if($this->bg_type==3) {
 			// needs darker colour..
-			return $this->rand_func(10,100);
+			$colorMaximumDarkness = isset($this->colorMaximumDarkness) ? $this->colorMaximumDarkness : 10;
+			$colorMaximumLightness = isset($this->colorMaximumLightness) ? $this->colorMaximumLightness : 100;
 		} else {
-			return $this->rand_func(60,170);
+			$colorMaximumDarkness = isset($this->colorMaximumDarkness) ? $this->colorMaximumDarkness : 30;
+			$colorMaximumLightness = isset($this->colorMaximumLightness) ? $this->colorMaximumLightness : 140;
 		}
+		return $this->rand_func($colorMaximumDarkness, $colorMaximumLightness);
 	}
 
 	function hash_func($string) {

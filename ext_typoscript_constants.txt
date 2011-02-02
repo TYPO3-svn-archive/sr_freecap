@@ -18,6 +18,12 @@ plugin.tx_srfreecap {
     # cat=plugin.tx_srfreecap/color; type=boolean; label= Color of the text: 0=one random colour for all letters, 1=different random colour for each letter.
 	textColor = 1
 
+    # cat=plugin.tx_srfreecap/color; type=int[0-255]; label= Maximum darkness of the text color: The lower the number, the darker the color of the text be may.
+	colorMaximumDarkness = 5
+
+    # cat=plugin.tx_srfreecap/color; type=int[0-255]; label= Maximum lightness of the text color: The higher the number, the lighter the color of the text be may.
+	colorMaximumLightness = 50
+
     # cat=plugin.tx_srfreecap//03; type=options[png,gif,jpg]; label= CAPTCHA image format: Format of the generated image.
 	imageFormat = png
 
