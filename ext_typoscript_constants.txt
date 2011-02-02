@@ -4,19 +4,19 @@ plugin.tx_srfreecap {
 	imageHeight = 90
 
     # cat=plugin.tx_srfreecap/dims/03; type=int+; label= CAPTCHA image additional width: The width, in pixels, of the generated image is based on the maximum possible length of the word plus the value of this property.
-	imageAdditionalWidth = 75
+	imageAdditionalWidth = 30
 
     # cat=plugin.tx_srfreecap/dims/04; type=int+; label= The horizontal (X) starting position of the word relative to the left of the image, in pixels.
-	textHorizontalPosition = 32
+	textHorizontalPosition = 1
 
     # cat=plugin.tx_srfreecap/dims/05; type=int+; label= The vertical (Y) starting position of the word relative to the top of the image, in pixels.
-    	textVerticalPosition = 15
+	textVerticalPosition = 15
 
     # cat=plugin.tx_srfreecap/dims/01; type=int[5-50]; label= Maximun word length: Maximun length of the randomly generated CAPTCHA string.
 	maxWordLength = 5
 
     # cat=plugin.tx_srfreecap/color; type=boolean; label= Color of the text: 0=one random colour for all letters, 1=different random colour for each letter.
-	textColor = 1
+	textColor = 0
 
     # cat=plugin.tx_srfreecap/color; type=int[0-255]; label= Maximum darkness of the text color: The lower the number, the darker the color of the text be may.
 	colorMaximumDarkness = 5
@@ -28,7 +28,7 @@ plugin.tx_srfreecap {
 	imageFormat = png
 
     # cat=plugin.tx_srfreecap/enable/01; type=boolean; label= Use list of words: If enabled, the CAPTCHA string will be selected from a list of words. If not, it will be randomly generated.
-	useWordsList = 1
+	useWordsList = 0
 	
     # cat=plugin.tx_srfreecap/enable/02; type=boolean; label= Generate CAPTCHA with numbers only. This option is ignored if Use list of words is enabled.
 	generateNumbers = 0
@@ -37,19 +37,19 @@ plugin.tx_srfreecap {
 	maxAttempts = 100
 
     # cat=plugin.tx_srfreecap//04; type=options[,Transparent,White with grid,White with squiggles,Morphed image blocks]; label= Background type: If not set, will be random selection of possible types.
-	backgroundType =
+	backgroundType = White with grid
 
     # cat=plugin.tx_srfreecap/enable/04; type=boolean; label= Background blurring: If enabled, the background will be blurred. The string should be easier to read.
-	backgroundBlur = 1
+	backgroundBlur = 0
 
     # cat=plugin.tx_srfreecap/enable/05; type=boolean; label= Background morphing: If enabled, the background will be morphed (recommended).
-	backgroundMorph = 1
+	backgroundMorph = 0
 
     # cat=plugin.tx_srfreecap/enable/06; type=boolean; label= Merge string with background: 0=write CAPTCHA string over background, 1=merge CAPTCHA string with non-transparent background.
-	mergeWithBackground = 1
+	mergeWithBackground = 0
 
     # cat=plugin.tx_srfreecap//05; type=string; label= Text morphing factor: Morphing factor applied to each character of the CAPTCHA string.
-	morphFactor = 1
+	morphFactor = 0.1
 
     # cat=plugin.tx_srfreecap/file/01; type=file[]; label= Default words list file: All words lists should be in the same directory.
 	defaultWordsList = EXT:sr_freecap/res/words/.ht_default_freecap_words
