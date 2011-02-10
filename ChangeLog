@@ -1,6 +1,7 @@
 2011-02-10  Stanislas Rolland  <typo3@sjbr.ca>
 
-	* Fixed bug #12921: Audio captcha should be accessible by TAB key
+	* Fixed bug #12921: Audio captcha should be accessible by TAB key (Thanks to Elliot Sawyer)
+	* Require PHP 5.1
 
 2011-02-01  Stanislas Rolland  <typo3@sjbr.ca>
 
