@@ -78,12 +78,12 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// try to avoid the 'free p*rn' method of CAPTCHA circumvention
 		// see www.wikipedia.com/captcha for more info
 		$this->site_tags[0] = "To avoid spam, please do NOT enter the text if";
-		$this->site_tags[1] = "this site is not puremango.co.uk";
+		$this->site_tags[1] = "this site is not example.org";
 		// or more simply:
-		//$site_tags[0] = "for use only on puremango.co.uk";
+		//$site_tags[0] = "for use only on example.org";
 		// reword or add lines as you please
 		// or if you don't want any text:
-		$this->site_tags = $this->conf['siteTag'] ? explode('|', sprintf($this->pi_getLL('site_tag'), (isset($this->conf['siteTagDomain']) ? $this->conf['siteTagDomain'] : 'www.typo3.org'))) : null;
+		$this->site_tags = $this->conf['siteTag'] ? explode('|', sprintf($this->pi_getLL('site_tag'), (isset($this->conf['siteTagDomain']) ? $this->conf['siteTagDomain'] : 'example.org'))) : null;
 		// where to write the above:
 		// 0=top
 		// 1=bottom

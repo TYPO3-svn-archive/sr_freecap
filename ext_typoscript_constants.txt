@@ -70,7 +70,7 @@ plugin.tx_srfreecap {
 	siteTag = 0
 
     # cat=plugin.tx_srfreecap//06; type=string; label= Site tag domain name: Domain name to use in the default site tag.
-	siteTagDomain = www.mydomain.org
+	siteTagDomain = example.org
 	
     # cat=plugin.tx_srfreecap//07; type=int+; label= Position of the site tag: 0 = at the top of the CAPTCHA, 1 = at the bottom, 2 = both at the top and at the bottom
 	siteTagPosition = 1

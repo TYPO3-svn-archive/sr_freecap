@@ -3,6 +3,7 @@
 	* Fixed bug #12921: Audio captcha should be accessible by TAB key (Thanks to Elliot Sawyer)
 	* Require PHP 5.1
 	* Updated manual
+	* Fixed bug #12938: "www.mydomain.org" is not RFC 2606 compilant
 
 2011-02-01  Stanislas Rolland  <typo3@sjbr.ca>
 
