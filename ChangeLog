@@ -5,6 +5,7 @@
 	* Updated manual
 	* Fixed bug #12938: "www.mydomain.org" is not RFC 2606 compilant
 	* Partially fixed bug #5628: Political (In-)Correctness of the german word list
+	* Updated version to 1.4.0
 
 2011-02-01  Stanislas Rolland  <typo3@sjbr.ca>
 
