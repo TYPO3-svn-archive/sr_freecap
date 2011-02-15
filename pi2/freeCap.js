@@ -1,7 +1,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2008 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2007-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -40,16 +40,11 @@
 function newFreeCap(id, noImageMessage) {
 	if (document.getElementById) {
 			// extract image name from image source (i.e. cut off ?randomness)
-		var theImage = document.getElementById("tx_srfreecap_pi2_captcha_image_"+id);
-		var parts = theImage.src.split("&");
-			// add ?(random) to prevent browser/isp caching
-			// parts[0] should be base url up to eID parameter
-			// parts[1] should be id=page_id
-			// parts[2] should be L=sys_language_uid
-		var LParameterInUse = (typeof(parts[2]) != "undefined") && (parts[2].indexOf("L=") != -1);
-		theImage.src = parts[0] + "&" + parts[1] + (LParameterInUse ? "&" + parts[2] : "") + "&set=" + Math.round(Math.random()*100000);
+		var theImage = document.getElementById('tx_srfreecap_pi2_captcha_image_' + id);
+		var parts = theImage.src.split('&set');
+		theImage.src = parts[0] + '&set=' + Math.round(Math.random()*100000);
 	} else {
-		alert(noImageMessage ? noImageMessage : "Sorry, we cannot autoreload a new image. Submit the form and a new image will be loaded.");
+		alert(noImageMessage ? noImageMessage : 'Sorry, we cannot autoreload a new image. Submit the form and a new image will be loaded.');
 	}
 }
 

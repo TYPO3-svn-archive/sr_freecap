@@ -1,3 +1,7 @@
+2011-02-15  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #13072: Captcha not showing up when using MP from other domain (Thanks to Ernesto Baschny)
+
 2011-02-10  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #12921: Audio captcha should be accessible by TAB key (Thanks to Elliot Sawyer)

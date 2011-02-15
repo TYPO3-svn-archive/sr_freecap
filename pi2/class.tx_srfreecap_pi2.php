@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2009 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2005-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -63,25 +63,35 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	var $conf = array();
 	
 	function makeCaptcha() {
-		global $TSFE;
 
 		$this->tslib_pibase();
 			//Make sure that labels in locallang.php may be overridden
-		$this->conf = $TSFE->tmpl->setup['plugin.'][$this->prefixId.'.'];
+		$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$this->prefixId.'.'];
 		$this->pi_loadLL();
 		$this->pi_USER_INT_obj = 1;  // Disable caching
 		$siteURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
 
+		$fakeId = t3lib_div::shortMD5(uniqid (rand()),5);
+		$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';
+
+		$urlParams = array(
+			'eID' => 'sr_freecap_audioCaptcha',
+			'id' => $GLOBALS['TSFE']->id
+		);
 		$L = t3lib_div::_GP('L');
 		if (isset($L)) {
-			$L = htmlspecialchars($L);
+			$urlParams['L'] = htmlspecialchars($L);
 		}
-		$fakeId = t3lib_div::shortMD5(uniqid (rand()),5);
-		$TSFE->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';
-		$audioURL = $siteURL . 'index.php?eID=sr_freecap_audioCaptcha&amp;id=' . $GLOBALS['TSFE']->id . (isset($L)?'&amp;L='.$L:'');
+		if ($GLOBALS['TSFE']->MP) {
+			$urlParams['MP'] = $GLOBALS['TSFE']->MP;
+		}
+		$audioURL = $siteURL . 'index.php?' . ltrim(t3lib_div::implodeArrayForUrl('', $urlParams), '&');
+
+		$urlParams['eID'] = 'sr_freecap_captcha';
+		$imgUrl = $siteURL . 'index.php?' . ltrim(t3lib_div::implodeArrayForUrl('', $urlParams), '&');
 
 		$markerArray = array();
-		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . $siteURL . 'index.php?eID=sr_freecap_captcha&amp;id=' . $TSFE->id . (isset($L)?'&amp;L='.$L:'') . '" alt="' . $this->pi_getLL('altText') . ' "/>';
+		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . htmlspecialchars($imgUrl) . '" alt="' . $this->pi_getLL('altText') . ' "/>';
 		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $this->pi_getLL('notice') . ' ' . $this->pi_getLL('explain');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
