@@ -64,7 +64,12 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	
 	function makeCaptcha() {
 
-		$this->tslib_pibase();
+		if (method_exists($this, '__construct')) {
+			parent::__construct();
+		} else {
+				// Before TYPO3 4.6+ and PHP 5.3+
+			parent::tslib_pibase();
+		}
 			//Make sure that labels in locallang.php may be overridden
 		$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$this->prefixId.'.'];
 		$this->pi_loadLL();
