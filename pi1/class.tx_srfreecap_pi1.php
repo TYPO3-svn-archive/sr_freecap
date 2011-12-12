@@ -416,8 +416,9 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	}
 	
 	function sendImage($pic) {
-		// output image with appropriate headers
+			// output image with appropriate headers
 		header(base64_decode("WC1DYXB0Y2hhOiBmcmVlQ2FwIDEuNCAtIHd3dy5wdXJlbWFuZ28uY28udWs="));
+		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		switch($this->output) {
 			// add other cases as desired
 			case "jpg":
