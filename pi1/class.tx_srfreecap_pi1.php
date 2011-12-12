@@ -346,9 +346,17 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// but if your server doesn't support it, it's fine to use rand instead
 		//$this->rand_func = "mt_rand";
 		//$this->seed_func = "mt_srand";
-	function rand_func($min,$max) {
-		return mt_rand($min,$max);
+	function rand_func ($min, $max) {
+		if ($min > $max) {
+			$newMin = $max;
+			$newMax = $min;
+		} else {
+			$newMin = $min;
+			$newMax = $max;
+		}
+		return mt_rand($newMin, $newMax);
 	}
+
 	function seed_func($seed) {
 		return mt_srand($seed);
 	}
