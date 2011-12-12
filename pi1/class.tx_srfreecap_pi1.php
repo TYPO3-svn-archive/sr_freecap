@@ -53,7 +53,6 @@
 *
 *
 \************************************************************/
-error_reporting (E_ALL ^ E_NOTICE);
 require_once(PATH_tslib.'class.tslib_pibase.php');
 
 class tx_srfreecap_pi1 extends tslib_pibase {

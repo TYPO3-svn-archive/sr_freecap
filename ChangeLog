@@ -2,7 +2,8 @@
 
 	* Fixed bug #32477: Reference to tslib_pibase constructor in tx_srfreecap_pi2
 	* Fixed bug #13428: pi1/captcha.php: PHP Fatal Error when called directly
-	* Fixed bug #13669: ereg/ereg_replace deprecated since PHP 5.3	
+	* Fixed bug #13669: ereg/ereg_replace deprecated since PHP 5.3
+	* Fixed bug #27000: error_reporting in pi1/class.tx_srfreecap_pi1.php
 
 2011-02-15  Stanislas Rolland  <typo3@sjbr.ca>
 
