@@ -6,6 +6,7 @@
 	* Fixed bug #27000: error_reporting in pi1/class.tx_srfreecap_pi1.php
 	* Fixed bug #29276: function.mt-rand: max(1) is smaller than min(5)
 	* Fixed bug #26113: On enter, always the same image is loaded
+	* Fixed bug #32487: Remove reference to mediunDoc
 
 2011-02-15  Stanislas Rolland  <typo3@sjbr.ca>
 
