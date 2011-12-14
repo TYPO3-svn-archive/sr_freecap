@@ -65,34 +65,45 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 		while (theAudio.firstChild) {
 			theAudio.removeChild(theAudio.firstChild);
 		}
-		var objectElement = document.createElement('object');
-		objectElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_object' + id);
-		objectElement.setAttribute('type', 'audio/x-wav');
-		objectElement.setAttribute('data', url);
-		objectElement.setAttribute('height', 0);
-		objectElement.setAttribute('width', 0);
-		try {
-			objectElement.innerHTML = '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
-		} catch (e) {
-				// IE8 does not allow any element other than param as child of object
-			objectElement.setAttribute('altHTML', '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
-		}
-		theAudio.appendChild(objectElement);
-		var parameters = {
-			type: 'audio/x-wav',
-			filename: url,
-			src: url,
-			autoplay: true,
-			autoStart: 1,
-			hidden: true,
-			controller: false
-		};
-		for (var parameter in parameters) {
-			if (parameters.hasOwnProperty(parameter)) {
-				var paramElement = document.createElement('param');
-				paramElement.setAttribute('value', parameters[parameter]);
-				paramElement.setAttribute('name', parameter);
-				paramElement = objectElement.appendChild(paramElement);
+		var audioElement = document.createElement('audio');
+		if (audioElement.canPlayType && audioElement.canPlayType('audio/x-wav') != '') {
+			audioElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_audio' + id);
+			audioElement.setAttribute('autoplay', 'autoplay');
+			var sourceElement = document.createElement('source');
+			sourceElement.setAttribute('type', 'audio/x-wav');
+			sourceElement.setAttribute('src', url);
+			audioElement.appendChild(sourceElement);
+			theAudio.appendChild(audioElement);
+		} else {
+			var objectElement = document.createElement('object');
+			objectElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_object' + id);
+			objectElement.setAttribute('type', 'audio/x-wav');
+			objectElement.setAttribute('data', url);
+			objectElement.setAttribute('height', 0);
+			objectElement.setAttribute('width', 0);
+			try {
+				objectElement.innerHTML = '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
+			} catch (e) {
+					// IE8 does not allow any element other than param as child of object
+				objectElement.setAttribute('altHTML', '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
+			}
+			theAudio.appendChild(objectElement);
+			var parameters = {
+				type: 'audio/x-wav',
+				filename: url,
+				src: url,
+				autoplay: true,
+				autoStart: 1,
+				hidden: true,
+				controller: false
+			};
+			for (var parameter in parameters) {
+				if (parameters.hasOwnProperty(parameter)) {
+					var paramElement = document.createElement('param');
+					paramElement.setAttribute('value', parameters[parameter]);
+					paramElement.setAttribute('name', parameter);
+					paramElement = objectElement.appendChild(paramElement);
+				}
 			}
 		}
 	} else {
