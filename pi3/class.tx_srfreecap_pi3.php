@@ -68,7 +68,7 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 	 * @return	string		the retrieved and decoded word
 	 */
 	function getWord() {
-		$code = 'accessiblemustbe007';
+		$code = $GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'];
 		$dec_string = $this->easy_decrypt($this->sessionData[$this->extKey . '_word_accessible'], $code);
 		return implode("-", str_split($dec_string));
 	}

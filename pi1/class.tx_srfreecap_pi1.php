@@ -309,7 +309,8 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		
 			// We use a simple encrypt to prevent the session from being exposed
 		if ($this->conf['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions())) {
-			$code = 'accessiblemustbe007';
+			$code = $GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'];
+			
 			$cyph = $this->easy_crypt($word, $code);
 			$this->sessionData[$this->extKey . '_word_accessible'] = $cyph;
 		}
