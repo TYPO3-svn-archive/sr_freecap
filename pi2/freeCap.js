@@ -60,50 +60,42 @@ function newFreeCap(id, noImageMessage) {
  */
 function playCaptcha(id, wavURL, noPlayMessage) {
 	if (document.getElementById) {
-		var theAudio = document.getElementById("tx_srfreecap_pi2_captcha_playAudio_"+id);
-		var wavURLForOpera = wavURL + "&nocache=" + Math.random();
+		var theAudio = document.getElementById('tx_srfreecap_pi2_captcha_playAudio_' + id);
+		var url = wavURL + '&nocache=' + Math.random();
 		while (theAudio.firstChild) {
 			theAudio.removeChild(theAudio.firstChild);
 		}
-		var objectElement = document.createElement("object");
-		objectElement.setAttribute("id", "tx_srfreecap_pi2_captcha_playAudio_object"+id);
-		objectElement.setAttribute("type", "audio/x-wav");
-		objectElement.setAttribute("data", wavURLForOpera);
-		objectElement.setAttribute("height", 0);
-		objectElement.setAttribute("width", 0);
+		var objectElement = document.createElement('object');
+		objectElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_object' + id);
+		objectElement.setAttribute('type', 'audio/x-wav');
+		objectElement.setAttribute('data', url);
+		objectElement.setAttribute('height', 0);
+		objectElement.setAttribute('width', 0);
 		try {
-			objectElement.innerHTML = '<a href="' + wavURLForOpera + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
+			objectElement.innerHTML = '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
 		} catch (e) {
 				// IE8 does not allow any element other than param as child of object
-			objectElement.setAttribute("altHTML", '<a href="' + wavURLForOpera + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
+			objectElement.setAttribute('altHTML', '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
 		}
 		theAudio.appendChild(objectElement);
-			// IE8 needs a delay before the param children are appended...
-		window.setTimeout("addAudioCaptchaParams('" + id + "');", 50);
-	} else {
-		alert(noPlayMessage ? noPlayMessage : "Sorry, we cannot play the word of the image.");
-	}
-}
-
-function addAudioCaptchaParams(id) {
-	var theAudio = document.getElementById("tx_srfreecap_pi2_captcha_playAudio_"+id);
-	var objectElement = theAudio.firstChild;
-	var url = objectElement.getAttribute("data");
-	var parameters = {
-		"type"		: "audio/x-wav",
-		"filename"	: url,
-		"src"		: url,
-		"autoplay"	: true,
-		"autoStart"	: 1,
-		"hidden"	: true,
-		"controller"	: false
-	};
-	for (var parameter in parameters) {
-		if (parameters.hasOwnProperty(parameter)) {
-			var paramElement = document.createElement("param");
-			paramElement.setAttribute("value", parameters[parameter]);
-			paramElement.setAttribute("name", parameter);
-			paramElement = objectElement.appendChild(paramElement);
+		var parameters = {
+			type: 'audio/x-wav',
+			filename: url,
+			src: url,
+			autoplay: true,
+			autoStart: 1,
+			hidden: true,
+			controller: false
+		};
+		for (var parameter in parameters) {
+			if (parameters.hasOwnProperty(parameter)) {
+				var paramElement = document.createElement('param');
+				paramElement.setAttribute('value', parameters[parameter]);
+				paramElement.setAttribute('name', parameter);
+				paramElement = objectElement.appendChild(paramElement);
+			}
 		}
+	} else {
+		alert(noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.');
 	}
 }
