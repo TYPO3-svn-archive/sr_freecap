@@ -241,14 +241,6 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// should we morph the bg? (recommend yes, but takes a little longer to compute)
 		$this->morph_bg = $this->conf['backgroundMorph'] ? true : false;
 		
-		// you shouldn't need to edit anything below this, but it's extensively commented if you do want to play
-		// have fun, and email me with ideas, or improvements to the code (very interested in speed improvements)
-		// hope this script saves some spam :-)
-		
-		// seed random number generator
-		// PHP 4.2.0+ doesn't need this, but lower versions will
-		$this->seed_func($this->make_seed());
-		
 			// read each font and get font character widths
 		$this->font_widths = Array();
 		for ($i=0 ; $i < sizeof($this->font_locations); $i++)	{
@@ -342,10 +334,6 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	}
 	
 		// functions to call for random number generation
-		// mt_rand produces 'better' random numbers
-		// but if your server doesn't support it, it's fine to use rand instead
-		//$this->rand_func = "mt_rand";
-		//$this->seed_func = "mt_srand";
 	function rand_func ($min, $max) {
 		if ($min > $max) {
 			$newMin = $max;
@@ -355,16 +343,6 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 			$newMax = $max;
 		}
 		return mt_rand($newMin, $newMax);
-	}
-
-	function seed_func($seed) {
-		return mt_srand($seed);
-	}
-
-	function make_seed() {
-		// from http://php.net/srand
-		list($usec, $sec) = explode(' ', microtime());
-		return (float) $sec + ((float) $usec * 100000);
 	}
 	
 	function rand_color() {
@@ -921,9 +899,6 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	 * Returns an array with the string as the first element and the initialization vector as the second element
 	 */
 	function easy_crypt($string, $key) {
-			// When using MCRYPT_RAND, remember to call srand() before mcrypt_create_iv() to initialize the random number generator;
-			// it is not seeded automatically like rand() is.
-		srand((double) microtime() * 1000000);
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_CBC), MCRYPT_RAND);
 		$string = mcrypt_encrypt(MCRYPT_BLOWFISH, $key, $string, MCRYPT_MODE_CBC, $iv);
 		return array(base64_encode($string), base64_encode($iv));

@@ -2,6 +2,7 @@
 
 	* Follow-up to bug #13428: pi1/captcha.php: PHP Fatal Error when called directly
 	* Added feature #32488: Require TYPO3 4.5 and PHP 5.3
+	* Added feature #32524: Remove random number generator seeding
 
 2011-12-12  Stanislas Rolland  <typo3@sjbr.ca>
 
