@@ -26,8 +26,8 @@
 *
 */
 	// Exit, if script is called directly (must be included via eID in index_ts.php)
-if (!defined ('TYPO3_MODE') || (TYPO3_MODE !== 'FE') {
-	die ('Could not access this script directly!');
+if (!defined('TYPO3_MODE') || TYPO3_MODE !== 'FE') {
+	die('Could not access this script directly!');
 }
 require_once(t3lib_extMgm::extPath('sr_freecap').'pi1/class.tx_srfreecap_pi1.php');
 if (t3lib_div::int_from_ver($GLOBALS['TYPO_VERSION']) < 4003000) {
