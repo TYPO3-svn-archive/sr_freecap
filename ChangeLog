@@ -4,6 +4,7 @@
 	* Added feature #32488: Require TYPO3 4.5 and PHP 5.3
 	* Added feature #32524: Remove random number generator seeding
 	* Added feature #32525: Use TYPO3 encryption key
+	* Follow-up to bug #26113: On enter, always the same image is loaded
 
 2011-12-12  Stanislas Rolland  <typo3@sjbr.ca>
 
