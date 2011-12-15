@@ -3,6 +3,7 @@
 	* Follow-up to bug #7066: IE embeded media player display
 	* Updated version to 1.5.0
 	* Fixed bug #32604: BE module broken with TYPO3 4.6
+	* Added feature #32610: Russian documentation (Thanks to Андрей Аксенов)
 
 2011-12-14  Stanislas Rolland  <typo3@sjbr.ca>
 
