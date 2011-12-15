@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2008 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2007-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -44,51 +44,24 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 	var $extKey = 'sr_freecap';
 	var $extPrefix = 'tx_srfreecap';
 	var $pageinfo;
-	
-	/**
-	 * Initialize module
-	 *
-	 * @return void
-	 */
-	function init() {
-		parent::init();
-	}
-	
-	/**
-	 * Adds items to the->MOD_MENU array. Used for the function menu selector.
-	 *
-	 * @return void
-	 */
-	function menuConfig() {
-		global $LANG;
-		$this->MOD_MENU = Array (
-			'function' => Array (
-				'1' => $LANG->getLL('function1'),
-				'2' => $LANG->getLL('function2'),
-				'3' => $LANG->getLL('function3'),
-				)
-			);
-		parent::menuConfig();
-	}
-	
+
 	/**
 	 * Main function of the module. Write the content to $this->content
 	 *
 	 * @return void
 	 */
 	function main() {
-		global $BE_USER, $LANG, $BACK_PATH, $TYPO3_CONF_VARS;
 		
 			// Access check!
 			// The page will show only if there is a valid page and if this page may be viewed by the user
 		$this->pageinfo = t3lib_BEfunc::readPageAccess($this->id, $this->perms_clause);
 		$access = is_array($this->pageinfo) ? 1 : 0;
 		
-		if (($this->id && $access) || ($BE_USER->user['admin'] && !$this->id)) {
+		if (($this->id && $access) || ($GLOBALS['BE_USER']->user['admin'] && !$this->id)) {
 			
 				// Draw the header.
 			$this->doc = t3lib_div::makeInstance('template');
-			$this->doc->backPath = $BACK_PATH;
+			$this->doc->backPath = $GLOBALS['BACK_PATH'];
 			$this->doc->form = '<form action="" method="post" enctype="multipart/form-data">';
 			
 				// JavaScript
@@ -104,33 +77,23 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 					/*]]>*/
 					</script>
 				';
-			
-			//$headerSection = $this->doc->getHeader('pages', $this->pageinfo, $this->pageinfo['_thePath']).'<br>'.$LANG->php3Lang['labels']['path'].': '.t3lib_div::fixed_lgd_pre($this->pageinfo['_thePath'], 50);
-			
-			$this->content .= $this->doc->startPage($LANG->getLL('title'));
-			$this->content .= $this->doc->header($LANG->getLL('title'));
-			$this->content .= $this->doc->spacer(5);
-			//$this->content .= $this->doc->section('', $this->doc->funcMenu($headerSection, t3lib_BEfunc::getFuncMenu($this->id, 'SET[function]', $this->MOD_SETTINGS['function'], $this->MOD_MENU['function'])));
-			$this->content .= $this->doc->divider(5);
-			
+
+			$this->content .= $this->doc->section($GLOBALS['LANG']->getLL('title'), '');
 				// Render content:
 			$this->moduleContent();
-			
 				// ShortCut
-			if ($BE_USER->mayMakeShortcut()) {
+			if ($GLOBALS['BE_USER']->mayMakeShortcut()) {
 				$this->content .= $this->doc->spacer(20).$this->doc->section('', $this->doc->makeShortcutIcon('id', implode(',', array_keys($this->MOD_MENU)), $this->MCONF['name']));
 			}
-			
-			$this->content .= $this->doc->spacer(10);
+			$this->doc->render($GLOBALS['LANG']->getLL('title'), $this->content);
 		} else {
 				// If no access or if ID == zero
 			$this->doc = t3lib_div::makeInstance('template');
-			$this->doc->backPath = $BACK_PATH;
-				 
-			$this->content .= $this->doc->startPage($LANG->getLL('title'));
-			$this->content .= $this->doc->header($LANG->getLL('title'));
+			$this->doc->backPath = $GLOBALS['BACK_PATH'];
+			$this->content .= $this->doc->header($GLOBALS['LANG']->getLL('title'));
 			$this->content .= $this->doc->spacer(5);
 			$this->content .= $this->doc->spacer(10);
+			$this->doc->render($GLOBALS['LANG']->getLL('title'), $this->content);
 		}
 	}
 	
@@ -140,10 +103,6 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 	 * @return void
 	 */
 	function printContent() {
-		global $SOBE;
-		
-		$this->content .= $this->doc->middle();
-		$this->content .= $this->doc->endPage();
 		echo $this->content;
 	}
 	
@@ -153,7 +112,6 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 	 * @return void
 	 */
 	function moduleContent() {
-		global $LANG, $TYPO3_DB, $BACK_PATH, $TYPO3_CONF_VARS;
 		
 			// get user supplied data
 		$charactersToIncludeInFont = intval(t3lib_div::_GP('charactersToIncludeInFont'));
@@ -176,7 +134,7 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 		$ttfFontFileName = t3lib_div::getFileAbsFileName($fontFileName);
 		
 		if (!is_file($ttfFontFileName)) {
-			$this->content .= $LANG->getLL('ttfFontFileNotFound') . ' '. $fontFileName;
+			$this->content .= $GLOBALS['LANG']->getLL('ttfFontFileNotFound') . ' '. $fontFileName;
 		} elseif (!empty($pixelwidth)) {
 			if ($charactersToIncludeInFont == 1) {
 				$characters = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z';
@@ -202,10 +160,10 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 			}
 			
 			$PNGImageFile = $this->makeFontImage($characters, $ttfFontFileName, $pixelwidth, $pixelheight);
-			$this->content .= $LANG->getLL('usingFontFile') . ' ' . $fontFileName . $this->doc->spacer(5);
-			$this->content .= $LANG->getLL('pngImageCreated') . ' ' . $PNGImageFile . $this->doc->spacer(5) . '<img src="' . $BACK_PATH . '../' . $PNGImageFile . '" />' . $this->doc->spacer(20);
+			$this->content .= $GLOBALS['LANG']->getLL('usingFontFile') . ' ' . $fontFileName . $this->doc->spacer(5);
+			$this->content .= $GLOBALS['LANG']->getLL('pngImageCreated') . ' ' . $PNGImageFile . $this->doc->spacer(5) . '<img src="' . $GLOBALS['BACK_PATH'] . '../' . $PNGImageFile . '" />' . $this->doc->spacer(20);
 			
-			if ($TYPO3_CONF_VARS['GFX']['gdlib_png']) {
+			if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib_png']) {
 				$image = @ImageCreateFromPNG(PATH_site.$PNGImageFile);
 			} else {
 				$image = @ImageCreateFromGIF(PATH_site.$PNGImageFile);
@@ -215,28 +173,28 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 			ImageDestroy($image);
 			
 			if ($gdfFontFileName) {
-				$this->content .= $LANG->getLL('gdFontFileCreated') . ' ' . $gdfFontFileName;
+				$this->content .= $GLOBALS['LANG']->getLL('gdFontFileCreated') . ' ' . $gdfFontFileName;
 			} else {
-				$this->content .= $LANG->getLL('gdFontFileNotCreated') . ' ' . $gdfFontFileName;
+				$this->content .= $GLOBALS['LANG']->getLL('gdFontFileNotCreated') . ' ' . $gdfFontFileName;
 			}
 		}
 		$this->content .= $this->doc->spacer(20);
 		$this->content .= '
 			<table cellspacing="5">
-				<tr><td>' . $LANG->getLL('charactersToIncludeInFont') . '</td><td>
-					<input id="numbers-only" type="radio" name="charactersToIncludeInFont" value="0" checked="checked" style="margin-right: 3px;" /><label for="numbers-only">' . $LANG->getLL('numbers-only') . '</label>
-					<br /><input id="ASCII-lowercase-letters" type="radio" name="charactersToIncludeInFont" value="1" style="margin-right: 3px;" /><label for="ASCII-lowercase-letters">' . $LANG->getLL('ASCII-lowercase-letters') . '</label>
-					<br /><input id="ANSI-extended-ASCII-lowercase-letters" type="radio" name="charactersToIncludeInFont" value="2" style="margin-right: 3px;" /><label for="ANSI-extended-ASCII-lowercase-letters">' . $LANG->getLL('ANSI-extended-ASCII-lowercase-letters') . '</label>
+				<tr><td>' . $GLOBALS['LANG']->getLL('charactersToIncludeInFont') . '</td><td>
+					<input id="numbers-only" type="radio" name="charactersToIncludeInFont" value="0" checked="checked" style="margin-right: 3px;" /><label for="numbers-only">' . $GLOBALS['LANG']->getLL('numbers-only') . '</label>
+					<br /><input id="ASCII-lowercase-letters" type="radio" name="charactersToIncludeInFont" value="1" style="margin-right: 3px;" /><label for="ASCII-lowercase-letters">' . $GLOBALS['LANG']->getLL('ASCII-lowercase-letters') . '</label>
+					<br /><input id="ANSI-extended-ASCII-lowercase-letters" type="radio" name="charactersToIncludeInFont" value="2" style="margin-right: 3px;" /><label for="ANSI-extended-ASCII-lowercase-letters">' . $GLOBALS['LANG']->getLL('ANSI-extended-ASCII-lowercase-letters') . '</label>
 				</td></tr>
-				<tr><td><label for="pixelwidth">' . $LANG->getLL('characterWidth') . '</label></td><td><input id="pixelwidth" type="text" name="pixelwidth" size="5" /></td></tr>
-				<tr><td><label for="pixelheight">' . $LANG->getLL('characterHeight') . '</label></td><td><input id="pixelheight" type="text" name="pixelheight" size="5" /></td></tr>
-				<tr><td>' . $LANG->getLL('endianness') . '</td><td>
-					<input id="little-endian" type="radio" name="endianness" value="0" checked="checked" style="margin-right: 3px;" /><label for="little-endian">' . $LANG->getLL('littleEndian') . '</label>
-					<br /><input id="big-endian" type="radio" name="endianness" value="1" style="margin-right: 3px;" /><label for="big-endian">' . $LANG->getLL('bigEndian') . '</label>
+				<tr><td><label for="pixelwidth">' . $GLOBALS['LANG']->getLL('characterWidth') . '</label></td><td><input id="pixelwidth" type="text" name="pixelwidth" size="5" /></td></tr>
+				<tr><td><label for="pixelheight">' . $GLOBALS['LANG']->getLL('characterHeight') . '</label></td><td><input id="pixelheight" type="text" name="pixelheight" size="5" /></td></tr>
+				<tr><td>' . $GLOBALS['LANG']->getLL('endianness') . '</td><td>
+					<input id="little-endian" type="radio" name="endianness" value="0" checked="checked" style="margin-right: 3px;" /><label for="little-endian">' . $GLOBALS['LANG']->getLL('littleEndian') . '</label>
+					<br /><input id="big-endian" type="radio" name="endianness" value="1" style="margin-right: 3px;" /><label for="big-endian">' . $GLOBALS['LANG']->getLL('bigEndian') . '</label>
 				</td></tr>
-				<tr><td><label for="fontfilename">' . $LANG->getLL('pathToTTFFile') . '</td><td><input id="fontfilename" type="text" name="fontfilename" size="50" /></td></tr>
-				<tr><td><label for="gdfontfilename">' . $LANG->getLL('gdFontFilePrefix') . '</td><td><input id="gdfontfilename" type="text" name="gdfontfilename" size="25"></td></tr>
-				<tr><td colspan="2"><input type="submit" value="' . htmlspecialchars($LANG->getLL('makeFont')) . '" /></td></tr>
+				<tr><td><label for="fontfilename">' . $GLOBALS['LANG']->getLL('pathToTTFFile') . '</td><td><input id="fontfilename" type="text" name="fontfilename" size="50" /></td></tr>
+				<tr><td><label for="gdfontfilename">' . $GLOBALS['LANG']->getLL('gdFontFilePrefix') . '</td><td><input id="gdfontfilename" type="text" name="gdfontfilename" size="25"></td></tr>
+				<tr><td colspan="2"><input type="submit" value="' . htmlspecialchars($GLOBALS['LANG']->getLL('makeFont')) . '" /></td></tr>
 				</table>
 			';
 		$this->content .= $this->doc->section('', $content, 0, 1);
@@ -407,8 +365,7 @@ class tx_srfreecap_gifbuilder extends tslib_gifbuilder {
  	}
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/mod1/class.tx_srfreecap_fontmaker.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/mod1/class.tx_srfreecap_fontmaker.php']);
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_freecap/mod1/class.tx_srfreecap_fontmaker.php']) {
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_freecap/mod1/class.tx_srfreecap_fontmaker.php']);
 }
-
 ?>
