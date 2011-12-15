@@ -77,23 +77,19 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 					/*]]>*/
 					</script>
 				';
-
-			$this->content .= $this->doc->section($GLOBALS['LANG']->getLL('title'), '');
-				// Render content:
-			$this->moduleContent();
+				// Render module content
+			$content = $this->doc->section($GLOBALS['LANG']->getLL('title'), $this->moduleContent());
 				// ShortCut
 			if ($GLOBALS['BE_USER']->mayMakeShortcut()) {
 				$this->content .= $this->doc->spacer(20).$this->doc->section('', $this->doc->makeShortcutIcon('id', implode(',', array_keys($this->MOD_MENU)), $this->MCONF['name']));
 			}
-			$this->doc->render($GLOBALS['LANG']->getLL('title'), $this->content);
+			$this->content = $this->doc->render($GLOBALS['LANG']->getLL('title'), $content);
 		} else {
 				// If no access or if ID == zero
 			$this->doc = t3lib_div::makeInstance('template');
 			$this->doc->backPath = $GLOBALS['BACK_PATH'];
-			$this->content .= $this->doc->header($GLOBALS['LANG']->getLL('title'));
-			$this->content .= $this->doc->spacer(5);
-			$this->content .= $this->doc->spacer(10);
-			$this->doc->render($GLOBALS['LANG']->getLL('title'), $this->content);
+			$content = $this->doc->header($LANG->getLL('title'));
+			$this->content = $this->doc->render($GLOBALS['LANG']->getLL('title'), $content);
 		}
 	}
 	
@@ -112,8 +108,8 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 	 * @return void
 	 */
 	function moduleContent() {
-		
-			// get user supplied data
+		$content = '';
+			// Get user supplied data
 		$charactersToIncludeInFont = intval(t3lib_div::_GP('charactersToIncludeInFont'));
 		
 		$pixelwidth = intval(t3lib_div::_GP('pixelwidth'));
@@ -134,7 +130,7 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 		$ttfFontFileName = t3lib_div::getFileAbsFileName($fontFileName);
 		
 		if (!is_file($ttfFontFileName)) {
-			$this->content .= $GLOBALS['LANG']->getLL('ttfFontFileNotFound') . ' '. $fontFileName;
+			$content .= $GLOBALS['LANG']->getLL('ttfFontFileNotFound') . ' '. $fontFileName;
 		} elseif (!empty($pixelwidth)) {
 			if ($charactersToIncludeInFont == 1) {
 				$characters = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z';
@@ -160,8 +156,8 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 			}
 			
 			$PNGImageFile = $this->makeFontImage($characters, $ttfFontFileName, $pixelwidth, $pixelheight);
-			$this->content .= $GLOBALS['LANG']->getLL('usingFontFile') . ' ' . $fontFileName . $this->doc->spacer(5);
-			$this->content .= $GLOBALS['LANG']->getLL('pngImageCreated') . ' ' . $PNGImageFile . $this->doc->spacer(5) . '<img src="' . $GLOBALS['BACK_PATH'] . '../' . $PNGImageFile . '" />' . $this->doc->spacer(20);
+			$content .= $GLOBALS['LANG']->getLL('usingFontFile') . ' ' . $fontFileName . $this->doc->spacer(5);
+			$content .= $GLOBALS['LANG']->getLL('pngImageCreated') . ' ' . $PNGImageFile . $this->doc->spacer(5) . '<img src="' . $GLOBALS['BACK_PATH'] . '../' . $PNGImageFile . '" />' . $this->doc->spacer(20);
 			
 			if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib_png']) {
 				$image = @ImageCreateFromPNG(PATH_site.$PNGImageFile);
@@ -173,13 +169,13 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 			ImageDestroy($image);
 			
 			if ($gdfFontFileName) {
-				$this->content .= $GLOBALS['LANG']->getLL('gdFontFileCreated') . ' ' . $gdfFontFileName;
+				$content .= $GLOBALS['LANG']->getLL('gdFontFileCreated') . ' ' . $gdfFontFileName;
 			} else {
-				$this->content .= $GLOBALS['LANG']->getLL('gdFontFileNotCreated') . ' ' . $gdfFontFileName;
+				$content .= $GLOBALS['LANG']->getLL('gdFontFileNotCreated') . ' ' . $gdfFontFileName;
 			}
 		}
-		$this->content .= $this->doc->spacer(20);
-		$this->content .= '
+		$content .= $this->doc->spacer(20);
+		$content .= '
 			<table cellspacing="5">
 				<tr><td>' . $GLOBALS['LANG']->getLL('charactersToIncludeInFont') . '</td><td>
 					<input id="numbers-only" type="radio" name="charactersToIncludeInFont" value="0" checked="checked" style="margin-right: 3px;" /><label for="numbers-only">' . $GLOBALS['LANG']->getLL('numbers-only') . '</label>
@@ -197,7 +193,7 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 				<tr><td colspan="2"><input type="submit" value="' . htmlspecialchars($GLOBALS['LANG']->getLL('makeFont')) . '" /></td></tr>
 				</table>
 			';
-		$this->content .= $this->doc->section('', $content, 0, 1);
+		return $content;
 	}
 	
 	/**
