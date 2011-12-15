@@ -139,32 +139,44 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 	 */
 	
 	function joinWaveFiles($wavs) {
-		$fields = join('/',array( 'H8ChunkID', 'VChunkSize', 'H8Format',
-                              'H8Subchunk1ID', 'VSubchunk1Size',
-                              'vAudioFormat', 'vNumChannels', 'VSampleRate',
-                              'VByteRate', 'vBlockAlign', 'vBitsPerSample' ));
+		$fields = join('/', array(
+			'H8Format',
+			'H8Subchunk1ID',
+			'VSubchunk1Size',
+			'vAudioFormat',
+			'vNumChannels',
+			'VSampleRate',
+			'VByteRate',
+			'vBlockAlign',
+			'vBitsPerSample'
+		));
 		$data = '';
 		foreach ($wavs as $wav){
 			$fp = fopen($wav, 'rb');
-			$header = fread($fp, 36);
-			$info = unpack($fields, $header);
-				// read optional extra stuff
-			if($info['Subchunk1Size'] > 16){
-				$header .= fread($fp, ($info['Subchunk1Size']-16));
+				// Read ChunkID
+			$headerPart1 = fread($fp, 4);
+				// Read ChunkSize
+			$headerPart2 = fread($fp, 4);
+				// Read following fields
+			$headerPart3 = fread($fp, 28);
+			$info = unpack($fields, $headerPart3);
+				// Read optional extra stuff
+				// We will not use this since AudioFormat of all our sound files is PCM
+			if ($info['Subchunk1Size'] > 16) {
+				$headerPart3 .= fread($fp, ($info['Subchunk1Size']-16));
 			}
-				// read SubChunk2ID
-			$header .= fread($fp, 4);
-				// read Subchunk2Size
+				// Read SubChunk2ID
+			$headerPart3 .= fread($fp, 4);
+				// Read Subchunk2Size
 			$size = unpack('vsize', fread($fp, 4));
 			$size = $size['size'];
-				// read data
+				// Read data
 			$data .= fread($fp, $size);
 		}
-		return $header . pack('V', strlen($data)) . $data;
+		return $headerPart1 . pack('V', 36 + strlen($data)) . $headerPart3 . pack('V', strlen($data)) . $data;
 	}
 }
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi3/class.tx_srfreecap_pi3.php'])	{
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi3/class.tx_srfreecap_pi3.php']) {
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi3/class.tx_srfreecap_pi3.php']);
 }
 ?>

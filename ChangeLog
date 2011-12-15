@@ -3,6 +3,7 @@
 	* Fixed bug #7066: IE embeeded media player display
 	* Added feature #32567: Use HTML5 audio tag when available
 	* Follow-up to feature #32567: Use HTML5 audio tag when available
+	* Fixed bug #32579: Incorrect length in header of merged wave file
 
 2011-12-13  Stanislas Rolland  <typo3@sjbr.ca>
 
