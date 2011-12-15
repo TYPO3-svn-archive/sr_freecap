@@ -66,7 +66,7 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 			theAudio.removeChild(theAudio.firstChild);
 		}
 		var audioElement = document.createElement('audio');
-		if (audioElement.canPlayType && audioElement.canPlayType('audio/x-wav') != '') {
+		if (audioElement.canPlayType && (audioElement.canPlayType('audio/x-wav') === 'maybe' || audioElement.canPlayType('audio/x-wav') === 'probably')) {
 			audioElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_audio' + id);
 			audioElement.setAttribute('autoplay', 'autoplay');
 			var sourceElement = document.createElement('source');
