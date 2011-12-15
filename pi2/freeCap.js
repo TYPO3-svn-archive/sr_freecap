@@ -75,12 +75,13 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 			audioElement.appendChild(sourceElement);
 			theAudio.appendChild(audioElement);
 		} else {
+				// In IE, Windows Media Player should be the default player for audio WAVE
 			var objectElement = document.createElement('object');
 			objectElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_object' + id);
 			objectElement.setAttribute('type', 'audio/x-wav');
 			objectElement.setAttribute('data', url);
-			objectElement.setAttribute('height', 0);
-			objectElement.setAttribute('width', 0);
+			objectElement.style.height = 0;
+			objectElement.style.width = 0;
 			try {
 				objectElement.innerHTML = '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
 			} catch (e) {
@@ -89,12 +90,9 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 			}
 			theAudio.appendChild(objectElement);
 			var parameters = {
-				type: 'audio/x-wav',
-				filename: url,
 				src: url,
 				autoplay: true,
-				autoStart: 1,
-				hidden: true,
+				autoStart: true,
 				controller: false
 			};
 			for (var parameter in parameters) {
