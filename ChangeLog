@@ -1,6 +1,7 @@
 2012-03-18  Stanislas Rolland  <typo3@sjbr.ca>
 
-	* Fixed bug ##32848: Captcha image expiry headers
+	* Fixed bug #32848: Captcha image expiry headers
+	* Fixed bug #34729: Problems with encrypt function (Thanks to Carlos Meyer)
 
 2011-12-15  Stanislas Rolland  <typo3@sjbr.ca>
 

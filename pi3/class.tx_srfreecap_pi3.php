@@ -81,6 +81,7 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 	 * @return	string		the decoded string
 	 */
 	function easy_decrypt($cyph_arr, $key){
+		$key = md5($key);
 		return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, $key, base64_decode($cyph_arr[0]), MCRYPT_MODE_CBC, base64_decode($cyph_arr[1])));
 	}
 

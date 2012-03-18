@@ -902,6 +902,7 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	 * Returns an array with the string as the first element and the initialization vector as the second element
 	 */
 	function easy_crypt($string, $key) {
+		$key = md5($key);
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_CBC), MCRYPT_RAND);
 		$string = mcrypt_encrypt(MCRYPT_BLOWFISH, $key, $string, MCRYPT_MODE_CBC, $iv);
 		return array(base64_encode($string), base64_encode($iv));
@@ -912,6 +913,7 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 	 * The first argument is an array as returned by easy_encrypt()
 	 */
 	function easy_decrypt($cyph_arr, $key){
+		$key = md5($key);
 		return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, $key, base64_decode($cyph_arr[0]), MCRYPT_MODE_CBC, base64_decode($cyph_arr[1])));
 	}
 	
