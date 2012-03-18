@@ -2,6 +2,7 @@
 
 	* Fixed bug #32848: Captcha image expiry headers
 	* Fixed bug #34729: Problems with encrypt function (Thanks to Carlos Meyer)
+	* Updated version to 1.5.3
 
 2011-12-15  Stanislas Rolland  <typo3@sjbr.ca>
 
