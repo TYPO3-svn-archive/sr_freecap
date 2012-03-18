@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2008 Stanislas Rolland (typo3(arobas)sjbr.ca)
+*  (c) 2007-2012 Stanislas Rolland (typo3(arobas)sjbr.ca)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -94,6 +94,7 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 	function output($word) {
 		$output = $this->generate($word);
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+		header('Last-Modified: ' . gmdate('D,d M YH:i:s') . ' GMT');
 		header('Pragma: no-cache');
 		header('Cache-Control: no-cache, no-store, must-revalidate');
 		header('Content-Type: audio/x-wav');
