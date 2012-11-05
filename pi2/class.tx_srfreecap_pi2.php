@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2005-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -53,8 +53,6 @@
 *
 *
 \************************************************************/
-
-require_once(PATH_tslib.'class.tslib_pibase.php');
 
 class tx_srfreecap_pi2 extends tslib_pibase {
 	var $prefixId = 'tx_srfreecap_pi2';

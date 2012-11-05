@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2007-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -26,19 +26,6 @@
 *
 * @author Stanislas Rolland <typo3(arobas)sjbr.ca>
 */
-if (!defined('PATH_tslib')) {
-	if (@is_dir(PATH_site.'typo3/sysext/cms/tslib/')) {
-		define('PATH_tslib', PATH_site.'typo3/sysext/cms/tslib/');
-	} elseif (@is_dir(PATH_site.'tslib/')) {
-		define('PATH_tslib', PATH_site.'tslib/');
-	}
-}
-require_once(PATH_t3lib.'class.t3lib_scbase.php');
-require_once(PATH_t3lib.'class.t3lib_tstemplate.php');
-require_once(PATH_t3lib.'class.t3lib_stdgraphic.php');
-require_once(PATH_t3lib.'class.t3lib_div.php');
-require_once(PATH_tslib.'class.tslib_gifbuilder.php');
-require_once(PATH_tslib.'class.tslib_content.php');
 
 class tx_srfreecap_fontmaker extends t3lib_SCbase {
 	var $extKey = 'sr_freecap';
@@ -144,9 +131,9 @@ class tx_srfreecap_fontmaker extends t3lib_SCbase {
 					.',-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-'
 					.',-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-'
 					.',-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-'
-					.',-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,ß'
-					.',à,á,â,ã,ä,å,æ,ç,è,é,ê,ë,ì,í,î,ï'
-					.',ð,ñ,ò,ó,ô,õ,ö,-,ø,ù,ú,û,ü,ý,þ,ÿ';
+					.',-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,ï¿½'
+					.',ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½'
+					.',ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,-,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½,ï¿½';
 					$numchars = 159;
 					$startCharacter = 'a';
 			} else {

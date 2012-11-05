@@ -29,8 +29,6 @@
  *
  * @author	Stanislas Rolland	<typo3(arobas)sjbr.ca>
  */
-require_once(PATH_tslib.'class.tslib_pibase.php');
-
 class tx_srfreecap_pi3 extends tslib_pibase {
 	public $cObj;							// The backReference to the mother cObj object set at call time
 	public $prefixId = 'tx_srfreecap_pi3';				// Same as class name

@@ -53,7 +53,6 @@
 *
 *
 \************************************************************/
-require_once(PATH_tslib.'class.tslib_pibase.php');
 
 class tx_srfreecap_pi1 extends tslib_pibase {
 	var $cObj;				// The backReference to the mother cObj object set at call time

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2008-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -29,7 +29,6 @@
 if (!defined('TYPO3_MODE') || TYPO3_MODE !== 'FE') {
 	die('Could not access this script directly!');
 }
-require_once(t3lib_extMgm::extPath('sr_freecap').'pi3/class.tx_srfreecap_pi3.php');
 
 // ***********************************
 // Creating a $TSFE object
