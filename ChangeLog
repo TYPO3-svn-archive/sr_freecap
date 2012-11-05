@@ -1,6 +1,7 @@
-2012-11-105  Stanislas Rolland  <typo3@sjbr.ca>
+2012-11-05  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Migrate localization files to xliff
+	* Migrate font maker module to the use of typo3/mod.php
 
 2012-03-18  Stanislas Rolland  <typo3@sjbr.ca>
 
