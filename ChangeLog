@@ -1,3 +1,7 @@
+2012-11-105  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Migrate localization files to xliff
+
 2012-03-18  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #32848: Captcha image expiry headers

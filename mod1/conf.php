@@ -8,5 +8,5 @@ $MCONF['access'] = 'admin';
 $MCONF['script'] = 'index.php';
 
 $MLANG['default']['tabs_images']['tab'] = 'moduleicon.gif';
-$MLANG['default']['ll_ref'] = 'LLL:EXT:sr_freecap/mod1/locallang_mod.xml';
+$MLANG['default']['ll_ref'] = 'LLL:EXT:sr_freecap/mod1/locallang_mod.xlf';
 ?>

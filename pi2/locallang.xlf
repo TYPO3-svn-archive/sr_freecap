@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-11-05T19:35:08Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="altText" xml:space="preserve">
+				<source>CAPTCHA image for SPAM prevention</source>
+			</trans-unit>
+			<trans-unit id="notice" xml:space="preserve">
+				<source>Please enter here the word as displayed in the picture.</source>
+			</trans-unit>
+			<trans-unit id="notice_informal" xml:space="preserve">
+				<source>Please enter here the word as displayed in the picture.</source>
+			</trans-unit>
+			<trans-unit id="explain" xml:space="preserve">
+				<source>This is to prevent spamming.</source>
+			</trans-unit>
+			<trans-unit id="cant_read1" xml:space="preserve">
+				<source>If you can't read the word,</source>
+			</trans-unit>
+			<trans-unit id="cant_read1_informal" xml:space="preserve">
+				<source>If you can't read the word,</source>
+			</trans-unit>
+			<trans-unit id="click_here" xml:space="preserve">
+				<source>click here</source>
+			</trans-unit>
+			<trans-unit id="click_here_informal" xml:space="preserve">
+				<source>click here</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible" xml:space="preserve">
+				<source>Click here for audio version of the word to enter.</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_informal" xml:space="preserve">
+				<source>Click here for audio version of the word to enter.</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_before_link" xml:space="preserve">
+				<source>For </source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_before_link_informal" xml:space="preserve">
+				<source>For </source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_link" xml:space="preserve">
+				<source>the audio version of the word</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_link_informal" xml:space="preserve">
+				<source>the audio version of the word</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_after_link" xml:space="preserve">
+				<source> click on this link.</source>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_after_link_informal" xml:space="preserve">
+				<source> click on this link.</source>
+			</trans-unit>
+			<trans-unit id="cant_read2" xml:space="preserve">
+				<source>.</source>
+			</trans-unit>
+			<trans-unit id="noImageMessage" xml:space="preserve">
+				<source>Sorry, we cannot autoreload a new image. Submit the form and a new image will be loaded.</source>
+			</trans-unit>
+			<trans-unit id="noPlayMessage" xml:space="preserve">
+				<source>Sorry, we cannot play the word of the image.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

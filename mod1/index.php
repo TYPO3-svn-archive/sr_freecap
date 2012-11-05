@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2006-2008 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2006-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -31,7 +31,7 @@ unset($MCONF);
 require('conf.php');
 require($BACK_PATH.'init.php');
 require($BACK_PATH.'template.php');
-$LANG->includeLLFile(t3lib_extMgm::extPath('sr_freecap').'mod1/locallang.xml');
+$LANG->includeLLFile(t3lib_extMgm::extPath('sr_freecap').'mod1/locallang.xlf');
 require_once(t3lib_extMgm::extPath('sr_freecap').'mod1/class.tx_srfreecap_fontmaker.php');
 
 $BE_USER->modAccess($MCONF, 1); // This checks permissions and exits if the users has no permission for entry.

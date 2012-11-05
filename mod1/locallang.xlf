@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-11-05T19:34:31Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="title" xml:space="preserve">
+				<source>Make GD Font for freeCap CAPTCHA</source>
+			</trans-unit>
+			<trans-unit id="charactersToIncludeInFont" xml:space="preserve">
+				<source>Characters included in font:</source>
+			</trans-unit>
+			<trans-unit id="numbers-only" xml:space="preserve">
+				<source>Numbers only (0-9)</source>
+			</trans-unit>
+			<trans-unit id="ASCII-lowercase-letters" xml:space="preserve">
+				<source>ASCII lowercase letters (a-z)</source>
+			</trans-unit>
+			<trans-unit id="ANSI-extended-ASCII-lowercase-letters" xml:space="preserve">
+				<source>ANSI-extended ASCII lowercase letters (a-z,ß-ÿ)</source>
+			</trans-unit>
+			<trans-unit id="characterWidth" xml:space="preserve">
+				<source>Character width:</source>
+			</trans-unit>
+			<trans-unit id="characterHeight" xml:space="preserve">
+				<source>Character height:</source>
+			</trans-unit>
+			<trans-unit id="endianness" xml:space="preserve">
+				<source>Byte order (Endianness):</source>
+			</trans-unit>
+			<trans-unit id="littleEndian" xml:space="preserve">
+				<source>Little-endian</source>
+			</trans-unit>
+			<trans-unit id="bigEndian" xml:space="preserve">
+				<source>Big-endian</source>
+			</trans-unit>
+			<trans-unit id="pathToTTFFile" xml:space="preserve">
+				<source>Path to source TTF font file relative to TYPO3 site:</source>
+			</trans-unit>
+			<trans-unit id="gdFontFilePrefix" xml:space="preserve">
+				<source>Prefix of GD font file name to create:</source>
+			</trans-unit>
+			<trans-unit id="makeFont" xml:space="preserve">
+				<source>Make font</source>
+			</trans-unit>
+			<trans-unit id="usingFontFile" xml:space="preserve">
+				<source>The following TTF font file is used as source:</source>
+			</trans-unit>
+			<trans-unit id="ttfFontFileNotFound" xml:space="preserve">
+				<source>The source TTF font file could not be found:</source>
+			</trans-unit>
+			<trans-unit id="pngImageCreated" xml:space="preserve">
+				<source>The following PNG image was created:</source>
+			</trans-unit>
+			<trans-unit id="gdFontFileCreated" xml:space="preserve">
+				<source>The following GD font file was created from the above image:</source>
+			</trans-unit>
+			<trans-unit id="gdFontFileNotCreated" xml:space="preserve">
+				<source>The following GD font file could not be created:</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
