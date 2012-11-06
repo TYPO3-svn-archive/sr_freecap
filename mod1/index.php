@@ -27,7 +27,7 @@
 * @author Stanislas Rolland <typo3(arobas)sjbr.ca>
 */
 // Initialization of the module
-$GLOBALS['LANG']->includeLLFile(t3lib_extMgm::extPath('sr_freecap') . 'mod1/locallang.xlf');
+$GLOBALS['LANG']->includeLLFile('EXT:sr_freecap/mod1/locallang.xlf');
 require_once(t3lib_extMgm::extPath('sr_freecap') . 'mod1/class.tx_srfreecap_fontmaker.php');
 
 // This checks permissions and exits if the users has no permission for entry.

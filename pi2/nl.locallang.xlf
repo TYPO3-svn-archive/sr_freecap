@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="nl" datatype="plaintext" original="messages" date="2012-11-06T22:58:51Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="altText" xml:space="preserve" approved="yes">
+				<source>CAPTCHA image for SPAM prevention</source>
+				<target>CAPTCHA afbeelding om SPAM tegen te gaan</target>
+			</trans-unit>
+			<trans-unit id="notice" xml:space="preserve" approved="yes">
+				<source>Please enter here the word as displayed in the picture.</source>
+				<target>Voer hier het woord in zoals getoond in de afbeelding.</target>
+			</trans-unit>
+			<trans-unit id="notice_informal" xml:space="preserve" approved="yes">
+				<source>Please enter here the word as displayed in the picture.</source>
+				<target>Voer hier het woord in zoals getoond in de afbeelding.</target>
+			</trans-unit>
+			<trans-unit id="explain" xml:space="preserve" approved="yes">
+				<source>This is to prevent spamming.</source>
+				<target>Dit is om spam tegen te gaan.</target>
+			</trans-unit>
+			<trans-unit id="cant_read1" xml:space="preserve" approved="yes">
+				<source>If you can't read the word,</source>
+				<target>Als u het woord niet kunt lezen,</target>
+			</trans-unit>
+			<trans-unit id="cant_read1_informal" xml:space="preserve" approved="yes">
+				<source>If you can't read the word,</source>
+				<target>Als je het woord niet kunt lezen,</target>
+			</trans-unit>
+			<trans-unit id="click_here" xml:space="preserve" approved="yes">
+				<source>click here</source>
+				<target>klik hier</target>
+			</trans-unit>
+			<trans-unit id="click_here_informal" xml:space="preserve" approved="yes">
+				<source>click here</source>
+				<target>klik hier</target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible" xml:space="preserve" approved="yes">
+				<source>Click here for audio version of the word to enter.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_informal" xml:space="preserve" approved="yes">
+				<source>Click here for audio version of the word to enter.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_before_link" xml:space="preserve" approved="yes">
+				<source>For </source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_before_link_informal" xml:space="preserve" approved="yes">
+				<source>For </source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_link" xml:space="preserve" approved="yes">
+				<source>the audio version of the word</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_link_informal" xml:space="preserve" approved="yes">
+				<source>the audio version of the word</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_after_link" xml:space="preserve" approved="yes">
+				<source> click on this link.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="click_here_accessible_after_link_informal" xml:space="preserve" approved="yes">
+				<source> click on this link.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="cant_read2" xml:space="preserve" approved="yes">
+				<source>.</source>
+				<target>.</target>
+			</trans-unit>
+			<trans-unit id="noImageMessage" xml:space="preserve" approved="yes">
+				<source>Sorry, we cannot autoreload a new image. Submit the form and a new image will be loaded.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="noPlayMessage" xml:space="preserve" approved="yes">
+				<source>Sorry, we cannot play the word of the image.</source>
+				<target></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

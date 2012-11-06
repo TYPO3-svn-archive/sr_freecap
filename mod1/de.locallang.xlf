@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2012-11-06T23:12:59Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="title" xml:space="preserve" approved="yes">
+				<source>Make GD Font for freeCap CAPTCHA</source>
+				<target>GD-Schriftart für freeCap-CAPTCHA erzeugen</target>
+			</trans-unit>
+			<trans-unit id="charactersToIncludeInFont" xml:space="preserve" approved="yes">
+				<source>Characters included in font:</source>
+				<target>Zeichen in Schriftart:</target>
+			</trans-unit>
+			<trans-unit id="numbers-only" xml:space="preserve" approved="yes">
+				<source>Numbers only (0-9)</source>
+				<target>nur Ziffern (0-9)</target>
+			</trans-unit>
+			<trans-unit id="ASCII-lowercase-letters" xml:space="preserve" approved="yes">
+				<source>ASCII lowercase letters (a-z)</source>
+				<target>Kleine ASCII-Buchstaben (a-z)</target>
+			</trans-unit>
+			<trans-unit id="ANSI-extended-ASCII-lowercase-letters" xml:space="preserve" approved="yes">
+				<source>ANSI-extended ASCII lowercase letters (a-z,ß-ÿ)</source>
+				<target>Kleine ANSI-erweiterte ASCII-Buchstaben (a-z,ß-ÿ)</target>
+			</trans-unit>
+			<trans-unit id="characterWidth" xml:space="preserve" approved="yes">
+				<source>Character width:</source>
+				<target>Zeichenbreite:</target>
+			</trans-unit>
+			<trans-unit id="characterHeight" xml:space="preserve" approved="yes">
+				<source>Character height:</source>
+				<target>Zeichenhöhe:</target>
+			</trans-unit>
+			<trans-unit id="endianness" xml:space="preserve" approved="yes">
+				<source>Byte order (Endianness):</source>
+				<target>Byte-Reihenfolge (Endian):</target>
+			</trans-unit>
+			<trans-unit id="littleEndian" xml:space="preserve" approved="yes">
+				<source>Little-endian</source>
+				<target>Little-Endian</target>
+			</trans-unit>
+			<trans-unit id="bigEndian" xml:space="preserve" approved="yes">
+				<source>Big-endian</source>
+				<target>Big-Endian</target>
+			</trans-unit>
+			<trans-unit id="pathToTTFFile" xml:space="preserve" approved="yes">
+				<source>Path to source TTF font file relative to TYPO3 site:</source>
+				<target>Pfad zur TTF-Schriftartdatei relativ zur TYPO3-Site:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFilePrefix" xml:space="preserve" approved="yes">
+				<source>Prefix of GD font file name to create:</source>
+				<target>Präfix für zu erzeugende GD-Schriftartdatei:</target>
+			</trans-unit>
+			<trans-unit id="makeFont" xml:space="preserve" approved="yes">
+				<source>Make font</source>
+				<target>Schriftart erzeugen</target>
+			</trans-unit>
+			<trans-unit id="usingFontFile" xml:space="preserve" approved="yes">
+				<source>The following TTF font file is used as source:</source>
+				<target>Folgende TTF-Schriftart wird als Quelle verwendet:</target>
+			</trans-unit>
+			<trans-unit id="ttfFontFileNotFound" xml:space="preserve" approved="yes">
+				<source>The source TTF font file could not be found:</source>
+				<target>Die TTF-Schriftart-Quelldatei konnte nicht gefunden werden:</target>
+			</trans-unit>
+			<trans-unit id="pngImageCreated" xml:space="preserve" approved="yes">
+				<source>The following PNG image was created:</source>
+				<target>Folgendes PNG-Bild wurde erzeugt:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFileCreated" xml:space="preserve" approved="yes">
+				<source>The following GD font file was created from the above image:</source>
+				<target>Folgende GD-Schriftartdatei wurde aus obigem Bild erzeugt:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFileNotCreated" xml:space="preserve" approved="yes">
+				<source>The following GD font file could not be created:</source>
+				<target>Folgende GD-Schriftartdatei konnte nicht erzeugt werden:</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2012-11-06T22:12:01Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="title" xml:space="preserve" approved="yes">
+				<source>Make GD Font for freeCap CAPTCHA</source>
+				<target>Fabrication d'une police de caractères GD pour freeCap CAPTCHA</target>
+			</trans-unit>
+			<trans-unit id="charactersToIncludeInFont" xml:space="preserve" approved="yes">
+				<source>Characters included in font:</source>
+				<target>Caractères inclus dans la police:</target>
+			</trans-unit>
+			<trans-unit id="numbers-only" xml:space="preserve" approved="yes">
+				<source>Numbers only (0-9)</source>
+				<target>Chiffres seulement (0-9)</target>
+			</trans-unit>
+			<trans-unit id="ASCII-lowercase-letters" xml:space="preserve" approved="yes">
+				<source>ASCII lowercase letters (a-z)</source>
+				<target>Lettres minuscules ASCII (a-z)</target>
+			</trans-unit>
+			<trans-unit id="ANSI-extended-ASCII-lowercase-letters" xml:space="preserve" approved="yes">
+				<source>ANSI-extended ASCII lowercase letters (a-z,ß-ÿ)</source>
+				<target>Lettres minuscules ASCII étendu par ANSI (a-z,ß-ÿ)</target>
+			</trans-unit>
+			<trans-unit id="characterWidth" xml:space="preserve" approved="yes">
+				<source>Character width:</source>
+				<target>Largeur des caractères:</target>
+			</trans-unit>
+			<trans-unit id="characterHeight" xml:space="preserve" approved="yes">
+				<source>Character height:</source>
+				<target>Hauteur des caractères:</target>
+			</trans-unit>
+			<trans-unit id="endianness" xml:space="preserve" approved="yes">
+				<source>Byte order (Endianness):</source>
+				<target>Ordre des octets (endianness):</target>
+			</trans-unit>
+			<trans-unit id="littleEndian" xml:space="preserve" approved="yes">
+				<source>Little-endian</source>
+				<target>Petit-boutiste</target>
+			</trans-unit>
+			<trans-unit id="bigEndian" xml:space="preserve" approved="yes">
+				<source>Big-endian</source>
+				<target>Gros-boutiste</target>
+			</trans-unit>
+			<trans-unit id="pathToTTFFile" xml:space="preserve" approved="yes">
+				<source>Path to source TTF font file relative to TYPO3 site:</source>
+				<target>Chemin jusqu'au fichier de police TTF d'entrée relativement au site TYPO3:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFilePrefix" xml:space="preserve" approved="yes">
+				<source>Prefix of GD font file name to create:</source>
+				<target>Préfixe du nom du fichier de police GD à créer:</target>
+			</trans-unit>
+			<trans-unit id="makeFont" xml:space="preserve" approved="yes">
+				<source>Make font</source>
+				<target>Fabriquer la police</target>
+			</trans-unit>
+			<trans-unit id="usingFontFile" xml:space="preserve" approved="yes">
+				<source>The following TTF font file is used as source:</source>
+				<target>Le fichier de police TTF suivant est utilisé en entrée:</target>
+			</trans-unit>
+			<trans-unit id="ttfFontFileNotFound" xml:space="preserve" approved="yes">
+				<source>The source TTF font file could not be found:</source>
+				<target>Le fichier de police TTF d'entrée n'a pas été trouvé:</target>
+			</trans-unit>
+			<trans-unit id="pngImageCreated" xml:space="preserve" approved="yes">
+				<source>The following PNG image was created:</source>
+				<target>L'image PNG suivante a été créée:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFileCreated" xml:space="preserve" approved="yes">
+				<source>The following GD font file was created from the above image:</source>
+				<target>Le fichier de police GD suivant a été créé à partir de l'image ci-haut:</target>
+			</trans-unit>
+			<trans-unit id="gdFontFileNotCreated" xml:space="preserve" approved="yes">
+				<source>The following GD font file could not be created:</source>
+				<target>Le fichier de police GD suivant n'a pas pu être créé:</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

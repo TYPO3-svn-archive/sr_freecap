@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="ru" datatype="plaintext" original="messages" date="2012-11-06T22:50:53Z" product-name="sr_freecap">
+		<header/>
+		<body>
+			<trans-unit id="max_attempts" xml:space="preserve" approved="yes">
+				<source>Sorry, service is interrupted.</source>
+				<target>Извините, сервис недоступен.</target>
+			</trans-unit>
+			<trans-unit id="site_tag" xml:space="preserve" approved="yes">
+				<source>Please do NOT enter the text|if this site is not %1$s</source>
+				<target>НЕ вводите текст|если это не %1$s сайт</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
