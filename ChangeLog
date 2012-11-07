@@ -1,3 +1,7 @@
+2012-11-06  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fix font maker script character encoding
+
 2012-11-05  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Migrate localization files to xliff
