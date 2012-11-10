@@ -72,26 +72,26 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$this->prefixId.'.'];
 		$this->pi_loadLL();
 		$this->pi_USER_INT_obj = 1;  // Disable caching
-		$siteURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
+		$siteURL = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
-		$fakeId = t3lib_div::shortMD5(uniqid (rand()),5);
-		$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. t3lib_extMgm::siteRelPath($this->extKey) . 'pi2/freeCap.js"></script>';
+		$fakeId = \TYPO3\CMS\Core\Utility\GeneralUtility::shortMD5(uniqid (rand()),5);
+		$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->extKey) . 'Resources/Public/JavaScript/freeCap.js"></script>';
 
 		$urlParams = array(
 			'eID' => 'sr_freecap_audioCaptcha',
 			'id' => $GLOBALS['TSFE']->id
 		);
-		$L = t3lib_div::_GP('L');
+		$L = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('L');
 		if (isset($L)) {
 			$urlParams['L'] = htmlspecialchars($L);
 		}
 		if ($GLOBALS['TSFE']->MP) {
 			$urlParams['MP'] = $GLOBALS['TSFE']->MP;
 		}
-		$audioURL = $siteURL . 'index.php?' . ltrim(t3lib_div::implodeArrayForUrl('', $urlParams), '&');
+		$audioURL = $siteURL . 'index.php?' . ltrim(\TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $urlParams), '&');
 
 		$urlParams['eID'] = 'sr_freecap_captcha';
-		$imgUrl = $siteURL . 'index.php?' . ltrim(t3lib_div::implodeArrayForUrl('', $urlParams), '&');
+		$imgUrl = $siteURL . 'index.php?' . ltrim(\TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $urlParams), '&');
 
 		$markerArray = array();
 		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . htmlspecialchars($imgUrl) . '" alt="' . $this->pi_getLL('altText') . ' "/>';
@@ -101,7 +101,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $this->pi_getLL('cant_read2') . '</span>';
 		if ($this->conf['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions())) {
 			if ($this->conf['accessibleOutputImage']) {
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<input type="image" alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="' . $siteURL . str_replace(PATH_site, '', t3lib_div::getFileAbsFileName($this->conf['accessibleOutputImage'])) . '" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');return false;" style="cursor: pointer;"' . $this->pi_classParam('image-accessible') . ' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<input type="image" alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="' . $siteURL . str_replace(PATH_site, '', \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->conf['accessibleOutputImage'])) . '" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');return false;" style="cursor: pointer;"' . $this->pi_classParam('image-accessible') . ' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
 			} else {
 				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span id="tx_srfreecap_pi2_captcha_playLink_'.$fakeId.'"' . $this->pi_classParam('accessible-link') . '>'.$this->pi_getLL('click_here_accessible_before_link');
 				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<a onClick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;" title="' . $this->pi_getLL('click_here_accessible') . '">'.$this->pi_getLL('click_here_accessible_link').'</a>';
