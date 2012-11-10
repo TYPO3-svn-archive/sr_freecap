@@ -52,7 +52,7 @@ plugin.tx_srfreecap {
 	morphFactor = 0.1
 
     # cat=plugin.tx_srfreecap/file/01; type=file[]; label= Default words list file: All words lists should be in the same directory.
-	defaultWordsList = EXT:sr_freecap/res/words/.ht_default_freecap_words
+	defaultWordsList = EXT:sr_freecap/Resources/Private/Captcha/Words/default_freecap_words
 
     # cat=plugin.tx_srfreecap//02; type=options[,formal,informal]; label= Type of salutation to use: Possible values are 'formal' or 'informal'.
 	salutation =
@@ -64,7 +64,7 @@ plugin.tx_srfreecap {
 	accessibleOutput = 0
 
     # cat=plugin.tx_srfreecap/file/03; type=string; label= Accessible output image: File name of the accessible output image. If null, a textual message is used.
-	accessibleOutputImage = EXT:sr_freecap/res/images/audio.png
+	accessibleOutputImage = EXT:sr_freecap/Resources/Public/Images/audio.png
 
     # cat=plugin.tx_srfreecap/enable/07; type=boolean; label= Use site tag: If set, a site tag is added in the background of the CAPTCHA image.
 	siteTag = 0

@@ -116,12 +116,12 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// you should NOT be able to view the contents.
 		// can leave this blank if not using dictionary
 		if (!trim($this->conf['defaultWordsList'])) {
-			$this->conf['defaultWordsList'] = 'EXT:sr_freecap/res/words/.ht_default_freecap_words';
+			$this->conf['defaultWordsList'] = 'EXT:sr_freecap/Resources/Private/Captcha/Words/default_freecap_words';
 		}
-		if (is_file(dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/.ht_' . $this->LLkey . '_freecap_words')) {
-			$this->dict_location = dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/.ht_' . $this->LLkey . '_freecap_words';
-		} elseif (is_file(dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/.ht_default_freecap_words')) {
-			$this->dict_location = dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/.ht_default_freecap_words';
+		if (is_file(dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/' . $this->LLkey . '_freecap_words')) {
+			$this->dict_location = dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/' . $this->LLkey . '_freecap_words';
+		} elseif (is_file(dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/default_freecap_words')) {
+			$this->dict_location = dirname(t3lib_div::getFileAbsFileName($this->conf['defaultWordsList'])) . '/default_freecap_words';
 		}
 		
 		// used to calculate image width, and for non-dictionary word generation
@@ -155,14 +155,14 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// so are not suitable for most other uses
 		// to increase security, you really should add other fonts
 		if ($this->conf['generateNumbers']) {
-			$this->font_locations = Array('EXT:' . $this->extKey . '/res/fonts/.anonymous.gdf');
+			$this->font_locations = Array('EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/anonymous.gdf');
 		} else {
 			$this->font_locations = Array(
-				'EXT:' . $this->extKey . '/res/fonts/.ht_freecap_font1.gdf',
-				'EXT:' . $this->extKey . '/res/fonts/.ht_freecap_font2.gdf',
-				'EXT:' . $this->extKey . '/res/fonts/.ht_freecap_font3.gdf',
-				'EXT:' . $this->extKey . '/res/fonts/.ht_freecap_font4.gdf',
-				'EXT:' . $this->extKey . '/res/fonts/.ht_freecap_font5.gdf'
+				'EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/freecap_font1.gdf',
+				'EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/freecap_font2.gdf',
+				'EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/freecap_font3.gdf',
+				'EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/freecap_font4.gdf',
+				'EXT:' . $this->extKey . '/Resources/Private/Captcha/Fonts/freecap_font5.gdf'
 				);
 		}
 		if ($this->conf['fontFiles']) {
@@ -225,11 +225,11 @@ class tx_srfreecap_pi1 extends tslib_pibase {
 		// for bg_type 3, which images should we use?
 		// if you add your own, make sure they're fairly 'busy' images (ie a lot of shapes in them)
 		$this->bg_images = Array(
-			'EXT:sr_freecap/res/images/.ht_freecap_im1.jpg',
-			'EXT:sr_freecap/res/images/.ht_freecap_im2.jpg',
-			'EXT:sr_freecap/res/images/.ht_freecap_im3.jpg',
-			'EXT:sr_freecap/res/images/.ht_freecap_im4.jpg',
-			'EXT:sr_freecap/res/images/.ht_freecap_im5.jpg'
+			'EXT:sr_freecap/Resources/Private/Captcha/Images/freecap_im1.jpg',
+			'EXT:sr_freecap/Resources/Private/Captcha/Images/freecap_im2.jpg',
+			'EXT:sr_freecap/Resources/Private/Captcha/Images/freecap_im3.jpg',
+			'EXT:sr_freecap/Resources/Private/Captcha/Images/freecap_im4.jpg',
+			'EXT:sr_freecap/Resources/Private/Captcha/Images/freecap_im5.jpg'
 			);
 		
 		// for non-transparent backgrounds only:

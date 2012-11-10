@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2012 Stanislas Rolland (typo3(arobas)sjbr.ca)
+*  (c) 2007-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -52,10 +52,9 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 	 * @return	void
 	 */
 	function getVoicesDir() {
-		global $TSFE;
-		$voicesDir = t3lib_extMgm::extPath('sr_freecap') . '/res/voices/' . $TSFE->lang . '/';
+		$voicesDir = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sr_freecap') . '/Resources/Private/Captcha/Voices/' . $GLOBALS['TSFE']->lang . '/';
 		if (!is_dir($voicesDir)) {
-			$voicesDir = t3lib_extMgm::extPath('sr_freecap') . '/res/voices/default/';
+			$voicesDir = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sr_freecap') . '/Resources/Private/Captcha/Voices/default/';
 		}
 		return $voicesDir;
 	}
@@ -175,8 +174,5 @@ class tx_srfreecap_pi3 extends tslib_pibase {
 		}
 		return $headerPart1 . pack('V', 36 + strlen($data)) . $headerPart3 . pack('V', strlen($data)) . $data;
 	}
-}
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi3/class.tx_srfreecap_pi3.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi3/class.tx_srfreecap_pi3.php']);
 }
 ?>
