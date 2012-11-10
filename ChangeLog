@@ -1,3 +1,7 @@
+2012-11-09  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Move original freecap to Contrib directory
+
 2012-11-06  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fix font maker script character encoding

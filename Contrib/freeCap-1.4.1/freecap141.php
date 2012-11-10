@@ -1,5 +1,4 @@
 <?
-if (!defined('freeCap')) die ('Access denied.');
 /************************************************************\
 *
 *		freeCap v1.4.1 Copyright 2005 Howard Yeend
