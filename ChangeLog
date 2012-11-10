@@ -2,6 +2,7 @@
 
 	* Move captcha media to private resources directory
 	* Move javascript to public resources directory
+	* Require TYPO3 6.0
 	
 2012-11-09  Stanislas Rolland  <typo3@sjbr.ca>
 

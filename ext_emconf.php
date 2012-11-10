@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'A TYPO3 integration of freeCap CAPTCHA.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '1.5.3',
+	'version' => '2.0.0',
 	'dependencies' => 'cms',
 	'conflicts' => '',
 	'priority' => '',
@@ -34,9 +34,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'cms' => '',
 			'php' => '5.3.0-0.0.0',
-			'typo3' => '4.5.0-0.0.0',
+			'typo3' => '6.0.0-0.0.0',
+			'extbase' => '1.0.0-0.0.0',
+			'fluid' => '1.0.0-0.0.0',
 		),
 		'conflicts' => array(
 		),
