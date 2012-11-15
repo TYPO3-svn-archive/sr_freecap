@@ -1,3 +1,7 @@
+2012-11-15  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Move language labels to private resources directory
+
 2012-11-10  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Move captcha media to private resources directory
