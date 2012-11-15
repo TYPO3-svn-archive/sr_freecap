@@ -1,6 +1,7 @@
 2012-11-15  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Move language labels to private resources directory
+	* Migrate captcha image and audio generation to extbase
 
 2012-11-10  Stanislas Rolland  <typo3@sjbr.ca>
 

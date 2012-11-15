@@ -1,7 +1,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2011 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2007-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,9 +25,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 /*
- * Javascript functions for TYPO3 plugin freeCap (sr_freecap)
+ * Javascript functions for TYPO3 extension freeCap CAPTCHA (sr_freecap)
  *
- * TYPO3 CVS ID: $Id$
  */
 
 /*

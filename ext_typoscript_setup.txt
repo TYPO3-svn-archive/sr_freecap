@@ -1,36 +1,3 @@
-plugin.tx_srfreecap_pi1 {
-
-	imageHeight = {$plugin.tx_srfreecap.imageHeight}
-	imageAdditionalWidth = {$plugin.tx_srfreecap.imageAdditionalWidth}
-	imageFormat = {$plugin.tx_srfreecap.imageFormat}
-
-	textHorizontalPosition = {$plugin.tx_srfreecap.textHorizontalPosition}
-	textVerticalPosition = {$plugin.tx_srfreecap.textVerticalPosition}
-
-	backgroundType = {$plugin.tx_srfreecap.backgroundType}
-	backgroundBlur = {$plugin.tx_srfreecap.backgroundBlur}
-	backgroundMorph = {$plugin.tx_srfreecap.backgroundMorph}
-
-	maxWordLength = {$plugin.tx_srfreecap.maxWordLength}
-	useWordsList = {$plugin.tx_srfreecap.useWordsList}
-	generateNumbers = {$plugin.tx_srfreecap.generateNumbers}
-
-	colorMaximumDarkness = {$plugin.tx_srfreecap.colorMaximumDarkness}
-	colorMaximumLightness = {$plugin.tx_srfreecap.colorMaximumLightness}
-	textColor = {$plugin.tx_srfreecap.textColor}
-	mergeWithBackground = {$plugin.tx_srfreecap.mergeWithBackground}
-	morphFactor = {$plugin.tx_srfreecap.morphFactor}
-	defaultWordsList = {$plugin.tx_srfreecap.defaultWordsList}
-	fontFiles = {$plugin.tx_srfreecap.fontFiles}
-
-	maxAttempts = {$plugin.tx_srfreecap.maxAttempts}
-	
-	accessibleOutput = {$plugin.tx_srfreecap.accessibleOutput}
-	
-	siteTag = {$plugin.tx_srfreecap.siteTag}
-	siteTagDomain = {$plugin.tx_srfreecap.siteTagDomain}
-	siteTagPosition = {$plugin.tx_srfreecap.siteTagPosition}
-}
 
 plugin.tx_srfreecap_pi2 {
 

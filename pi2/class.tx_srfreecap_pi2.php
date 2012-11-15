@@ -62,24 +62,26 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	
 	function makeCaptcha() {
 
-		if (method_exists($this, '__construct')) {
-			parent::__construct();
-		} else {
-				// Before TYPO3 4.6+ and PHP 5.3+
-			parent::tslib_pibase();
-		}
-			//Make sure that labels in locallang.php may be overridden
+		parent::__construct();
+
+		//Make sure that labels in locallang.php may be overridden
 		$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$this->prefixId.'.'];
 		$this->pi_loadLL();
-		$this->pi_USER_INT_obj = 1;  // Disable caching
+		// Disable caching
+		$this->pi_USER_INT_obj = 1;
 		$siteURL = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
 		$fakeId = \TYPO3\CMS\Core\Utility\GeneralUtility::shortMD5(uniqid (rand()),5);
 		$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script type="text/javascript" src="'. \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->extKey) . 'Resources/Public/JavaScript/freeCap.js"></script>';
 
 		$urlParams = array(
-			'eID' => 'sr_freecap_audioCaptcha',
-			'id' => $GLOBALS['TSFE']->id
+			'eID' => 'sr_freecap_EidDispatcher',
+			'id' => $GLOBALS['TSFE']->id,
+			'extensionName' => 'SrFreecap',
+			'pluginName' => 'AudioPlayer',
+			'controllerName' => 'AudioPlayer',
+			'actionName' => 'play',
+			'formatName' => 'wav',
 		);
 		$L = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('L');
 		if (isset($L)) {
@@ -90,7 +92,21 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		}
 		$audioURL = $siteURL . 'index.php?' . ltrim(\TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $urlParams), '&');
 
-		$urlParams['eID'] = 'sr_freecap_captcha';
+		$urlParams = array(
+			'eID' => 'sr_freecap_EidDispatcher',
+			'id' => $GLOBALS['TSFE']->id,
+			'extensionName' => 'SrFreecap',
+			'pluginName' => 'ImageGenerator',
+			'controllerName' => 'ImageGenerator',
+			'actionName' => 'show',
+			'formatName' => 'png',
+		);
+		if (isset($L)) {
+			$urlParams['L'] = htmlspecialchars($L);
+		}
+		if ($GLOBALS['TSFE']->MP) {
+			$urlParams['MP'] = $GLOBALS['TSFE']->MP;
+		}
 		$imgUrl = $siteURL . 'index.php?' . ltrim(\TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $urlParams), '&');
 
 		$markerArray = array();
@@ -120,23 +136,20 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 * @param	string		$word: hte word that was entered
 	 * @return	boolean		true, if the word entered matches the hashes value
 	 */
-	function checkWord($word) {
-			// Load session data
-		$this->sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses','tx_' . $this->extKey);
-		if (!empty($this->sessionData[$this->extKey . '_word_hash']) && !empty($word)) {
-			// all freeCap words are lowercase.
+	function checkWord ($word) {
+		// Get session data
+		$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
+		$wordObject = $wordRepository->getWord();
+		$wordHash = $wordObject->getWordHash();
+		if (!empty($wordHash) && !empty($word)) {
+			// All freeCap words are lowercase.
 			// font #4 looks uppercase, but trust me, it's not...
-			if ($this->sessionData[$this->extKey . '_hash_func'] == 'md5') {
-				if (md5(strtolower(utf8_decode($word))) == $this->sessionData[$this->extKey . '_word_hash']) {
-					// reset freeCap session vars
-					// cannot stress enough how important it is to do this
-					// defeats re-use of known image with spoofed session id
-					$this->sessionData[$this->extKey . '_attempts'] = 0;
-					$this->sessionData[$this->extKey . '_word_hash'] = false;
-					$this->sessionData[$this->extKey . '_word_accessible'] = false;
-					$this->sessionData[$this->extKey . '_hash_func'] = false;
-					$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_' . $this->extKey, $this->sessionData);
-					$GLOBALS['TSFE']->storeSessionData();
+			if ($wordObject->getHashFunction() == 'md5') {
+				if (md5(strtolower(utf8_decode($word))) == $wordHash) {
+					// Reset freeCap session vars
+					// Cannot stress enough how important it is to do this
+					// Defeats re-use of known image with spoofed session id
+					$wordRepository->cleanUpWord();
 					return true;
 				}
 			}
@@ -149,7 +162,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 *
 	 * @author	Oliver Klee <typo-coding@oliverklee.de>
 	 */
-	    // list of allowed suffixes
+	// List of allowed suffixes
 	var $allowedSuffixes = array('formal', 'informal');
 	
 	/**
@@ -169,7 +182,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 * @return    string        The value from LOCAL_LANG.
 	 */
 	function pi_getLL($key, $alt = '', $hsc = FALSE) {
-			// If the suffix is allowed and we have a localized string for the desired salutation, we'll take that.
+		// If the suffix is allowed and we have a localized string for the desired salutation, we'll take that.
 		if (isset($this->conf['salutation']) && in_array($this->conf['salutation'], $this->allowedSuffixes, 1)) {
 			$expandedKey = $key.'_'.$this->conf['salutation'];
 			if (isset($this->LOCAL_LANG[$this->LLkey][$expandedKey])) {
@@ -180,9 +193,7 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	}
 
 }
-
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi2/class.tx_srfreecap_pi2.php']) {
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi2/class.tx_srfreecap_pi2.php']);
 }
-
 ?>
