@@ -1,0 +1,41 @@
+.sjbr-freecap-font-maker dl {
+	margin: 0;
+	padding: 1em 0 0 0;
+}
+.sjbr-freecap-font-maker dt,
+.sjbr-freecap-font-maker dd {
+	float: left;
+	margin: 0;
+	padding: 0 0 .5em 0;
+}
+.sjbr-freecap-font-maker dt {
+	clear: left;
+	margin-top: 5px;
+	padding-right: 1em;
+	text-align: right;
+	width: 25%;
+}
+.sjbr-freecap-font-maker dd {
+	margin-top: 8px;
+	text-align: left;
+	width: 50%;
+}
+.sjbr-freecap-font-maker dd input {
+	margin-bottom: 5px;
+}
+.sjbr-freecap-font-maker dd label {
+	margin-bottom: 3px;
+	padding: 0 0 0 .5em;
+	vertical-align: top;
+}
+.sjbr-freecap-font-maker ul.errors li {
+	font-weight: bold;
+}
+.sjbr-freecap-font-maker-created dl {
+	padding: 1em;
+}
+.sjbr-freecap-font-maker-created dd {
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-top: 5px;
+}

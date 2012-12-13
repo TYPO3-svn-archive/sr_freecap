@@ -150,10 +150,10 @@ class ImageGeneratorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 			$this->settings['fontLocations'] = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['fontFiles'], 1);
 		}
 		for ($i = 0; $i < sizeof($this->settings['fontLocations']); $i++) {
-			if (substr($this->settings['fontLocations'][$i],0,4)=='EXT:') {
+			if (substr($this->settings['fontLocations'][$i],0,4) == 'EXT:') {
 				$this->settings['fontLocations'][$i] = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['fontLocations'][$i]);
 			} else {
-				$this->settings['fontLocations'][$i] = PATH_site . 'uploads/' . $this->extPrefix . '/' . $this->settings['fontLocations'][$i];
+				$this->settings['fontLocations'][$i] = PATH_site . 'uploads/' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getCN($this->extensionKey) . '/' . $this->settings['fontLocations'][$i];
 			}
 		}
 

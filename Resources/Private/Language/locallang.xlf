@@ -6,6 +6,9 @@
 			<trans-unit id="title" xml:space="preserve">
 				<source>Make GD Font for freeCap CAPTCHA</source>
 			</trans-unit>
+			<trans-unit id="title-created" xml:space="preserve">
+				<source>A GD font for freeCap CAPTCHA was created</source>
+			</trans-unit>			
 			<trans-unit id="charactersToIncludeInFont" xml:space="preserve">
 				<source>Characters included in font:</source>
 			</trans-unit>
@@ -50,6 +53,9 @@
 			</trans-unit>
 			<trans-unit id="pngImageCreated" xml:space="preserve">
 				<source>The following PNG image was created:</source>
+			</trans-unit>
+			<trans-unit id="pngFontImage" xml:space="preserve">
+				<source>Font image created from the TTF font file</source>
 			</trans-unit>
 			<trans-unit id="gdFontFileCreated" xml:space="preserve">
 				<source>The following GD font file was created from the above image:</source>
@@ -119,6 +125,18 @@
 			</trans-unit>
 			<trans-unit id="noPlayMessage" xml:space="preserve">
 				<source>Sorry, we cannot play the word of the image.</source>
+			</trans-unit>
+			<trans-unit id="1238108067" xml:space="preserve">
+				<source>Please enter a string of length 1 to 255 characters.</source>
+			</trans-unit>
+			<trans-unit id="1221561046" xml:space="preserve">
+				<source>Please enter a number betwwen 5 and 255.</source>
+			</trans-unit>
+			<trans-unit id="9221561046" xml:space="preserve">
+				<source>A file with the given name could not be found.</source>
+			</trans-unit>
+			<trans-unit id="9221561047" xml:space="preserve">
+				<source>The specified file is not a True Type Font file.</source>
 			</trans-unit>
 		</body>
 	</file>
