@@ -137,24 +137,10 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 * @return	boolean		true, if the word entered matches the hashes value
 	 */
 	function checkWord ($word) {
-		// Get session data
-		$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
-		$wordObject = $wordRepository->getWord();
-		$wordHash = $wordObject->getWordHash();
-		if (!empty($wordHash) && !empty($word)) {
-			// All freeCap words are lowercase.
-			// font #4 looks uppercase, but trust me, it's not...
-			if ($wordObject->getHashFunction() == 'md5') {
-				if (md5(strtolower(utf8_decode($word))) == $wordHash) {
-					// Reset freeCap session vars
-					// Cannot stress enough how important it is to do this
-					// Defeats re-use of known image with spoofed session id
-					$wordRepository->cleanUpWord();
-					return true;
-				}
-			}
-		}
-		return false;
+		// Get validator
+		$validator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Validation\\Validator\\CaptchaValidator');
+		// Check word
+		return $validator->isValid($word);
 	}
 
 	/**

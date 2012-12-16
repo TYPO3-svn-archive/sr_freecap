@@ -23,6 +23,7 @@ return array(
 	'TYPO3\CMS\Extbase\MVC\View\ViewInterface' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('extbase') . 'Classes/Mvc/View/ViewInterface.php',
 	'SJBR\SrFreecap\View\AudioPlayer\PlayWav' => $extensionClassesPath . 'View/AudioPlayer/PlayWav.php',
 	'SJBR\SrFreecap\View\ImageGenerator\ShowPng' => $extensionClassesPath . 'View/ImageGenerator/ShowPng.php',
+	'SJBR\SrFreecap\Validation\Validator\CaptchaValidator' => $extensionClassesPath . 'Validation/Validator/CaptchaValidator.php',
 	'tx_srfreecap_pi2' => $extensionPath . 'pi2/class.tx_srfreecap_pi2.php',
 );
 unset($extensionPath);       
