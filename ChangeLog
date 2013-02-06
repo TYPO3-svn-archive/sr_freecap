@@ -2,6 +2,7 @@
 
 	* Add translation view helper with formal/informal salutation option
 	* Cleanup configuration files
+	* Add suggested HTML template insert (for pi_base)
 
 2012-12-15  Stanislas Rolland  <typo3@sjbr.ca>
 
