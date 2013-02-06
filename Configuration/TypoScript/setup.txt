@@ -27,10 +27,13 @@ plugin.tx_srfreecap {
 		maxAttempts = {$plugin.tx_srfreecap.maxAttempts}
 
 		accessibleOutput = {$plugin.tx_srfreecap.accessibleOutput}
+		accessibleOutputImage = {$plugin.tx_srfreecap.accessibleOutputImage}
 
 		siteTag = {$plugin.tx_srfreecap.siteTag}
 		siteTagDomain = {$plugin.tx_srfreecap.siteTagDomain}
-		siteTagPosition = {$plugin.tx_srfreecap.siteTagPosition}	
+		siteTagPosition = {$plugin.tx_srfreecap.siteTagPosition}
+		
+		salutation = {$plugin.tx_srfreecap.salutation}
 	}
 	view {
 		templateRootPath = {$plugin.tx_srfreecap.view.templateRootPath}

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2005-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -53,20 +53,47 @@
 *
 *
 \************************************************************/
-
 class tx_srfreecap_pi2 extends tslib_pibase {
-	var $prefixId = 'tx_srfreecap_pi2';
-	var $scriptRelPath = 'pi2/class.tx_srfreecap_pi2.php';  // Path to this script relative to the extension dir.
-	var $extKey = 'sr_freecap';		// The extension key.
-	var $conf = array();
-	
-	function makeCaptcha() {
+
+	/**
+	 * @var string Name of this plugin
+	 */
+	public $prefixId = 'tx_srfreecap_pi2';
+
+	/**
+	 * @var string Path to this script relative to the extension directory
+	 */
+	public $scriptRelPath = 'pi2/class.tx_srfreecap_pi2.php';
+
+	/**
+	 * @var string The extension key
+	 */
+	public $extKey = 'sr_freecap';
+
+	/**
+	 * @var array The TypoScript configuration for this plugin
+	 */
+	public $conf = array();
+
+	/**
+	 * This function generates an array of markers used to render the captcha element
+	 *
+	 * @return array marker array containing the captcha markers to be sustituted in the html template
+	 */	
+	public function makeCaptcha() {
 
 		parent::__construct();
 
-		//Make sure that labels in locallang.php may be overridden
+		// Get the translation view helper
+		$configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$configurationManager->injectObjectManager($objectManager);
+		$translator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
+		$translator->injectConfigurationManager($configurationManager);
+
+		//Get the TypoScript configuration
 		$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.'][$this->prefixId.'.'];
-		$this->pi_loadLL();
+
 		// Disable caching
 		$this->pi_USER_INT_obj = 1;
 		$siteURL = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
@@ -110,19 +137,19 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 		$imgUrl = $siteURL . 'index.php?' . ltrim(\TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $urlParams), '&');
 
 		$markerArray = array();
-		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . htmlspecialchars($imgUrl) . '" alt="' . $this->pi_getLL('altText') . ' "/>';
-		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $this->pi_getLL('notice') . ' ' . $this->pi_getLL('explain');
-		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $this->pi_getLL('cant_read1');
-		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \''.$this->pi_getLL('noImageMessage').'\');return false;">' . $this->pi_getLL('click_here') . '</a>';
-		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $this->pi_getLL('cant_read2') . '</span>';
+		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = '<img' . $this->pi_classParam('image') . ' id="tx_srfreecap_pi2_captcha_image_'.$fakeId.'" src="' . htmlspecialchars($imgUrl) . '" alt="' . $translator->render('altText') . ' "/>';
+		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $translator->render('notice') . ' ' . $translator->render('explain');
+		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '<span' . $this->pi_classParam('cant-read') . '>' . $translator->render('cant_read1');
+		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= ' <a href="#" onclick="this.blur();newFreeCap(\''.$fakeId.'\', \'' . $translator->render('noImageMessage').'\');return false;">' . $translator->render('click_here') . '</a>';
+		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] .= $translator->render('cant_read2') . '</span>';
 		if ($this->conf['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions())) {
 			if ($this->conf['accessibleOutputImage']) {
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<input type="image" alt="' . $this->pi_getLL('click_here_accessible') . '" title="' . $this->pi_getLL('click_here_accessible') . '" src="' . $siteURL . str_replace(PATH_site, '', \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->conf['accessibleOutputImage'])) . '" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');return false;" style="cursor: pointer;"' . $this->pi_classParam('image-accessible') . ' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<input type="image" alt="' . $translator->render('click_here_accessible') . '" title="' . $translator->render('click_here_accessible') . '" src="' . $siteURL . str_replace(PATH_site, '', \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->conf['accessibleOutputImage'])) . '" onclick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \'' . $translator->render('noPlayMessage').'\');return false;" style="cursor: pointer;"' . $this->pi_classParam('image-accessible') . ' /><span'.$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
 			} else {
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span id="tx_srfreecap_pi2_captcha_playLink_'.$fakeId.'"' . $this->pi_classParam('accessible-link') . '>'.$this->pi_getLL('click_here_accessible_before_link');
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<a onClick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \''.$this->pi_getLL('noPlayMessage').'\');" style="cursor: pointer;" title="' . $this->pi_getLL('click_here_accessible') . '">'.$this->pi_getLL('click_here_accessible_link').'</a>';
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= $this->pi_getLL('click_here_accessible_after_link').'</span>';
-				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span ' .$this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span id="tx_srfreecap_pi2_captcha_playLink_'.$fakeId.'"' . $this->pi_classParam('accessible-link') . '>' . $translator->render('click_here_accessible_before_link');
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<a onClick="playCaptcha(\''.$fakeId.'\', \''.$audioURL.'\', \'' . $translator->render('noPlayMessage').'\');" style="cursor: pointer;" title="' . $translator->render('click_here_accessible') . '">' . $translator->render('click_here_accessible_link').'</a>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= $translator->render('click_here_accessible_after_link').'</span>';
+				$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '<span ' . $this->pi_classParam('accessible').' id="tx_srfreecap_pi2_captcha_playAudio_'.$fakeId.'"></span>';
 			}
 		} else {
 			$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] .= '';
@@ -136,50 +163,11 @@ class tx_srfreecap_pi2 extends tslib_pibase {
 	 * @param	string		$word: hte word that was entered
 	 * @return	boolean		true, if the word entered matches the hashes value
 	 */
-	function checkWord ($word) {
+	public function checkWord ($word) {
 		// Get validator
 		$validator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Validation\\Validator\\CaptchaValidator');
 		// Check word
 		return $validator->isValid($word);
 	}
-
-	/**
-	 * From the 'salutationswitcher' extension.
-	 *
-	 * @author	Oliver Klee <typo-coding@oliverklee.de>
-	 */
-	// List of allowed suffixes
-	var $allowedSuffixes = array('formal', 'informal');
-	
-	/**
-	 * Returns the localized label of the LOCAL_LANG key, $key
-	 * In $this->conf['salutation'], a suffix to the key may be set (which may be either 'formal' or 'informal').
-	 * If a corresponding key exists, the formal/informal localized string is used instead.
-	 * If the key doesn't exist, we just use the normal string.
-	 *
-	 * Example: key = 'greeting', suffix = 'informal'. If the key 'greeting_informal' exists, that string is used.
-	 * If it doesn't exist, we'll try to use the string with the key 'greeting'.
-	 *
-	 * Notice that for debugging purposes prefixes for the output values can be set with the internal vars ->LLtestPrefixAlt and ->LLtestPrefix
-	 *
-	 * @param    string        The key from the LOCAL_LANG array for which to return the value.
-	 * @param    string        Alternative string to return IF no value is found set for the key, neither for the local language nor the default.
-	 * @param    boolean        If true, the output label is passed through htmlspecialchars()
-	 * @return    string        The value from LOCAL_LANG.
-	 */
-	function pi_getLL($key, $alt = '', $hsc = FALSE) {
-		// If the suffix is allowed and we have a localized string for the desired salutation, we'll take that.
-		if (isset($this->conf['salutation']) && in_array($this->conf['salutation'], $this->allowedSuffixes, 1)) {
-			$expandedKey = $key.'_'.$this->conf['salutation'];
-			if (isset($this->LOCAL_LANG[$this->LLkey][$expandedKey])) {
-				$key = $expandedKey;
-			}
-		}
-		return parent::pi_getLL($key, $alt, $hsc);
-	}
-
-}
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi2/class.tx_srfreecap_pi2.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sr_freecap/pi2/class.tx_srfreecap_pi2.php']);
 }
 ?>

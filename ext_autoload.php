@@ -24,6 +24,7 @@ return array(
 	'SJBR\SrFreecap\View\AudioPlayer\PlayWav' => $extensionClassesPath . 'View/AudioPlayer/PlayWav.php',
 	'SJBR\SrFreecap\View\ImageGenerator\ShowPng' => $extensionClassesPath . 'View/ImageGenerator/ShowPng.php',
 	'SJBR\SrFreecap\Validation\Validator\CaptchaValidator' => $extensionClassesPath . 'Validation/Validator/CaptchaValidator.php',
+	'SJBR\SrFreecap\ViewHelpers\TranslateViewHelper' => $extensionClassesPath . 'ViewHelpers/TranslateViewHelper.php',
 	'tx_srfreecap_pi2' => $extensionPath . 'pi2/class.tx_srfreecap_pi2.php',
 );
 unset($extensionPath);       

@@ -1,7 +1,6 @@
 
 plugin.tx_srfreecap_pi2 {
 
-	salutation = {$plugin.tx_srfreecap.salutation}
 	accessibleOutput = {$plugin.tx_srfreecap.accessibleOutput}
 	accessibleOutputImage = {$plugin.tx_srfreecap.accessibleOutputImage}
 
