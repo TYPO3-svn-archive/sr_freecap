@@ -6,6 +6,7 @@
 	* Add captcha image and audio icon view helpers
 	* Remove alias on SessionStorage class
 	* Cleanup translation view helper
+	* Require extension vhs 1.5.0
 
 2012-12-15  Stanislas Rolland  <typo3@sjbr.ca>
 
