@@ -1,0 +1,27 @@
+.tx-srfreecap-captcha label {
+	display: inline-block;
+	width: 180px;
+}
+img.tx-srfreecap-image {
+	margin-left: 1em;
+	margin-right: 1em;
+	vertical-align: middle;
+}
+.tx-srfreecap-accessible-image {
+	vertical-align: middle;
+}
+.tx-srfreecap-accessible-link {
+	float: right;
+	margin-right: 7em;
+	vertical-align: middle;
+	width: 10em;
+}
+.tx-srfreecap-cant-read {
+	display: inline-block;
+	width: 180px;
+}
+.tx-srfreecap-cant-read a:link {
+	background-color: transparent;
+	font-weight: bold;
+	text-decoration: none;
+}

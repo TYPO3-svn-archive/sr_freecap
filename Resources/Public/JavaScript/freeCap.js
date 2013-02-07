@@ -39,7 +39,7 @@
 function newFreeCap(id, noImageMessage) {
 	if (document.getElementById) {
 			// extract image name from image source (i.e. cut off ?randomness)
-		var theImage = document.getElementById('tx_srfreecap_pi2_captcha_image_' + id);
+		var theImage = document.getElementById('tx_srfreecap_captcha_image_' + id);
 		var parts = theImage.src.split('&set');
 		theImage.src = parts[0] + '&set=' + Math.round(Math.random()*100000);
 	} else {
@@ -59,14 +59,14 @@ function newFreeCap(id, noImageMessage) {
  */
 function playCaptcha(id, wavURL, noPlayMessage) {
 	if (document.getElementById) {
-		var theAudio = document.getElementById('tx_srfreecap_pi2_captcha_playAudio_' + id);
+		var theAudio = document.getElementById('tx_srfreecap_captcha_playAudio_' + id);
 		var url = wavURL + '&nocache=' + Math.random();
 		while (theAudio.firstChild) {
 			theAudio.removeChild(theAudio.firstChild);
 		}
 		var audioElement = document.createElement('audio');
 		if (audioElement.canPlayType && (audioElement.canPlayType('audio/x-wav') === 'maybe' || audioElement.canPlayType('audio/x-wav') === 'probably')) {
-			audioElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_audio' + id);
+			audioElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_audio' + id);
 			audioElement.setAttribute('autoplay', 'autoplay');
 			var sourceElement = document.createElement('source');
 			sourceElement.setAttribute('type', 'audio/x-wav');
@@ -76,7 +76,7 @@ function playCaptcha(id, wavURL, noPlayMessage) {
 		} else {
 				// In IE, Windows Media Player should be the default player for audio WAVE
 			var objectElement = document.createElement('object');
-			objectElement.setAttribute('id', 'tx_srfreecap_pi2_captcha_playAudio_object' + id);
+			objectElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_object' + id);
 			objectElement.setAttribute('type', 'audio/x-wav');
 			objectElement.setAttribute('data', url);
 			objectElement.style.height = 0;

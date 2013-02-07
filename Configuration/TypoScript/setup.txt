@@ -56,10 +56,11 @@ module.tx_srfreecap {
 ## Backward pi_base compatibility
 plugin.tx_srfreecap_pi2 {
 	_CSS_DEFAULT_STYLE (
-		img.tx-srfreecap-pi2-image { margin-left: 1em; margin-right: 1em; vertical-align: middle; }
-		.tx-srfreecap-pi2-accessible-image { vertical-align: middle; }
-		.tx-srfreecap-pi2-accessible-link { width: 10em; float: right; vertical-align: middle; margin-right: 7em; }
-		.tx-srfreecap-pi2-cant-read { font-size: .9em; color:#35006d; }
-		.tx-srfreecap-pi2-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
+		.tx-srfreecap-pi1-captcha label { display: inline-block; width: 150px; }
+		img.tx-srfreecap-pi1-image { margin-left: 1em; margin-right: 1em; vertical-align: middle; }
+		.tx-srfreecap-pi1-accessible-image { vertical-align: middle; }
+		.tx-srfreecap-pi1-accessible-link { width: 10em; float: right; vertical-align: middle; margin-right: 7em; }
+		.tx-srfreecap-pi1-cant-read { display: inline-block; width: 150px; }
+		.tx-srfreecap-pi1-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
 	)
 }
