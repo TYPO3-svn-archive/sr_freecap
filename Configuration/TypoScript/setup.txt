@@ -40,6 +40,14 @@ plugin.tx_srfreecap {
 		partialRootPath = {$plugin.tx_srfreecap.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_srfreecap.view.layoutRootPath}
 	}
+	_CSS_DEFAULT_STYLE (
+		.tx-srfreecap-captcha label { display: inline-block; width: 150px; }
+		img.tx-srfreecap-image { margin-left: 1em; margin-right: 1em; vertical-align: middle; }
+		.tx-srfreecap-accessible-image { vertical-align: middle; }
+		.tx-srfreecap-accessible-link { width: 10em; float: right; vertical-align: middle; margin-right: 7em; }
+		.tx-srfreecap-cant-read { display: inline-block; width: 150px; }
+		.tx-srfreecap-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
+	)
 }
 
 ## Configuring the Font Maker backend module

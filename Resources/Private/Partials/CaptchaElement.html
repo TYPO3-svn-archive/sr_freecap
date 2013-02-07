@@ -1,9 +1,9 @@
 {namespace freeCap=SJBR\SrFreecap\ViewHelpers}
-{namespace vhs=Tx_Vhs_ViewHelpers}
-<div class="tx-srfreecap-captcha">
-	<vhs:page.header.link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'StyleSheets/CaptchaElement.css', extensionName:'sr_freecap')}" />
+<dt class="tx-srfreecap-captcha">
 	<label for="sjbr-freecap-captcha-response">{freeCap:translate(key: 'notice')} {freeCap:translate(key: 'explain')}</label>
+</dt>
+<dd>
 	<f:form.textfield id="sjbr-freecap-captcha-response" property="captchaResponse" size="15" title="{freeCap:translate(key: 'notice')}{freeCap:translate(key: 'explain')}" />
 	<freeCap:image />
 	<freeCap:audio />
-</div>
+</dd>
