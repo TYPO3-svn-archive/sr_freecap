@@ -9,6 +9,7 @@
 	* Require extension vhs 1.5.0
 	* Remove requirement for vhs extension
 	* Fix validation error translation
+	* Cleanup image generator
 
 2012-12-15  Stanislas Rolland  <typo3@sjbr.ca>
 

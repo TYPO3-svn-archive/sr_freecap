@@ -166,10 +166,13 @@ class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 			// in short, there's little point trying to avoid brute forcing
 			// the best way to protect against BF attacks is to ensure the dictionary is not
 			// accessible via the web or use random string option
-			if ($this->word->getAttempts() > $this->settings['maxAttempts']) {	
+			if ($this->word->getAttempts() > $this->settings['maxAttempts']) {
 				$this->word->setWordHash('');
 				$this->word->setWordCypher(array());
 				$this->word->setHashFunction('');
+				// Get an instance of the word repository
+				$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
+				// Reset the word
 				$wordRepository->setWord($this->word);
 				$string = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('max_attempts', $extensionName);
 				$font = 5;
