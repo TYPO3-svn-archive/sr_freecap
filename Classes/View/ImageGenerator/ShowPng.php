@@ -174,7 +174,7 @@ class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 				$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
 				// Reset the word
 				$wordRepository->setWord($this->word);
-				$string = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('max_attempts', $extensionName);
+				$string = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('max_attempts', $this->extensionName);
 				$font = 5;
 				$width  = imagefontwidth($font) * strlen($string);
 				$height = imagefontheight($font);
@@ -207,9 +207,6 @@ class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 		if ($this->settings['accessibleOutput']) {
 			$this->word->setWordCypher(\SJBR\SrFreecap\Utility\EncryptionUtility::encrypt($word));
 		}
-
-		// Store the session data
-		//$wordRepository->setWord($this->word);
 
 		// Build the image
 		$image = $this->buildImage($word, $this->settings['imageWidth'], $this->settings['imageHeight'], $this->settings['backgroundType']);
