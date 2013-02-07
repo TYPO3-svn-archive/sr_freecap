@@ -81,5 +81,4 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 		throw new LogicException ('No Frontentuser found in session!');
 	}
 }
-//class_alias('SJBR\SrFreecap\Domain\Session\SessionStorage', 'Tx_SrFreecap_Domain_Session_SessionStorage');
 ?>
