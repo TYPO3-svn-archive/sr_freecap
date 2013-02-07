@@ -1,6 +1,7 @@
 2013-02-07  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fix max attempts message
+	* Delete unused directories
 
 2013-02-06  Stanislas Rolland  <typo3@sjbr.ca>
 
