@@ -87,6 +87,14 @@
 				<source>Sorry, we cannot play the word of the image.</source>
 				<target></target>
 			</trans-unit>
+			<trans-unit id="9221561048" xml:space="preserve">
+				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
+				<target>Por favor introduzca la palabra tal como aparece en la imagen. La valor entrada no es correcta.</target>
+			</trans-unit>
+			<trans-unit id="9221561048_informal" xml:space="preserve">
+				<source>Por favor introduce la palabra tal como aparece en la imagen. La valor entrada no es correcta.</source>
+				<target></target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

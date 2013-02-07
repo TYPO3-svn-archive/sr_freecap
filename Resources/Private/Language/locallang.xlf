@@ -138,7 +138,7 @@
 			<trans-unit id="9221561047" xml:space="preserve">
 				<source>The specified file is not a True Type Font file.</source>
 			</trans-unit>
-			<trans-unit id="wrongWordWasEntered" xml:space="preserve">
+			<trans-unit id="9221561048" xml:space="preserve">
 				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
 			</trans-unit>
 		</body>

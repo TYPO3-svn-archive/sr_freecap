@@ -187,9 +187,13 @@
 				<source>The specified file is not a True Type Font file.</source>
 				<target>Le fichier spécifié ne contient pas une police de caractères True Type Font.</target>
 			</trans-unit>
-			<trans-unit id="wrongWordWasEntered" xml:space="preserve">
+			<trans-unit id="9221561048" xml:space="preserve">
 				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
 				<target>Veuillez entrer le mot ou le nombre tel qu'il apparaît dans l'image. La valeur entrée était incorrecte.</target>
+			</trans-unit>
+			<trans-unit id="9221561048_informal" xml:space="preserve">
+				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
+				<target>Entre le mot ou le nombre tel qu'il apparaît dans l'image. La valeur entrée était incorrecte.</target>
 			</trans-unit>
 		</body>
 	</file>

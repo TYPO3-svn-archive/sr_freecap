@@ -64,7 +64,7 @@ class CaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 			}
 		}
 		if (!$isValid) {
-			$this->addError(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('wrongWordWasEntered', $this->extensionName), 970320111501);
+			$this->addError('Entered word does not match the image', 9221561048);
 		}
 		return $isValid;
 	}
