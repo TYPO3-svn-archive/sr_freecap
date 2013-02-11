@@ -103,7 +103,7 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 			. ' src="' . htmlspecialchars($imageUrl) . '"'
 			. ' alt="' . $translator->render('altText') . ' "/>'
 			. '<span' . $this->getClassAttribute('cant-read', $suffix) . '>' . $translator->render('cant_read1')
-			. ' <a href="#" onclick="this.blur();newFreeCap(\'' . $fakeId . '\', \'' . $translator->render('noImageMessage').'\');return false;">'
+			. ' <a href="#" onclick="this.blur();' . $this->extensionName . '.newImage(\'' . $fakeId . '\', \'' . $translator->render('noImageMessage').'\');return false;">'
 			. $translator->render('click_here') . '</a>'
 			. $translator->render('cant_read2') . '</span>';
 		
