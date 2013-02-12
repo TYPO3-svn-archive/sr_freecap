@@ -109,7 +109,7 @@ class PlayWav implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 		// Join the files
 		$audioContent = \SJBR\SrFreecap\Utility\WavContentUtility::joinWaveFiles($letterRenderingWaveFiles);
 		// Output proper headers
-		\SJBR\SrFreecap\Utility\WavContentUtility::sendHeaders($audioContent);
+		$this->sendHeaders($audioContent);
 		// Return the audio content
 		return $audioContent;
 	}
@@ -170,6 +170,23 @@ class PlayWav implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 			$voicesDirectory = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->extensionKey) . '/Resources/Private/Captcha/Voices/default/';
 		}
 		return $voicesDirectory;
+	}
+
+	/**
+	 * Sends headers appropriate for wav content
+	 *
+	 * @param string $audioContent: the audio content that will be sent
+	 *
+	 * @return	void
+	 */
+	protected function sendHeaders ($audioContent) {
+		header('Content-Type: audio/x-wav');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: ' . strlen($audioContent));
+		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+		header('Last-Modified: ' . gmdate('D,d M YH:i:s') . ' GMT');
+		header('Pragma: no-cache');
+		header('Cache-Control: no-cache, no-store, must-revalidate');
 	}
 }
 class_alias('SJBR\SrFreecap\View\AudioPlayer\PlayWav', 'Tx_SrFreecap_View_AudioPlayer_PlayWav');

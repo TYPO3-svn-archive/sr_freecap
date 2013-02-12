@@ -78,28 +78,13 @@ class WavContentUtility {
 				// Read SubChunk2ID
 			$headerPart3 .= fread($fp, 4);
 				// Read Subchunk2Size
-			$size = unpack('vsize', fread($fp, 4));
-			$size = $size['size'];
+			$size = unpack('VSubChunk2Size', fread($fp, 4));
+			$size = $size['SubChunk2Size'];
 				// Read data
 			$data .= fread($fp, $size);
+			fclose($fp);
 		}
 		return $headerPart1 . pack('V', 36 + strlen($data)) . $headerPart3 . pack('V', strlen($data)) . $data;
-	}
-
-	/**
-	 * Sends headers appropriate for wav content
-	 *
-	 * @param string $audioContent: the audio content that will be sent
-	 *
-	 * @return	void
-	 */
-	public static function sendHeaders ($audioContent) {
-		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-		header('Last-Modified: ' . gmdate('D,d M YH:i:s') . ' GMT');
-		header('Pragma: no-cache');
-		header('Cache-Control: no-cache, no-store, must-revalidate');
-		header('Content-Type: audio/x-wav');
-		header('Content-Length: ' . strlen($audioContent));
 	}
 }
 ?>
