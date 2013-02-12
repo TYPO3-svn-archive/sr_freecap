@@ -1,6 +1,7 @@
 2013-02-12  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Cleanup audio file rendering
+	* Fix audio player in IE7, IE9 and Opera
 
 2013-02-11  Stanislas Rolland  <typo3@sjbr.ca>
 
