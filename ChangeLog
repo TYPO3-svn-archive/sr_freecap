@@ -1,6 +1,7 @@
 2013-02-13  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Add option to configure the encryption algorithm in Extension Manager
+	* Disable the audio feature on iOS devices
 
 2013-02-12  Stanislas Rolland  <typo3@sjbr.ca>
 
