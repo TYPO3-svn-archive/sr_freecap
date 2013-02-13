@@ -69,9 +69,10 @@
 				var audioElement = document.createElement('audio');
 				if (audioElement.canPlayType && (audioElement.canPlayType('audio/x-wav') === 'maybe' || audioElement.canPlayType('audio/x-wav') === 'probably') && !window.opera) {
 					audioElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_audio' + id);
-					audioElement.setAttribute('autoplay', 'autoplay');
 					audioElement.setAttribute('src', url);
 					theAudio.appendChild(audioElement);
+					audioElement.load();
+					audioElement.play();
 				} else {
 					// In IE, use the default player for audio/x-wav, probably Windows Media Player
 					var objectElement = document.createElement('object');
@@ -82,6 +83,10 @@
 						objectElement.setAttribute('filename', url);
 					} else {
 						objectElement.setAttribute('data', url);
+						if (document.all && !document.addEventListener) {
+							// IE8 only
+							objectElement.setAttribute('type', 'audio/x-wav');
+						}
 					}
 					theAudio.appendChild(objectElement);
 					objectElement.style.height = 0;
@@ -100,11 +105,12 @@
 							paramElement = objectElement.appendChild(paramElement);
 						}
 					}
+					$altHtml = '<a style="display:inline-block; margin-left: 5px; width: 200px;" href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
 					if (document.addEventListener) {
 						// In IE9 and Opera
-						objectElement.innerHTML = '<a style="display:inline-block; margin-left: 5px; width: 200px;" href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
+						objectElement.innerHTML = $altHtml;
 					} else {
-						objectElement.altHtml = '<a href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
+						objectElement.altHtml = $altHtml;
 					}
 				}
 			} else {

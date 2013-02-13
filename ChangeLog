@@ -2,6 +2,7 @@
 
 	* Cleanup audio file rendering
 	* Fix audio player in IE7, IE9 and Opera
+	* Fix audio player in IE8 (but may still be blocked depending on security settings)
 
 2013-02-11  Stanislas Rolland  <typo3@sjbr.ca>
 
