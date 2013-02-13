@@ -2,6 +2,12 @@
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
+// Unserializing the configuration so we can use it here
+$_EXTCONF = unserialize($_EXTCONF);
+
+// Setting the encryption algorithm
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['sr_freecap']['encryptionAlgorithm'] = isset($_EXTCONF['encryptionAlgorithm']) ? $_EXTCONF['encryptionAlgorithm'] : 'blowfish';
+
 // Dispatching requests to image generator and audio player
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['sr_freecap_EidDispatcher'] = 'EXT:' . $_EXTKEY . '/Resources/Private/Eid/EidDispatcher.php';
 

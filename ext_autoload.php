@@ -2,6 +2,7 @@
 $extensionPath = t3lib_extMgm::extPath('sr_freecap');
 $extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sr_freecap') . 'Classes/';
 return array(
+	'SJBR\SrFreecap\Configuration\ConfigurationHelper' => $extensionClassesPath . 'Configuration/ConfigurationHelper.php',
 	'SJBR\SrFreecap\Controller\AudioPlayerController' => $extensionClassesPath . 'Controller/AudioPlayerController.php',
 	'SJBR\SrFreecap\Controller\FontMakerController' => $extensionClassesPath . 'Controller/FontMakerController.php',
 	'SJBR\SrFreecap\Controller\ImageGeneratorController' => $extensionClassesPath . 'Controller/ImageGeneratorController.php',
