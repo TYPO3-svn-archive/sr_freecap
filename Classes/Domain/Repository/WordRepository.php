@@ -42,12 +42,12 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Constructor
 	 *
-	 * @return \SJBR\SrFreecap\Domain\Repository\WordRepository
+	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
 	 */
-	public function __construct() {
-		parent::__construct();
+	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager = NULL) {
+		parent::__construct($objectManager);
 		// Get an instance of the session storage handler
-		$this->sessionStorage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Session\\SessionStorage');
+		$this->sessionStorage = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Session\\SessionStorage');
 	}
  
 	/**
@@ -59,7 +59,7 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$word = $this->sessionStorage->restoreFromSession();
 		// If no Word object is found in session data, initialize a new one
 		if (!is_object($word)) {
-			$word = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Model\\Word');
+			$word = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Word');
 		}
 		return $word;
 	}

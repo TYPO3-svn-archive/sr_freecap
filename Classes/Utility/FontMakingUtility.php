@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Utility;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2012-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -76,8 +76,8 @@ class FontMakingUtility {
 			$gifObjArray[$ic . '0.']['maxWidth'] = $width;
 			$gifObjArray[$ic . '0.']['offset'] = (($ic-1) * $width + $hOffset) . ',' . $vertOffset;
 		}
-		
-		$gifCreator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\SrFreecap\Utility\GifBuilderUtility');
+		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$gifCreator = $objectManager->create('SJBR\SrFreecap\Utility\GifBuilderUtility');
 		$gifCreator->init();
 		if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib']) {
 			$gifCreator->start($gifObjArray, array());

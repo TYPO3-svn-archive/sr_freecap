@@ -75,7 +75,8 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, $this->extensionName, $this->pluginName);
 
 		// Get the translation view helper
-		$translator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
+		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$translator = $objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
 		$translator->injectConfigurationManager($this->configurationManager);
 
 		// Generate the image url

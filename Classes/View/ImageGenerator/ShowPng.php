@@ -171,7 +171,8 @@ class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 				$this->word->setWordCypher(array());
 				$this->word->setHashFunction('');
 				// Get an instance of the word repository
-				$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
+				$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+				$wordRepository = $objectManager->get('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
 				// Reset the word
 				$wordRepository->setWord($this->word);
 				$string = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('max_attempts', $this->extensionName);

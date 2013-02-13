@@ -54,7 +54,7 @@ class ImageGeneratorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 	 */
 	public function initializeAction() {
 		// Get an instance of the word repository
-		$this->wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
+		$this->wordRepository = $this->objectManager->get('SJBR\SrFreecap\Domain\Repository\WordRepository');
 	}
 
 	/**

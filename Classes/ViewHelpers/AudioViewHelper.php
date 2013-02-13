@@ -61,7 +61,8 @@ class AudioViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		// Get the plugin configuration
 		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, $this->extensionName, $this->pluginName);
 		// Get the translation view helper
-		$translator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
+		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$translator = $objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
 		$translator->injectConfigurationManager($this->configurationManager);
 		// Get browser info (as of iOS 6, audio rendering does not work)
 		$browserInfo = \TYPO3\CMS\Core\Utility\ClientUtility::getBrowserInfo(\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('HTTP_USER_AGENT'));

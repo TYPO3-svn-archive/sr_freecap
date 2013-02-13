@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Validation\Validator;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3@sjbr.ca>
+*  (c) 2012-2013 Stanislas Rolland <typo3@sjbr.ca>
 *  All rights reserved
 *
 *  This class is a backport of the corresponding class of FLOW3. 
@@ -46,7 +46,8 @@ class CaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 		$isValid = FALSE;
 		$this->errors = array();
 		// Get session data
-		$wordRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
+		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$wordRepository = $objectManager->get('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
 		$wordObject = $wordRepository->getWord();
 		$wordHash = $wordObject->getWordHash();
 		// Check the word hash against the stored hash value

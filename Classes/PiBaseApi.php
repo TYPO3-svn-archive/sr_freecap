@@ -62,32 +62,41 @@ class PiBaseApi {
 	public $extKey = 'sr_freecap';
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
+	 */
+	protected $objectManager = NULL;
+
+	/**
 	 * This function generates an array of markers used to render the captcha element
 	 *
 	 * @return array marker array containing the captcha markers to be sustituted in the html template
 	 */	
 	public function makeCaptcha() {
 
-		// Get the translation view helper
-		$configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-		$configurationManager->injectObjectManager($objectManager);
+		// Get the object manager
+		if ($this->objectManager === NULL) {
+			$this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		}
+		
+		// Get the configuration manager
+		$configurationManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+		$configurationManager->injectObjectManager($this->objectManager);
 		
 		// Get translation view helper
-		$translator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
+		$translator = $this->objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
 		$translator->injectConfigurationManager($configurationManager);
 
 		$markerArray = array();
 		$markerArray['###'. strtoupper($this->extKey) . '_NOTICE###'] = $translator->render('notice') . ' ' . $translator->render('explain');
 
 		// Get the captcha image view helper
-		$imageViewHelper = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\ImageViewHelper');
+		$imageViewHelper = $this->objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\ImageViewHelper');
 		$imageViewHelper->injectConfigurationManager($configurationManager);
 		$markerArray['###'. strtoupper($this->extKey) . '_IMAGE###'] = $imageViewHelper->render('pi1');
 		$markerArray['###'. strtoupper($this->extKey) . '_CANT_READ###'] = '';
 
 		// Get the audio icon view helper
-		$audioViewHelper = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\ViewHelpers\\AudioViewHelper');
+		$audioViewHelper = $this->objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\AudioViewHelper');
 		$audioViewHelper->injectConfigurationManager($configurationManager);
 		$markerArray['###'. strtoupper($this->extKey) . '_ACCESSIBLE###'] = $audioViewHelper->render('pi1');
 
@@ -101,8 +110,12 @@ class PiBaseApi {
 	 * @return	boolean		true, if the word entered matches the hashes value
 	 */
 	public function checkWord ($word) {
-		// Get validator
-		$validator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Validation\\Validator\\CaptchaValidator');
+		// Get the object manager
+		if ($this->objectManager === NULL) {
+			$this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		}
+		// Get the validator
+		$validator = $this->objectManager->get('SJBR\\SrFreecap\\Validation\\Validator\\CaptchaValidator');
 		// Check word
 		return $validator->isValid($word);
 	}
