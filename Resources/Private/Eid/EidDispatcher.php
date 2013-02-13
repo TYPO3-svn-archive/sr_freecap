@@ -36,8 +36,10 @@
 if (!defined('TYPO3_MODE') || TYPO3_MODE !== 'FE') {
 	die('Could not access this script directly!');
 }
+/** @var $objectManager \TYPO3\CMS\Extbase\Object\ObjectManagerInterface */
+$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 // Handover to the Eid Utility Object
 /** @var $dispatcher SJBR\SrFreecap\Utility\EidUtility */
-$dispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SJBR\\SrFreecap\\Utility\\EidUtility');
+$dispatcher = $objectManager->get('SJBR\\SrFreecap\\Utility\\EidUtility');
 echo $dispatcher->initAndDispatch();
 ?>

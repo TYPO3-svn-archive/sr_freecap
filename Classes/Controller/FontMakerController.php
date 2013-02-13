@@ -45,7 +45,7 @@ class FontMakerController  extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	 */
 	public function newAction(\SJBR\SrFreecap\Domain\Model\Font $font = NULL) {
 		if (!is_object($font)) {
-			$font = $this->objectManager->create('SJBR\SrFreecap\Domain\Model\Font');
+			$font = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Font');
 		}
 		$this->view->assign('font', $font);
 	}	
@@ -60,7 +60,7 @@ class FontMakerController  extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 		// Create the font data
 		$font->createGdFontFile();
 		// Store the GD font file
-		$fontRepository = $this->objectManager->get('SJBR\SrFreecap\Domain\Repository\FontRepository');
+		$fontRepository = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Repository\\FontRepository');
 		$fontRepository->writeFontFile($font);
 		$this->view->assign('font', $font);
 	}

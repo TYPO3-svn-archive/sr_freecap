@@ -77,7 +77,7 @@ class FontMakingUtility {
 			$gifObjArray[$ic . '0.']['offset'] = (($ic-1) * $width + $hOffset) . ',' . $vertOffset;
 		}
 		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
-		$gifCreator = $objectManager->create('SJBR\SrFreecap\Utility\GifBuilderUtility');
+		$gifCreator = $objectManager->create('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
 		$gifCreator->init();
 		if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib']) {
 			$gifCreator->start($gifObjArray, array());

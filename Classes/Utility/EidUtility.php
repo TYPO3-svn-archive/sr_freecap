@@ -82,6 +82,14 @@ class EidUtility {
 	protected $pageUid;
 
 	/**
+	 * Constructor
+	 *
+	 */
+	public function __construct() {
+		$this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+	}
+
+	/**
 	 * Initializes and dispatches actions
 	 *
 	 * Call this function if you want to use this dispatcher "standalone"
@@ -99,14 +107,16 @@ class EidUtility {
 	 *
 	 */
 	protected function dispatch() {
-		$bootstrap = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Core\\Bootstrap');
+		/* @var $bootstrap \TYPO3\CMS\Extbase\Core\Bootstrap */
+		$bootstrap = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Core\\Bootstrap');
 		$configuration['extensionName'] = $this->extensionName;
 		$configuration['pluginName'] = $this->pluginName;
 		$bootstrap->initialize($configuration);
-		$this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$request = $this->buildRequest();
-		$response = $this->objectManager->create('TYPO3\CMS\Extbase\MVC\Web\Response');
-		$dispatcher =  $this->objectManager->get('TYPO3\CMS\Extbase\MVC\Dispatcher');
+		/* @var $response \TYPO3\CMS\Extbase\MVC\Web\Response */
+		$response = $this->objectManager->create('TYPO3\\CMS\\Extbase\\MVC\\Web\\Response');
+		/* @var $dispatcher \TYPO3\CMS\Extbase\MVC\Dispatcher */
+		$dispatcher = $this->objectManager->get('TYPO3\\CMS\\Extbase\\MVC\\Dispatcher');
 		$dispatcher->dispatch($request, $response);
 		return $response->getContent();
 	}
@@ -126,8 +136,8 @@ class EidUtility {
 		}
 		$this->pageUid = htmlspecialchars($this->pageUid);
 		$MP = htmlspecialchars(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('MP'));
-		$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $this->pageUid, '0', TRUE, '', '', $MP, '');
-		$GLOBALS['TSFE']->sys_page = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+		$GLOBALS['TSFE'] = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $this->pageUid, '0', TRUE, '', '', $MP, '');
+		$GLOBALS['TSFE']->sys_page = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 		$GLOBALS['TSFE']->initFeUser();
 		$GLOBALS['TSFE']->determineId();
 		$GLOBALS['TSFE']->getCompressedTCarray();
@@ -165,7 +175,7 @@ class EidUtility {
 	 */
 	protected function buildRequest() {
 		/* @var $request \TYPO3\CMS\Extbase\MVC\Web\Request */
-		$request = $this->objectManager->get('TYPO3\CMS\Extbase\MVC\Web\Request');
+		$request = $this->objectManager->get('TYPO3\\CMS\\Extbase\\MVC\\Web\\Request');
 		$request->setControllerExtensionName($this->extensionName);
 		$request->setPluginName($this->pluginName);
 		$request->setControllerName($this->controllerName);
