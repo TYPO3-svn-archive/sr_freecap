@@ -79,10 +79,6 @@
 				<source>Sorry, service is interrupted.</source>
 				<target>Der Dienst ist leider unterbrochen.</target>
 			</trans-unit>
-			<trans-unit id="site_tag" xml:space="preserve" approved="yes">
-				<source>Please do NOT enter the text|if this site is not %1$s</source>
-				<target>Bitte geben Sie den Text NICHT ein|wenn diese Seite nicht %1$s ist</target>
-			</trans-unit>
 			<trans-unit id="altText" xml:space="preserve" approved="yes">
 				<source>CAPTCHA image for SPAM prevention</source>
 				<target>CAPTCHA-Bild zum Spam-Schutz</target>

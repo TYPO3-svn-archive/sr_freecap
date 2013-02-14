@@ -79,10 +79,6 @@
 				<source>Sorry, service is interrupted.</source>
 				<target>Извините, сервис недоступен.</target>
 			</trans-unit>
-			<trans-unit id="site_tag" xml:space="preserve" approved="yes">
-				<source>Please do NOT enter the text|if this site is not %1$s</source>
-				<target>НЕ вводите текст|если это не %1$s сайт</target>
-			</trans-unit>
 			<trans-unit id="altText" xml:space="preserve" approved="yes">
 				<source>CAPTCHA image for SPAM prevention</source>
 				<target>Изображение CAPTCHA для предотвращения спама</target>

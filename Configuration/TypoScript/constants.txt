@@ -66,15 +66,6 @@ plugin.tx_srfreecap {
     # cat=plugin.tx_srfreecap/file/03; type=string; label= Accessible output image: File name of the accessible output image. If null, a textual message is used.
 	accessibleOutputImage = EXT:sr_freecap/Resources/Public/Images/audio.png
 
-    # cat=plugin.tx_srfreecap/enable/07; type=boolean; label= Use site tag: If set, a site tag is added in the background of the CAPTCHA image.
-	siteTag = 0
-
-    # cat=plugin.tx_srfreecap//06; type=string; label= Site tag domain name: Domain name to use in the default site tag.
-	siteTagDomain = example.org
-	
-    # cat=plugin.tx_srfreecap//07; type=int+; label= Position of the site tag: 0 = at the top of the CAPTCHA, 1 = at the bottom, 2 = both at the top and at the bottom
-	siteTagPosition = 1
-
     view {
 	 # cat=plugin.tx_srfreecap/file; type=string; label=Path to template root (FE)
 	templateRootPath = EXT:sr_freecap/Resources/Private/Templates/

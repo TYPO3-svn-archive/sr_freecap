@@ -87,10 +87,6 @@
 				<source>Sorry, service is interrupted.</source>
 				<target>Le service est interrompu.</target>
 			</trans-unit>
-			<trans-unit id="site_tag" xml:space="preserve" approved="yes">
-				<source>Please do NOT enter the text|if this site is not %1$s</source>
-				<target>N'entrez pas le mot|si le site n'est pas %1$s!</target>
-			</trans-unit>
 			<trans-unit id="altText" xml:space="preserve" approved="yes">
 				<source>CAPTCHA image for SPAM prevention</source>
 				<target>Image CAPTCHA pour prévenir l'utilisation abusive</target>

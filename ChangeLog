@@ -1,3 +1,7 @@
+2013-02-14  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Remove "site tag" feature
+
 2013-02-13  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Add option to configure the encryption algorithm in Extension Manager

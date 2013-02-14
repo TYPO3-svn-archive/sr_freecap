@@ -66,9 +66,6 @@
 			<trans-unit id="max_attempts" xml:space="preserve">
 				<source>Sorry, service is interrupted.</source>
 			</trans-unit>
-			<trans-unit id="site_tag" xml:space="preserve">
-				<source>Please do NOT enter the text|if this site is not %1$s</source>
-			</trans-unit>
 			<trans-unit id="altText" xml:space="preserve">
 				<source>CAPTCHA image for SPAM prevention</source>
 			</trans-unit>

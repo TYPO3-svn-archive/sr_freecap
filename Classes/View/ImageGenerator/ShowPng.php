@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\View\ImageGenerator;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2005-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -245,17 +245,6 @@ class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
 			// Make background transparent
 			ImageColorTransparent($image, $background);
 		}
-
-		// Try to avoid 'free p*rn' style CAPTCHA re-use
-		// ('*'ed to stop my site coming up for certain keyword searches on google)
-		// can obscure CAPTCHA word in some cases..
-		// Write site tags 'shining through' the morphed image
-		/*if (count($this->settings['siteTag'])) {
-			$image2 = \SJBR\SrFreecap\Utility\ImageContentUtility::writeSiteTags($width, $height, $this->settings['siteTag'], $this->settings['siteTagPosition']);
-			ImageCopyMerge($image2, $image, 0, 0, 0, 0, $width, $height, 80);
-			ImageCopy($image, $image2, 0, 0, 0, 0, $width, $height);
-			ImageDestroy($image2);
-		}*/
 
 		if ($backgroundType != \SJBR\SrFreecap\Utility\ImageContentUtility::BACKGROUND_TYPE_TRANSPARENT) {
 			// Get noisy background

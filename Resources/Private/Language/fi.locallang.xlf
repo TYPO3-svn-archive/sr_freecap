@@ -7,10 +7,6 @@
 				<source>Sorry, service is interrupted.</source>
 				<target>Pahoittelut, palvelu keskeytettiin.</target>
 			</trans-unit>
-			<trans-unit id="site_tag" xml:space="preserve" approved="yes">
-				<source>Please do NOT enter the text|if this site is not %1$s</source>
-				<target></target>
-			</trans-unit>
 			<trans-unit id="altText" xml:space="preserve" approved="yes">
 				<source>CAPTCHA image for SPAM prevention</source>
 				<target>CAPTCHA kuva roskapostin välttämiseksi</target>

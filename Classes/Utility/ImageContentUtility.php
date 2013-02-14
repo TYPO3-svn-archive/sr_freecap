@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Utility;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2012-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -178,51 +178,6 @@ class ImageContentUtility {
 		// Cleanup
 		ImageDestroy($image2);
 
-		return $image;
-	}
-
-	/**
-	 * Write site tag
-	 *
-	 * @param int $width: width of the image in pixels
-	 * @param int $height: width of the image in pixels
-	 * @param array $siteTags: array of site tags	 
-	 * @param array $siteTagPosition: position of the site tags on the image (see constants)
-	 *
-	 * @return string GD image identifier of noisy background
-	 */
-	public static function writeSiteTags ($width, $height, $siteTags, $siteTagPosition) {
-
-		$image = ImageCreate($width, $height);
-		// Set tag colour
-		$siteTagColor = ImageColorAllocate($image, 0, 0, 0);
-		// Set background colour
-		$background = ImageColorAllocate($image, 254, 254, 254);
-		// Set transparency
-		ImageColorTransparent($image, $background);
-		// Fill background
-		ImageFill($image, 0, 0, $background);
-
-		// Write site tags 'shining through' the morphed image
-		ImageFilledRectangle($image, 0, 0, $width, $height, $background);
-		if (is_array($siteTags)) {
-			$font = 2;
-			$siteTagFontWidth = 6;
-			$siteTagFontHeight = 10;
-			for ($i = 0; $i < sizeof($siteTags); $i++) {
-				// Ensure tags are centered
-				$tagWidth = strlen($siteTags[$i]) * $siteTagFontWidth + 8;
-				// Write tag is chosen position
-				if ($siteTagPosition == self::SITE_TAG_POSITION_TOP || $siteTagPosition == self::SITE_TAG_POSITION_BOTH) {
-					// Write at top
-					ImageString($image, $font, intval($width/2)-intval($tagWidth/2)+5, $siteTagFontHeight*$i, $siteTags[$i], $siteTagColor);
-				}
-				if ($siteTagPosition == self::SITE_TAG_POSITION_BOTTOM || $siteTagPosition == self::SITE_TAG_POSITION_BOTH) {
-					// Write at bottom
-					ImageString($image, $font, intval($width/2)-intval($tagWidth/2)+5, ($height-((sizeof($siteTags)*$siteTagFontHeight+4))+($i*$siteTagFontHeight)), $siteTags[$i], $siteTagColor);
-				}
-			}
-		}
 		return $image;
 	}
 
