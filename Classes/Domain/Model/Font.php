@@ -1,4 +1,5 @@
 <?php
+declare(encoding='ISO-8859-2');
 namespace SJBR\SrFreecap\Domain\Model;
 /***************************************************************
  *  Copyright notice
