@@ -2,6 +2,7 @@
 
 	* Fixed bug #47406: Cleanup in ext_autoload.php
 	* Fixed bug #47407: Keep domain object font ISO-8859-2-encoded
+	* Fixed bug #47408: Incorrect object manager creation
 
 2013-02-14  Stanislas Rolland  <typo3@sjbr.ca>
 

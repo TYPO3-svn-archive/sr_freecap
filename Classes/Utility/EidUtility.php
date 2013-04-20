@@ -86,7 +86,7 @@ class EidUtility {
 	 *
 	 */
 	public function __construct() {
-		$this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 	}
 
 	/**

@@ -56,10 +56,10 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 	}
 
 	/**
-	 * Render the captcha audio rendering request icon
+	 * Render the captcha image html
 	 *
 	 * @param string suffix to be appended to the extenstion key when forming css class names
-	 * @return string The html used to render the captcha audio rendering request icon
+	 * @return string The html used to render the captcha image
 	 */
 	public function render ($suffix = '') {
 
@@ -72,10 +72,10 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		$GLOBALS['TSFE']->no_cache = 1;
 
 		// Get the plugin configuration
-		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, $this->extensionName, $this->pluginName);
+		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, $this->extensionName);
 
 		// Get the translation view helper
-		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$translator = $objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');
 		$translator->injectConfigurationManager($this->configurationManager);
 

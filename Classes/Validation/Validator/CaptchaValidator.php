@@ -46,7 +46,7 @@ class CaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 		$isValid = FALSE;
 		$this->errors = array();
 		// Get session data
-		$objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$wordRepository = $objectManager->get('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
 		$wordObject = $wordRepository->getWord();
 		$wordHash = $wordObject->getWordHash();

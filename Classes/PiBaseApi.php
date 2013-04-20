@@ -75,7 +75,7 @@ class PiBaseApi {
 
 		// Get the object manager
 		if ($this->objectManager === NULL) {
-			$this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+			$this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		}
 		
 		// Get the configuration manager
