@@ -1,3 +1,7 @@
+2013-04-20  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #47406: Cleanup in ext_autoload.php
+
 2013-02-14  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Remove "site tag" feature

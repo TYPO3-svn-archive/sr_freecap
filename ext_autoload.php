@@ -1,5 +1,4 @@
 <?php
-$extensionPath = t3lib_extMgm::extPath('sr_freecap');
 $extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sr_freecap') . 'Classes/';
 return array(
 	'SJBR\SrFreecap\Configuration\ConfigurationHelper' => $extensionClassesPath . 'Configuration/ConfigurationHelper.php',
@@ -30,5 +29,5 @@ return array(
 	'SJBR\SrFreecap\ViewHelpers\TranslateViewHelper' => $extensionClassesPath . 'ViewHelpers/TranslateViewHelper.php',
 	'SJBR\SrFreecap\PiBaseApi' => $extensionClassesPath . 'PiBaseApi.php',
 );
-unset($extensionPath);       
+unset($extensionClassesPath);       
 ?>
