@@ -67,7 +67,7 @@ class AudioViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		// Get browser info (as of iOS 6, audio rendering does not work)
 		$browserInfo = \TYPO3\CMS\Core\Utility\ClientUtility::getBrowserInfo(\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('HTTP_USER_AGENT'));
 		// Generate the icon
-		if ($settings['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions()) && !in_array('iOS', $browserInfo['all_systems'])) {
+		if ($settings['accessibleOutput'] && in_array('mcrypt', get_loaded_extensions()) && intval($GLOBALS['TYPO3_CONF_VARS']['SYS']['UTF8filesystem']) && !in_array('iOS', $browserInfo['all_systems'])) {
 			$fakeId = \TYPO3\CMS\Core\Utility\GeneralUtility::shortMD5(uniqid (rand()),5);
 			$siteURL = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 			$urlParams = array(
