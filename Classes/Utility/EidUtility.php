@@ -127,8 +127,10 @@ class EidUtility {
 	 * @return \SJBR\SrFreecap\Utility\EidDispatcher
 	 */
 	protected function initTypoScriptFrontendController() {
-		//Connect to database
-		\TYPO3\CMS\Frontend\Utility\EidUtility::connectDB();
+		if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+			//Connect to database
+			\TYPO3\CMS\Frontend\Utility\EidUtility::connectDB();
+		}
 		// Get page uid and mount point, if any
 		$this->pageUid = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id');
 		if (!isset($this->pageUid)) {

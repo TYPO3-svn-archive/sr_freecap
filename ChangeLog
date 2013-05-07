@@ -1,3 +1,7 @@
+2013-05-07  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #46265: Problem with freecap 2.0.0 and postgreSQL (Thanks to Tilo Baller)
+
 2013-04-22  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #46648: Filenames for *.wav causes potential problems
