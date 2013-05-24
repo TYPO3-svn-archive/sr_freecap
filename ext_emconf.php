@@ -1,20 +1,21 @@
 <?php
+
 /***************************************************************
  * Extension Manager/Repository config file for ext "sr_freecap".
  *
- * Auto generated 14-02-2013 17:46
+ * Auto generated 24-05-2013 16:25
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = array (
 	'title' => 'freeCap CAPTCHA',
 	'description' => 'A TYPO3 integration of freeCap CAPTCHA.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '2.0.0',
+	'version' => '2.0.1',
 	'priority' => '',
 	'loadOrder' => '',
 	'module' => '',
@@ -29,17 +30,21 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_company' => 'SJBR',
 	'CGLcompliance' => '',
 	'CGLcompliance_note' => '',
-	'constraints' => array(
-		'depends' => array(
+	'constraints' => 
+	array (
+		'depends' => 
+		array (
 			'php' => '5.3.0-0.0.0',
 			'typo3' => '6.0.5-6.1.99',
 		),
-		'conflicts' => array(
+		'conflicts' => 
+		array (
 		),
-		'suggests' => array(
+		'suggests' => 
+		array (
 		),
 	),
-	'_md5_values_when_last_written' => ''
+	'_md5_values_when_last_written' => '',
 );
 
 ?>
