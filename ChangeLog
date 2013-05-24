@@ -4,6 +4,7 @@
 	* Fixed issue #48519: Correct/remove some words from French words list
 	* Updated manual
 	* Fixed textual errors in TS static template
+	* Require 6.0.5-6.1.99
 
 2013-05-23  Stanislas Rolland  <typo3@sjbr.ca>
 
