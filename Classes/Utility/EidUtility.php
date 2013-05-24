@@ -113,10 +113,10 @@ class EidUtility {
 		$configuration['pluginName'] = $this->pluginName;
 		$bootstrap->initialize($configuration);
 		$request = $this->buildRequest();
-		/* @var $response \TYPO3\CMS\Extbase\MVC\Web\Response */
-		$response = $this->objectManager->create('TYPO3\\CMS\\Extbase\\MVC\\Web\\Response');
-		/* @var $dispatcher \TYPO3\CMS\Extbase\MVC\Dispatcher */
-		$dispatcher = $this->objectManager->get('TYPO3\\CMS\\Extbase\\MVC\\Dispatcher');
+		/* @var $response \TYPO3\CMS\Extbase\Mvc\Web\Response */
+		$response = $this->objectManager->create('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
+		/* @var $dispatcher \TYPO3\CMS\Extbase\Mvc\Dispatcher */
+		$dispatcher = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Dispatcher');
 		$dispatcher->dispatch($request, $response);
 		return $response->getContent();
 	}
@@ -173,11 +173,11 @@ class EidUtility {
 	/**
 	 * Build a request object
 	 *
-	 * @return Tx_Extbase_MVC_Web_Request $request
+	 * @return \TYPO3\CMS\Extbase\Mvc\Web\Request $request
 	 */
 	protected function buildRequest() {
-		/* @var $request \TYPO3\CMS\Extbase\MVC\Web\Request */
-		$request = $this->objectManager->get('TYPO3\\CMS\\Extbase\\MVC\\Web\\Request');
+		/* @var $request \TYPO3\CMS\Extbase\Mvc\Web\Request */
+		$request = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request');
 		$request->setControllerExtensionName($this->extensionName);
 		$request->setPluginName($this->pluginName);
 		$request->setControllerName($this->controllerName);

@@ -59,7 +59,7 @@ namespace SJBR\SrFreecap\View\ImageGenerator;
  *
  * @author	Stanislas Rolland	<typo3(arobas)sjbr.ca>
  */
-class ShowPng implements \TYPO3\CMS\Extbase\MVC\View\ViewInterface {
+class ShowPng implements \TYPO3\CMS\Extbase\Mvc\View\ViewInterface {
 
 	/**
 	 * @var string Name of the extension this view helper belongs to

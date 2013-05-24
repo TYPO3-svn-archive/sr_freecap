@@ -1,3 +1,7 @@
+2013-05-23  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed issue #48500: Remove superfluous class loader cache entries
+
 2013-05-07  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #46265: Problem with freecap 2.0.0 and postgreSQL (Thanks to Tilo Baller)
