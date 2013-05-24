@@ -105,14 +105,7 @@ class ImageGeneratorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 		// test your server's config by trying to access the dictionary through a web browser
 		// you should NOT be able to view the contents.
 		// can leave this blank if not using dictionary
-		if (!trim($this->settings['defaultWordsList'])) {
-			$this->settings['defaultWordsList'] = 'EXT:' . $this->extensionKey . '/Resources/Private/Captcha/Words/default_freecap_words';
-		}
-		if (is_file(dirname(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['defaultWordsList'])) . '/' . $GLOBALS['TSFE']->lang . '_freecap_words')) {
-			$this->settings['wordsListLocation'] = dirname(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['defaultWordsList'])) . '/' . $GLOBALS['TSFE']->lang . '_freecap_words';
-		} elseif (is_file(dirname(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['defaultWordsList'])) . '/default_freecap_words')) {
-			$this->settings['wordsListLocation'] = dirname(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['defaultWordsList'])) . '/default_freecap_words';
-		}
+		$this->settings['wordsListLocation'] = \SJBR\SrFreecap\Utility\LocalizationUtility::getWordsListLocation($this->settings['defaultWordsList']);
 		
 		// Used for non-dictionary word generation and to calculate image width
 		$this->settings['maxWordLength'] = $this->settings['maxWordLength'] ? $this->settings['maxWordLength'] : 6;

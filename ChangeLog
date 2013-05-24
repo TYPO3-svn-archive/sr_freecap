@@ -1,6 +1,7 @@
 2013-05-23  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed issue #48500: Remove superfluous class loader cache entries
+	* Fixed bug #48501: Audio captcha rendering and wordslist selection should apply language fallback rules
 
 2013-05-07  Stanislas Rolland  <typo3@sjbr.ca>
 

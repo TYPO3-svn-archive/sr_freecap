@@ -148,7 +148,7 @@ class PlayWav implements \TYPO3\CMS\Extbase\Mvc\View\ViewInterface {
 		// Split the word
 		$letters = str_split($word);
 		// Get the directory containing the wav files
-		$voicesDirectory = $this->getVoicesDirectory();
+		$voicesDirectory = \SJBR\SrFreecap\Utility\LocalizationUtility::getVoicesDirectory();
 		// Assemble the file names
 		foreach ($letters as $letter){
 			$file = $voicesDirectory . $letter . '.wav';
@@ -157,19 +157,6 @@ class PlayWav implements \TYPO3\CMS\Extbase\Mvc\View\ViewInterface {
 			}
 		}
 		return $letterRenderingWaveFiles;
-	}
-
-	/**
-	 * Gets the directory of wav files based on configured language
-	 *
-	 * @return string name of the directory containing the wav files to be used
-	 */
-	protected function getVoicesDirectory () {
-		$voicesDirectory = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->extensionKey) . '/Resources/Private/Captcha/Voices/' . $GLOBALS['TSFE']->lang . '/';
-		if (!is_dir($voicesDirectory)) {
-			$voicesDirectory = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->extensionKey) . '/Resources/Private/Captcha/Voices/default/';
-		}
-		return $voicesDirectory;
 	}
 
 	/**
