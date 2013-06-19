@@ -89,7 +89,7 @@ class LocalizationUtility {
 	 */
 	public static function getVoicesDirectory() {
 		self::setLanguageKeys();
-		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(self::$extensionKey) . '/Resources/Private/Captcha/Voices/';
+		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(self::$extensionKey) . 'Resources/Private/Captcha/Voices/';
 		$voicesDirectory = $path . self::$languageKey . '/';
 		if (!is_dir($voicesDirectory)) {
 			foreach (self::$alternativeLanguageKeys as $language) {

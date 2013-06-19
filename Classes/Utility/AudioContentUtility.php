@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Utility;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2012-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,11 +26,31 @@ namespace SJBR\SrFreecap\Utility;
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 /**
- * Utility dealing with wav content
+ * Utility dealing with audio content
  *
  * @author	Stanislas Rolland	<typo3(arobas)sjbr.ca>
  */
-class WavContentUtility {
+class AudioContentUtility {
+
+	/**
+	 * Joins multiple audio files
+	 *
+	 * @param array $files: the array of audio files
+	 * @param string $format: the audio format	 
+	 *
+	 * @return string the contents of joined audio file
+	 */
+	public static function joinAudioFiles($files, $format = 'wav') {
+		switch ($format) {
+			case 'mp3':
+				return self::joinMp3Files($files);
+				break;
+			case 'wav':
+			default:
+				return self::joinWavFiles($files);
+				break;
+		}
+	}
 
 	/**
 	 * Joins multiple wav files
@@ -48,7 +68,7 @@ class WavContentUtility {
 	 *
 	 * @return	string		the contents of joined wav file
 	 */
-	public static function joinWaveFiles ($wavs) {
+	protected static function joinWavFiles ($wavs) {
 		$fields = join('/', array(
 			'H8Format',
 			'H8Subchunk1ID',
@@ -86,5 +106,31 @@ class WavContentUtility {
 		}
 		return $headerPart1 . pack('V', 36 + strlen($data)) . $headerPart3 . pack('V', strlen($data)) . $data;
 	}
+
+	/**
+	 * Joins multiple wav files
+	 *
+	 * All wave files need to have the same format and need to be uncompressed.
+	 * The headers of the last file will be used (with recalculated datasize
+	 * of course)
+	 *
+	 * @link	http://ccrma.stanford.edu/CCRMA/Courses/422/projects/WaveFormat/
+	 * @link	http://www.thescripts.com/forum/thread3770.html
+	 * @license	GPL 2 (http://www.gnu.org/licenses/gpl.html)
+	 * @author	Andreas Gohr <gohr@cosmocode.de>
+	 *
+	 * @param	array		$wavs: the array of wav files
+	 *
+	 * @return	string		the contents of joined wav file
+	 */
+	protected static function joinMp3Files ($files) {
+		$data = '';
+		foreach ($files as $file) {
+			$mp3 = new Mp3ContentUtility($file);
+			$data .= $mp3->striptags();
+		}
+		return $data;
+	}
+
 }
 ?>

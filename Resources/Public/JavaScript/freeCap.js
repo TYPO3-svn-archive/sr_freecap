@@ -53,41 +53,38 @@
 		 * Plays the audio captcha
 		 *
 		 * @param string id: identifier used to uniquely identify the wav file
-		 * @param string wavURL: url of the wave file generating script
+		 * @param string wavUrl: url of the wave file generating script
 		 * @param string noPlayMessage: message to be displayed if the audio file cannot be rendered
 		 * @return void
 		 *
 		 * Note: In order for this to work with IE8, [SYS][cookieDomain] must be set using the TYPO3 Install Tool
 		 */
-		playCaptcha: function (id, wavURL, noPlayMessage) {
+		playCaptcha: function (id, wavUrl, noPlayMessage) {
 			if (document.getElementById) {
 				var theAudio = document.getElementById('tx_srfreecap_captcha_playAudio_' + id);
-				var url = wavURL + '&set=' + Math.round(Math.random()*100000);
+				var url = wavUrl + '&set=' + Math.round(Math.random()*100000);
 				while (theAudio.firstChild) {
 					theAudio.removeChild(theAudio.firstChild);
 				}
 				var audioElement = document.createElement('audio');
-				if (audioElement.canPlayType && (audioElement.canPlayType('audio/x-wav') === 'maybe' || audioElement.canPlayType('audio/x-wav') === 'probably') && !window.opera) {
-					audioElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_audio' + id);
+				if (audioElement.canPlayType) {
+					// HTML 5 audio
+					if (audioElement.canPlayType('audio/mpeg') === 'maybe' || audioElement.canPlayType('audio/mpeg') === 'probably') {
+						url = url.replace('wav', 'mp3');
+					}
 					audioElement.setAttribute('src', url);
+					audioElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_audio' + id);
 					theAudio.appendChild(audioElement);
 					audioElement.load();
 					audioElement.play();
 				} else {
-					// In IE, use the default player for audio/x-wav, probably Windows Media Player
+					url = url.replace('wav', 'mp3');
+					// In IE, use the default player for audio/mpeg, probably Windows Media Player
 					var objectElement = document.createElement('object');
 					objectElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_object' + id);
-					if (document.all && !document.querySelector && !document.addEventListener) {
-						// IE7 only
-						objectElement.setAttribute('type', 'audio/x-wav');
-						objectElement.setAttribute('filename', url);
-					} else {
-						objectElement.setAttribute('data', url);
-						if (document.all && !document.addEventListener) {
-							// IE8 only
-							objectElement.setAttribute('type', 'audio/x-wav');
-						}
-					}
+					objectElement.setAttribute('data', url);
+					// IE 7
+					objectElement.setAttribute('filename', url);
 					theAudio.appendChild(objectElement);
 					objectElement.style.height = 0;
 					objectElement.style.width = 0;
@@ -106,12 +103,7 @@
 						}
 					}
 					$altHtml = '<a style="display:inline-block; margin-left: 5px; width: 200px;" href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
-					if (document.addEventListener) {
-						// In IE9 and Opera
-						objectElement.innerHTML = $altHtml;
-					} else {
-						objectElement.altHtml = $altHtml;
-					}
+					objectElement.altHtml = $altHtml;
 				}
 			} else {
 				alert(noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.');
