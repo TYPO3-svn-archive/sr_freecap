@@ -1,6 +1,7 @@
 2013-06-19  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Added feature #49272: Add support for mp3 audio captcha rendering
+	* Fixed bug #49274: Voice file for digit 3 in Portuguese is broken	
 
 2013-05-24  Stanislas Rolland  <typo3@sjbr.ca>
 
