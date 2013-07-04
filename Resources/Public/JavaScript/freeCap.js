@@ -70,7 +70,7 @@
 				if (audioElement.canPlayType) {
 					// HTML 5 audio
 					if (audioElement.canPlayType('audio/mpeg') === 'maybe' || audioElement.canPlayType('audio/mpeg') === 'probably') {
-						url = url.replace('wav', 'mp3');
+						url = url.replace('formatName=wav', 'formatName=mp3');
 					}
 					audioElement.setAttribute('src', url);
 					audioElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_audio' + id);
@@ -78,13 +78,20 @@
 					audioElement.load();
 					audioElement.play();
 				} else {
-					url = url.replace('wav', 'mp3');
+					url = url.replace('formatName=wav', 'formatName=mp3');
 					// In IE, use the default player for audio/mpeg, probably Windows Media Player
 					var objectElement = document.createElement('object');
 					objectElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_object' + id);
-					objectElement.setAttribute('data', url);
-					// IE 7
-					objectElement.setAttribute('filename', url);
+					objectElement.setAttribute('type', 'audio/x-mpeg');
+                                        if (document.all && !document.addEventListener) {
+                                        	if (!document.querySelector) {
+							// IE7 only
+							objectElement.setAttribute('filename', url);
+                                                } else {
+                                                	// IE8 only
+                                                	objectElement.setAttribute('data', url);
+                                                }
+                                        }
 					theAudio.appendChild(objectElement);
 					objectElement.style.height = 0;
 					objectElement.style.width = 0;
