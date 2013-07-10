@@ -82,7 +82,7 @@
 					// In IE, use the default player for audio/mpeg, probably Windows Media Player
 					var objectElement = document.createElement('object');
 					objectElement.setAttribute('id', 'tx_srfreecap_captcha_playAudio_object' + id);
-					objectElement.setAttribute('type', 'audio/x-mpeg');
+					objectElement.setAttribute('type', 'audio/mpeg');
                                         if (document.all && !document.addEventListener) {
                                         	if (!document.querySelector) {
 							// IE7 only
@@ -109,8 +109,7 @@
 							paramElement = objectElement.appendChild(paramElement);
 						}
 					}
-					$altHtml = '<a style="display:inline-block; margin-left: 5px; width: 200px;" href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>';
-					objectElement.altHtml = $altHtml;
+					objectElement.setAttribute('altHtml', '<a style="display:inline-block; margin-left: 5px; width: 200px;" href="' + url + '">' + (noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.') + '</a>');
 				}
 			} else {
 				alert(noPlayMessage ? noPlayMessage : 'Sorry, we cannot play the word of the image.');
