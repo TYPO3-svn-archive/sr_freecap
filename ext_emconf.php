@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "sr_freecap".
  *
- * Auto generated 04-07-2013 12:57
+ * Auto generated 10-07-2013 10:37
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'description' => 'A TYPO3 integration of freeCap CAPTCHA.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '2.0.3',
+	'version' => '2.0.4',
 	'priority' => '',
 	'loadOrder' => '',
 	'module' => '',

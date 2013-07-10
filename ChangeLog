@@ -1,6 +1,7 @@
 2013-07-10  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Follow-up to bug #47810: Audio Captcha not working under IE 8
+	* Update version to 2.0.4
 
 2013-07-04  Stanislas Rolland  <typo3@sjbr.ca>
 
