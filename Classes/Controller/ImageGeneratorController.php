@@ -227,5 +227,5 @@ class ImageGeneratorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 		$this->settings['siteTagPosition'] = isset($this->settings['siteTagPosition']) ? $this->settings['siteTagPosition'] : 1;
 	}
 }
-class_alias('SJBR\SrFreecap\Controller\ImageGeneratorController', 'Tx_SrFreecap_Controller_ImageGeneratorController');
+class_alias('SJBR\\SrFreecap\\Controller\\ImageGeneratorController', 'Tx_SrFreecap_Controller_ImageGeneratorController');
 ?>

@@ -120,5 +120,5 @@ class PiBaseApi {
 		return $validator->isValid($word);
 	}
 }
-class_alias('SJBR\SrFreecap\PiBaseApi', 'tx_srfreecap_pi2');
+class_alias('SJBR\\SrFreecap\\PiBaseApi', 'tx_srfreecap_pi2');
 ?>

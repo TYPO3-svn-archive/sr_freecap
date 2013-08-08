@@ -1,3 +1,7 @@
+2013-08-08  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #50931: Error in autoload.php
+
 2013-07-10  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Follow-up to bug #47810: Audio Captcha not working under IE 8

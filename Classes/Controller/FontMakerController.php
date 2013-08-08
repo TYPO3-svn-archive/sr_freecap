@@ -65,5 +65,5 @@ class FontMakerController  extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 		$this->view->assign('font', $font);
 	}
 }
-class_alias('SJBR\SrFreecap\Controller\FontMakerController', 'Tx_SrFreecap_Controller_FontMakerController');
+class_alias('SJBR\\SrFreecap\\Controller\\FontMakerController', 'Tx_SrFreecap_Controller_FontMakerController');
 ?>

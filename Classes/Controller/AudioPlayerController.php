@@ -62,5 +62,5 @@ class AudioPlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		$this->view->assign('word', $word);
 	}
 }
-class_alias('SJBR\SrFreecap\Controller\AudioPlayerController', 'Tx_SrFreecap_Controller_AudioPlayerController');
+class_alias('SJBR\\SrFreecap\\Controller\\AudioPlayerController', 'Tx_SrFreecap_Controller_AudioPlayerController');
 ?>
