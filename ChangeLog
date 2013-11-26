@@ -1,6 +1,7 @@
 2013-11-26  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #51900: Danish locallang file wrongly named
+	* Brazilian locallang file wrongly named
 
 2013-08-08  Stanislas Rolland  <typo3@sjbr.ca>
 
