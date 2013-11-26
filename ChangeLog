@@ -2,6 +2,7 @@
 
 	* Fixed bug #51900: Danish locallang file wrongly named
 	* Brazilian locallang file wrongly named
+	* Update version to 2.0.6
 
 2013-08-08  Stanislas Rolland  <typo3@sjbr.ca>
 
