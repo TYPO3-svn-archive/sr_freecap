@@ -80,7 +80,9 @@ class PiBaseApi {
 		
 		// Get the configuration manager
 		$configurationManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
-		$configurationManager->injectObjectManager($this->objectManager);
+		if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6002000) {
+			$configurationManager->injectObjectManager($this->objectManager);
+		}
 		
 		// Get translation view helper
 		$translator = $this->objectManager->get('SJBR\\SrFreecap\\ViewHelpers\\TranslateViewHelper');

@@ -45,6 +45,10 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
 	 */
 	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager = NULL) {
+		// Get the object manager
+		if ($objectManager === NULL) {
+			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		}
 		parent::__construct($objectManager);
 		// Get an instance of the session storage handler
 		$this->sessionStorage = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Session\\SessionStorage');
