@@ -1,6 +1,7 @@
 2014-02-07  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Fixed bug #55777: Object manager exceptions raised in TYPO3 6.2
+	* Enable in TYPO3 6.2
 
 2013-11-26  Stanislas Rolland  <typo3@sjbr.ca>
 
