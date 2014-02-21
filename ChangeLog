@@ -1,3 +1,7 @@
+2014-02-21  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #56045: Add random variable in captcha image src
+
 2014-02-13  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Enable in TYPO3 6.2

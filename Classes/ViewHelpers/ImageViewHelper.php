@@ -90,6 +90,7 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 			'controllerName' => 'ImageGenerator',
 			'actionName' => 'show',
 			'formatName' => 'png',
+			'set' => $fakeId
 		);
 		if (isset($L)) {
 			$urlParams['L'] = htmlspecialchars($L);
