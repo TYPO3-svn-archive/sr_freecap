@@ -63,7 +63,11 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$word = $this->sessionStorage->restoreFromSession();
 		// If no Word object is found in session data, initialize a new one
 		if (!is_object($word)) {
-			$word = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Word');
+			if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+				$word = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Word');
+			} else {
+				$word = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Model\\Word');
+			}
 		}
 		return $word;
 	}

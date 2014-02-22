@@ -1,3 +1,7 @@
+2014-02-22  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Cleanup calls to deprecated methods
+
 2014-02-21  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #56045: Add random variable in captcha image src

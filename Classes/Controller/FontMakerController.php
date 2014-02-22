@@ -45,7 +45,11 @@ class FontMakerController  extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	 */
 	public function newAction(\SJBR\SrFreecap\Domain\Model\Font $font = NULL) {
 		if (!is_object($font)) {
-			$font = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Font');
+			if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+				$font = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Font');
+			} else {
+				$font = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Model\\Font');
+			}
 		}
 		$this->view->assign('font', $font);
 	}	
