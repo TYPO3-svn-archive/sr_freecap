@@ -1,3 +1,6 @@
+2014-04-08  Stanislas Rolland  <typo3@sjbr.ca>
+	* Localization of audio captcha may fail for lack of available TCA of pages_language_overlay
+
 2014-04-02  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #57543: French text in italian language file

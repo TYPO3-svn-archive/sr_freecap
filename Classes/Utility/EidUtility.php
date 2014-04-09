@@ -143,6 +143,7 @@ class EidUtility {
 		$this->pageUid = htmlspecialchars($this->pageUid);
 		$MP = htmlspecialchars(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('MP'));
 		$GLOBALS['TSFE'] = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $this->pageUid, '0', TRUE, '', '', $MP, '');
+		\TYPO3\CMS\Frontend\Utility\EidUtility::initTCA();
 		$GLOBALS['TSFE']->sys_page = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 		$GLOBALS['TSFE']->initFeUser();
 		$GLOBALS['TSFE']->determineId();
