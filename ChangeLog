@@ -1,4 +1,9 @@
+2014-04-14  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Correction to default css styles
+
 2014-04-08  Stanislas Rolland  <typo3@sjbr.ca>
+
 	* Localization of audio captcha may fail for lack of available TCA of pages_language_overlay
 
 2014-04-02  Stanislas Rolland  <typo3@sjbr.ca>

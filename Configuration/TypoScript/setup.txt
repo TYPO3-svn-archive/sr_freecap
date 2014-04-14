@@ -39,7 +39,10 @@ plugin.tx_srfreecap {
 	_CSS_DEFAULT_STYLE (
 		.tx-srfreecap-captcha label { display: inline-block; width: 150px; }
 		img.tx-srfreecap-image { margin-left: 1em; margin-right: 1em; vertical-align: middle; }
-		.tx-srfreecap-accessible-image { vertical-align: middle; }
+		.tx-srfreecap-image-accessible {
+			background-color: transparent;
+			vertical-align: middle;
+		}
 		.tx-srfreecap-accessible-link { width: 10em; float: right; vertical-align: middle; margin-right: 7em; }
 		.tx-srfreecap-cant-read { display: inline-block; width: 150px; }
 		.tx-srfreecap-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
@@ -62,7 +65,10 @@ plugin.tx_srfreecap_pi2 {
 	_CSS_DEFAULT_STYLE (
 		.tx-srfreecap-pi1-captcha label { display: inline-block; width: 150px; }
 		img.tx-srfreecap-pi1-image { margin-left: 1em; margin-right: 1em; vertical-align: middle; }
-		.tx-srfreecap-pi1-accessible-image { vertical-align: middle; }
+		.tx-srfreecap-pi1-image-accessible {
+			background-color: transparent;
+			vertical-align: middle;
+		}
 		.tx-srfreecap-pi1-accessible-link { width: 10em; float: right; vertical-align: middle; margin-right: 7em; }
 		.tx-srfreecap-pi1-cant-read { display: inline-block; width: 150px; }
 		.tx-srfreecap-pi1-cant-read a:link { background-color:transparent; font-weight:bold; text-decoration:none; }
