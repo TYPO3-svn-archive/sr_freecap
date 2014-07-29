@@ -1,3 +1,7 @@
+2014-07-29  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Correction to Spanish localization file
+
 2014-04-14  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Correction to default css styles
@@ -8,7 +12,7 @@
 
 2014-04-02  Stanislas Rolland  <typo3@sjbr.ca>
 
-	* Resolves #57543: French text in italian language file
+	* Resolves #57543: French text in Italian language file
 
 2014-02-22  Stanislas Rolland  <typo3@sjbr.ca>
 

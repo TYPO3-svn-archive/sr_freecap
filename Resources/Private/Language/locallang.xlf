@@ -138,6 +138,9 @@
 			<trans-unit id="9221561048" xml:space="preserve">
 				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
 			</trans-unit>
+			<trans-unit id="9221561048_informal" xml:space="preserve">
+				<source>Please enter the word or number as it appears in the image. The entered value was incorrect.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
