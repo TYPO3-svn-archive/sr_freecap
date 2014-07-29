@@ -173,7 +173,7 @@ class AbstractPlayFormat implements \TYPO3\CMS\Extbase\Mvc\View\ViewInterface {
 		header('Content-Transfer-Encoding: binary');
 		header('Content-Length: ' . strlen($audioContent));
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-		header('Last-Modified: ' . gmdate('D,d M YH:i:s') . ' GMT');
+		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 		header('Pragma: no-cache');
 		header('Cache-Control: no-cache, no-store, must-revalidate');
 	}

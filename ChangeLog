@@ -1,6 +1,7 @@
 2014-07-29  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Correction to Spanish localization file
+	* Resolves #60536: Mallformed Last-Modified header (Thanks to Christian Ludwig)
 
 2014-04-14  Stanislas Rolland  <typo3@sjbr.ca>
 

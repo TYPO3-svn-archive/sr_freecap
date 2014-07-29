@@ -420,7 +420,7 @@ class ImageContentUtility {
 	 */
 	public static function sendImage($image, $imageType) {
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-		header('Last-Modified: ' . gmdate('D,d M YH:i:s') . ' GMT');
+		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 		header('Pragma: no-cache');
 		header('Cache-Control: no-cache, no-store, must-revalidate');
 		switch ($imageType) {
