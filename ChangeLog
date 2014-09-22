@@ -1,3 +1,7 @@
+2014-09-22  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #61756: Storing session data prevents correct handling of session data in other extensions (Thanks to Daniel Minder)
+
 2014-08-01  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Update version to 2.0.9

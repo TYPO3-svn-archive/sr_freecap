@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Domain\Session;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Stanislas Rolland <typo3@sjbr.ca>
+ *  (c) 2012-2014 Stanislas Rolland <typo3@sjbr.ca>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -53,7 +53,6 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	public function writeToSession ($object) {
 		$sessionData = serialize($object);
 		$this->getFrontendUser()->setKey('ses', self::SESSIONNAMESPACE, $sessionData);
-		$this->getFrontendUser()->storeSessionData();
 		return $this;
 	}
  
@@ -64,7 +63,6 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	 */
 	public function cleanUpSession () {
 		$this->getFrontendUser()->setKey('ses', self::SESSIONNAMESPACE, NULL);
-		$this->getFrontendUser()->storeSessionData();
 		return $this;
 	}
 

@@ -4,7 +4,7 @@ namespace SJBR\SrFreecap\Utility;
  * Copyright notice
  *
  * 2010 Daniel Lienert <daniel@lienert.cc>, Michael Knoll <mimi@kaktusteam.de>
- * 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+ * 2012-2014 Stanislas Rolland <typo3(arobas)sjbr.ca>
  * All rights reserved
  *
  *
@@ -122,6 +122,9 @@ class EidUtility {
 		/* @var $dispatcher \TYPO3\CMS\Extbase\Mvc\Dispatcher */
 		$dispatcher = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Dispatcher');
 		$dispatcher->dispatch($request, $response);
+		if ($GLOBALS ['TSFE']->fe_user) {
+			$GLOBALS ['TSFE']->fe_user->storeSessionData();
+		}
 		return $response->getContent();
 	}
 
