@@ -1,3 +1,7 @@
+2015-01-26  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #64517: CaptchaValidator::isValid should be protected
+
 2014-09-22  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #61756: Storing session data prevents correct handling of session data in other extensions (Thanks to Daniel Minder)

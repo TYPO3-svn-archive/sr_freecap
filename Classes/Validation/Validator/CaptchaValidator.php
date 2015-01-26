@@ -42,7 +42,7 @@ class CaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 	 * @param string $word: the word that was entered and should be validated
 	 * @return boolean TRUE, if the word entered matches the hash value, FALSE if an error occured
 	 */
-	public function isValid ($word) {
+	protected function isValid ($word) {
 		$isValid = FALSE;
 		$this->errors = array();
 		// Get session data
