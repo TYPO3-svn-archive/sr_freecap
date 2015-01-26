@@ -49,17 +49,6 @@ plugin.tx_srfreecap {
 	)
 }
 
-## Configuring the Font Maker backend module
-module.tx_srfreecap {
-	features.rewrittenPropertyMapper = 1
-	## Paths for backend templates
-	view {
-		templateRootPath = EXT:sr_freecap/Resources/Private/Backend/Templates/
-		partialRootPath = EXT:sr_freecap/Resources/Private/Partials/
-		layoutRootPath = EXT:sr_freecap/Resources/Private/Backend/Layouts/
-	}
-}
-
 ## Backward pi_base compatibility
 plugin.tx_srfreecap_pi2 {
 	_CSS_DEFAULT_STYLE (
