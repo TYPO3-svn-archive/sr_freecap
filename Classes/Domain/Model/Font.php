@@ -4,7 +4,7 @@ namespace SJBR\SrFreecap\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Stanislas Rolland <typo3@sjbr.ca>
+ *  (c) 2012-2015 Stanislas Rolland <typo3@sjbr.ca>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -60,7 +60,7 @@ class Font extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * @var string
 	 * *@validate StringLength(minimum=1, maximum=255)*
-	 * *@validate \SJBR\SrFreecap\Validation\Validator\TtfFileValidator*
+	 * *@validate SJBR\SrFreecap\Validation\Validator\TtfFileValidator*
 	 **/
 	protected $ttfFontFileName = '';
 
