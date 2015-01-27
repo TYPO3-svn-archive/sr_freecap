@@ -4,6 +4,7 @@
 	* Resolves #64519: Validate annotation: class name TtfFileValidator should not start with backslash
 	* Resolves #64520: Extract module configuration from static template
 	* Resolves #64524: SJBR\SrFreecap\Domain\Model\Font raises warning on PHP 5.4+
+	* Resolves #64525: Extbase does not find the templates of backend Font Maker in TYPO3 7.0
 
 2014-09-22  Stanislas Rolland  <typo3@sjbr.ca>
 

@@ -1,7 +1,6 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
-}
+defined('TYPO3_MODE') or die();
+
 $extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
 
 // Add TypoScript settings
@@ -33,8 +32,5 @@ if (TYPO3_MODE == 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 				'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod.xlf'
 			)
 		);
-		// Add configuration setup
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript($_EXTKEY, 'setup', '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/FontMaker/setup.txt">');
 	}
 }
-?>
