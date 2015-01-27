@@ -13,6 +13,8 @@ if (TYPO3_MODE == 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 	 */
 	// GDlib is a requirement for the Font Maker module
 	if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib']) {
+		//SJBR\SrFreecap\Domain\Model\Font uses declare(encoding='ISO-8859-2') which requires:
+		ini_set('zend.multibyte', 'On');
 		\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 			$_EXTKEY,
 			// Make module a submodule of 'tools'
