@@ -15,7 +15,7 @@ if (TYPO3_MODE == 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 		//SJBR\SrFreecap\Domain\Model\Font uses declare(encoding='ISO-8859-2') which requires:
 		ini_set('zend.multibyte', 'On');
 		\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-			$_EXTKEY,
+			'SJBR.' . $_EXTKEY,
 			// Make module a submodule of 'tools'
 			'tools',
 			// Submodule key

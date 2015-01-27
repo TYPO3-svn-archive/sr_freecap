@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Controller;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -227,5 +227,3 @@ class ImageGeneratorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 		$this->settings['siteTagPosition'] = isset($this->settings['siteTagPosition']) ? $this->settings['siteTagPosition'] : 1;
 	}
 }
-class_alias('SJBR\\SrFreecap\\Controller\\ImageGeneratorController', 'Tx_SrFreecap_Controller_ImageGeneratorController');
-?>

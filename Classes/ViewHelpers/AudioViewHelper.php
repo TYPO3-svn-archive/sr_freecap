@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\ViewHelpers;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2013-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -74,6 +74,7 @@ class AudioViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 			$urlParams = array(
 				'eID' => 'sr_freecap_EidDispatcher',
 				'id' => $GLOBALS['TSFE']->id,
+				'vendorName' => 'SJBR',
 				'extensionName' => $this->extensionName,
 				'pluginName' => 'AudioPlayer',
 				'controllerName' => 'AudioPlayer',
@@ -137,4 +138,3 @@ class AudioViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		return ' class="' . trim(str_replace('_', '-', $this->pluginName) . ($suffix ? '-' . $suffix . '-' : '-') . $class) . '"';
 	}
 }
-?>

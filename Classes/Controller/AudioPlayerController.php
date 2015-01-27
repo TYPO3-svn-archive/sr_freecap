@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\Controller;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2012 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -62,5 +62,3 @@ class AudioPlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		$this->view->assign('word', $word);
 	}
 }
-class_alias('SJBR\\SrFreecap\\Controller\\AudioPlayerController', 'Tx_SrFreecap_Controller_AudioPlayerController');
-?>

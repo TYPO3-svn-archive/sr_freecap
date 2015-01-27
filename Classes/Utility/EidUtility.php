@@ -4,7 +4,7 @@ namespace SJBR\SrFreecap\Utility;
  * Copyright notice
  *
  * 2010 Daniel Lienert <daniel@lienert.cc>, Michael Knoll <mimi@kaktusteam.de>
- * 2012-2014 Stanislas Rolland <typo3(arobas)sjbr.ca>
+ * 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
  * All rights reserved
  *
  *
@@ -24,9 +24,12 @@ namespace SJBR\SrFreecap\Utility;
  *
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+
 /**
  * Utility to dispatch the eid request
- *
  *
  * @author Daniel Lienert <daniel@lienert.cc>
  * @author Stanislas Rolland <typo3(arobas)sjbr.ca>
@@ -45,6 +48,11 @@ class EidUtility {
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 */
 	protected $objectManager;
+
+	/**
+	 * @var string
+	 */
+	protected $vendorName;
 
 	/**
 	 * @var string
@@ -86,7 +94,7 @@ class EidUtility {
 	 *
 	 */
 	public function __construct() {
-		$this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 	}
 
 	/**
@@ -109,12 +117,13 @@ class EidUtility {
 	protected function dispatch() {
 		/* @var $bootstrap \TYPO3\CMS\Extbase\Core\Bootstrap */
 		$bootstrap = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Core\\Bootstrap');
+		$configuration['vendorName'] = $this->vendorName;
 		$configuration['extensionName'] = $this->extensionName;
 		$configuration['pluginName'] = $this->pluginName;
 		$bootstrap->initialize($configuration);
 		$request = $this->buildRequest();
 		/* @var $response \TYPO3\CMS\Extbase\Mvc\Web\Response */
-		if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
 			$response = $this->objectManager->create('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
 		} else {
 			$response = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
@@ -134,23 +143,23 @@ class EidUtility {
 	 * @return \SJBR\SrFreecap\Utility\EidDispatcher
 	 */
 	protected function initTypoScriptFrontendController() {
-		if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
 			//Connect to database
 			\TYPO3\CMS\Frontend\Utility\EidUtility::connectDB();
 		}
 		// Get page uid and mount point, if any
-		$this->pageUid = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id');
+		$this->pageUid = GeneralUtility::_GET('id');
 		if (!isset($this->pageUid)) {
 			$this->pageUid = 0;
 		}
 		$this->pageUid = htmlspecialchars($this->pageUid);
-		$MP = htmlspecialchars(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('MP'));
+		$MP = htmlspecialchars(GeneralUtility::_GET('MP'));
 		$GLOBALS['TSFE'] = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $this->pageUid, '0', TRUE, '', '', $MP, '');
 		\TYPO3\CMS\Frontend\Utility\EidUtility::initTCA();
 		$GLOBALS['TSFE']->sys_page = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 		$GLOBALS['TSFE']->initFeUser();
 		$GLOBALS['TSFE']->determineId();
-		if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
 			$GLOBALS['TSFE']->getCompressedTCarray();
 		}
 		return $this;
@@ -188,6 +197,7 @@ class EidUtility {
 	protected function buildRequest() {
 		/* @var $request \TYPO3\CMS\Extbase\Mvc\Web\Request */
 		$request = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request');
+		$request->setControllerVendorName($this->vendorName);
 		$request->setControllerExtensionName($this->extensionName);
 		$request->setPluginName($this->pluginName);
 		$request->setControllerName($this->controllerName);
@@ -203,13 +213,14 @@ class EidUtility {
 	 * @return \SJBR\SrFreecap\Utility\EidDispatcher
 	 */
 	public function initCallArguments() {
-		$request = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('request');
+		$request = GeneralUtility::_GP('request');
 		if ($request) {
 			$this->setRequestArgumentsFromJSON($request);
 		} else {
 			$this->setRequestArgumentsFromGetPost();
 		}
-		return $this->setExtensionName($this->requestArguments['extensionName'])
+		return $this->setVendorName($this->requestArguments['vendorName'])
+			->setExtensionName($this->requestArguments['extensionName'])
 			->setPluginName($this->requestArguments['pluginName'])
 			->setControllerName($this->requestArguments['controllerName'])
 			->setActionName($this->requestArguments['actionName'])
@@ -225,8 +236,8 @@ class EidUtility {
 	protected function setRequestArgumentsFromJSON($request) {
 		$requestArray = json_decode($request, TRUE);
 		if (is_array($requestArray)) {
-			if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6002000) {
-				$this->requestArguments = \TYPO3\CMS\Core\Utility\GeneralUtility::array_merge_recursive_overrule($this->requestArguments, $requestArray);
+			if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6002000) {
+				$this->requestArguments = GeneralUtility::array_merge_recursive_overrule($this->requestArguments, $requestArray);
 			} else {
 				\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->requestArguments, $requestArray);
 			}
@@ -237,15 +248,24 @@ class EidUtility {
 	 * Set the request array from the getPost array
 	 */
 	protected function setRequestArgumentsFromGetPost() {
-		$validArguments = array('extensionName', 'pluginName', 'controllerName', 'actionName', 'formatName', 'arguments');
+		$validArguments = array('vendorName', 'extensionName', 'pluginName', 'controllerName', 'actionName', 'formatName', 'arguments');
 		foreach ($validArguments as $argument) {
-			if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP($argument)) {
-				$this->requestArguments[$argument] = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP($argument);
-			} else if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('amp;' . $argument)) {
+			if (GeneralUtility::_GP($argument)) {
+				$this->requestArguments[$argument] = GeneralUtility::_GP($argument);
+			} else if (GeneralUtility::_GP('amp;' . $argument)) {
 				// Something went wrong...
-				$this->requestArguments[$argument] = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('amp;' . $argument);
+				$this->requestArguments[$argument] = GeneralUtility::_GP('amp;' . $argument);
 			}
 		}
+	}
+
+	/**
+	 * @param string $vendorName
+	 * @return \SJBR\SrFreecap\Utility\EidDispatcher
+	 */
+	protected function setVendorName($vendorName) {
+		$this->vendorName = htmlspecialchars((string)$vendorName);
+		return $this;
 	}
 
 	/**

@@ -3,7 +3,7 @@ namespace SJBR\SrFreecap\ViewHelpers;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
+*  (c) 2013-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -85,6 +85,7 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 		$urlParams = array(
 			'eID' => 'sr_freecap_EidDispatcher',
 			'id' => $GLOBALS['TSFE']->id,
+			'vendorName' => 'SJBR',
 			'extensionName' => 'SrFreecap',
 			'pluginName' => 'ImageGenerator',
 			'controllerName' => 'ImageGenerator',
@@ -108,7 +109,6 @@ class ImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 			. ' <a href="#" onclick="this.blur();' . $this->extensionName . '.newImage(\'' . $fakeId . '\', \'' . $translator->render('noImageMessage').'\');return false;">'
 			. $translator->render('click_here') . '</a>'
 			. $translator->render('cant_read2') . '</span>';
-		
 		return $value;
 	}
 
