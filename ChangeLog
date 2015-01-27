@@ -1,6 +1,7 @@
 2015-01-27  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #64543: Extension does not handle vendorName
+	* Resolves #64525 (Follow-up): Extbase does not find the templates of backend Font Maker in TYPO3 7.0
 
 2015-01-26  Stanislas Rolland  <typo3@sjbr.ca>
 

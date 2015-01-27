@@ -1,0 +1,61 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<h2>{f:translate(key: 'title')}</h2>
+	<f:form method="post" controller="FontMaker" action="create" name="font" object="{font}" class="sjbr-freecap-font-maker">
+		<fieldset>
+		<dl>
+			<dt>
+				<label>{f:translate(key: 'charactersToIncludeInFont')}</label>
+			</dt>
+			<dd>
+				<f:form.radio id="sjbr-freecap-font-maker-charactersIncludedInFont-0" property="charactersIncludedInFont" value="0" /><label for="sjbr-freecap-font-maker-charactersIncludedInFont-0">{f:translate(key: 'numbers-only')}</label>
+				<br />
+				<f:form.radio id="sjbr-freecap-font-maker-charactersIncludedInFont-1" property="charactersIncludedInFont" value="1" /><label for="sjbr-freecap-font-maker-charactersIncludedInFont-1">{f:translate(key: 'ASCII-lowercase-letters')}</label>
+				<br />
+				<f:form.radio id="sjbr-freecap-font-maker-charactersIncludedInFont-2" property="charactersIncludedInFont" value="2" /><label for="sjbr-freecap-font-maker-charactersIncludedInFont-2">{f:translate(key: 'ANSI-extended-ASCII-lowercase-letters')}</label>
+			</dd>
+			<dt>
+			<label for="sjbr-freecap-font-maker-characterWidth">{f:translate(key: 'characterWidth')}</label>
+			</dt>
+			<dd>
+				<f:form.textfield id="sjbr-freecap-font-maker-characterWidth" property="characterWidth" size="5" />
+				<f:render partial="FormErrors" arguments="{for: 'font.characterWidth'}" />
+			</dd>
+			<dt>
+				<label for="sjbr-freecap-font-maker-characterHeight">{f:translate(key: 'characterHeight')}</label>
+			</dt>
+			<dd>
+				<f:form.textfield id="sjbr-freecap-font-maker-characterHeight" property="characterHeight" size="5" />
+				<f:render partial="FormErrors" arguments="{for: 'font.characterHeight'}" />
+			</dd>
+			<dt>
+				<label>{f:translate(key: 'endianness')}</label>
+			</dt>
+			<dd>
+				<f:form.radio id="sjbr-freecap-font-maker-endianness-0" property="endianness" value="0" /><label for="sjbr-freecap-font-maker-endianness-0">{f:translate(key: 'littleEndian')}</label>
+				<br />
+				<f:form.radio id="sjbr-freecap-font-maker-endianness-1" property="endianness" value="1" /><label for="sjbr-freecap-font-maker-endianness-1">{f:translate(key: 'bigEndian')}</label>
+			</dd>
+			<dt>
+				<label for="sjbr-freecap-font-maker-ttfFontFileName">{f:translate(key: 'pathToTTFFile')}</label>
+			</dt>
+			<dd>
+				<f:form.textfield id="sjbr-freecap-font-maker-ttfFontFileName" property="ttfFontFileName" size="50" />
+				<f:render partial="FormErrors" arguments="{for: 'font.ttfFontFileName'}" />
+			</dd>
+			<dt>
+				<label for="sjbr-freecap-font-maker-gdFontFilePrefix">{f:translate(key: 'gdFontFilePrefix')}</label>
+			</dt>
+			<dd>
+				<f:form.textfield id="sjbr-freecap-font-maker-gdFontFilePrefix" property="gdFontFilePrefix" size="25" />
+			</dd>
+			<dt>
+			</dt>
+			<dd>
+				<f:form.submit class="submit" value="{f:translate(key: 'makeFont')}" />
+			</dd>
+		</dl>
+		</fieldset>
+	</f:form>
+</f:section>
