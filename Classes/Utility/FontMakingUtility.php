@@ -1,30 +1,34 @@
 <?php
 namespace SJBR\SrFreecap\Utility;
 /***************************************************************
-*  Copyright notice
-*
-*  (c) 2012-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*  A copy is found in the textfile GPL.txt and important notices to the license
-*  from the author is found in LICENSE.txt distributed with these scripts.
-*
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+ *  Copyright notice
+ *
+ *  (c) 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *  A copy is found in the textfile GPL.txt and important notices to the license
+ *  from the author is found in LICENSE.txt distributed with these scripts.
+ *
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\VersionNumberUtility;
+
 /**
  * Utility for making GD fonts
  *
@@ -62,8 +66,7 @@ class FontMakingUtility {
 		for ($ic = 1; $ic < $charactersCount+1; $ic++) {
 			$gifObjArray[$ic . '0'] = 'TEXT';
 			$gifObjArray[$ic . '0.']['text'] = $charactersArray[$ic-1];
-			
-			$bbox = imagettfbbox($size, 0, $font, $charactersArray[$ic-1]);
+			$bbox = imagettfbbox($size, 0, GeneralUtility::getFileAbsFileName($font), $charactersArray[$ic-1]);
 			$hOffset = intval(($width - ($bbox[4] - $bbox[6]))/2);
 			$vOffset = intval(($width - ($bbox[7] - $bbox[1]))/2);
 			
@@ -71,13 +74,17 @@ class FontMakingUtility {
 			$gifObjArray[$ic . '0.']['antiAlias'] = 1;
 			$gifObjArray[$ic . '0.']['align'] = $align;
 			$gifObjArray[$ic . '0.']['fontSize'] = $size;
-			$gifObjArray[$ic . '0.']['fontFile'] = $font;
+			$gifObjArray[$ic . '0.']['fontFile'] = '../' . $font;
 			$gifObjArray[$ic . '0.']['fontColor'] = $color;
 			$gifObjArray[$ic . '0.']['maxWidth'] = $width;
 			$gifObjArray[$ic . '0.']['offset'] = (($ic-1) * $width + $hOffset) . ',' . $vertOffset;
 		}
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-		$gifCreator = $objectManager->create('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
+			$gifCreator = $objectManager->create('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
+		} else {
+			$gifCreator = $objectManager->get('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
+		}
 		$gifCreator->init();
 		if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib']) {
 			$gifCreator->start($gifObjArray, array());
@@ -144,4 +151,3 @@ class FontMakingUtility {
 		return $fontdata;
 	}
 }
-?>

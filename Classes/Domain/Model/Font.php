@@ -27,6 +27,8 @@ namespace SJBR\SrFreecap\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \SJBR\SrFreecap\Utility\FontMakingUtility;
+
 /**
  * Font object
  *
@@ -209,14 +211,14 @@ class Font extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 				break;
 		}
 		$numberOfCharacters = count(explode(',', $characters));
-		$this->setPngImageFileName(\SJBR\SrFreecap\Utility\FontMakingUtility::makeFontImage($characters, '../' . $this->ttfFontFileName, $this->characterWidth, $this->characterHeight));
+		$this->setPngImageFileName(FontMakingUtility::makeFontImage($characters, $this->ttfFontFileName, $this->characterWidth, $this->characterHeight));
 		if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib_png']) {
 			$image = @ImageCreateFromPNG(PATH_site . $this->pngImageFileName);
 		} else {
 			$image = @ImageCreateFromGIF(PATH_site . $this->pngImageFileName);
 		}
 		if ($image !== FALSE) {
-			$this->setGdFontdata(\SJBR\SrFreecap\Utility\FontMakingUtility::makeFont($image, $numberOfCharacters, $startCharacter, $this->characterWidth, $this->characterHeight, $this->endianness));
+			$this->setGdFontdata(FontMakingUtility::makeFont($image, $numberOfCharacters, $startCharacter, $this->characterWidth, $this->characterHeight, $this->endianness));
 			ImageDestroy($image);
 		}
 	}
