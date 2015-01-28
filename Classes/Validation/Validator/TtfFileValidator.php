@@ -40,7 +40,7 @@ class TtfFileValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 	 * @param mixed $value The value that should be validated
 	 * @return boolean TRUE if the value is within the range, otherwise FALSE
 	 */
-	public function isValid ($value) {
+	protected function isValid ($value) {
 		$isValid = TRUE;
 		$this->errors = array();
 

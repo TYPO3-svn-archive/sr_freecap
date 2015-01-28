@@ -45,7 +45,7 @@ class GifBuilderUtility extends \TYPO3\CMS\Frontend\Imaging\GifBuilder {
 	/**
 	 * Writes the input GDlib image pointer to file
 	 *
-	 * @param	pointer		The GDlib image resource pointer
+	 * @param	resource	The GDlib image resource pointer
 	 * @param	string		The filename to write to
 	 * @return	mixed		The output of either imageGif, imagePng or imageJpeg based on the filename to write
 	 * @see maskImageOntoImage(), scale(), output()

@@ -32,5 +32,3 @@ namespace SJBR\SrFreecap\View\AudioPlayer;
  */
 class PlayWav extends AbstractPlayFormat {
 }
-class_alias('SJBR\SrFreecap\View\AudioPlayer\PlayWav', 'Tx_SrFreecap_View_AudioPlayer_PlayWav');
-?>

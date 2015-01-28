@@ -257,5 +257,3 @@ class ShowPng implements \TYPO3\CMS\Extbase\Mvc\View\ViewInterface {
 		return $image;
 	}
 }
-class_alias('SJBR\SrFreecap\View\ImageGenerator\ShowPng', 'Tx_SrFreecap_View_ImageGenerator_ShowPng');
-?>

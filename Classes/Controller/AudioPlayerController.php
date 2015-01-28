@@ -47,7 +47,7 @@ class AudioPlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 *
 	 * @return void
 	 */
-	public function initializeAction() {
+	protected function initializeAction() {
 		// Get an instance of the word repository
 		$this->wordRepository = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Repository\\WordRepository');
 	}

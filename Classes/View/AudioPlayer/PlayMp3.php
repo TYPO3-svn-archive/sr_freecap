@@ -50,5 +50,3 @@ class PlayMp3 extends AbstractPlayFormat {
 		return $audioContent;
 	}
 }
-class_alias('SJBR\SrFreecap\View\AudioPlayer\PlayMp3', 'Tx_SrFreecap_View_AudioPlayer_PlayMp3');
-?>

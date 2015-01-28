@@ -38,30 +38,6 @@ class FontMakerController  extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	protected $extensionName = 'SrFreecap';
 
 	/**
-	 * Initializes the controller before invoking an action method.
-	 * @return void
-	 */
-	protected function initializeAction() {
-		$this->setBackendModuleTemplates();
-	}
-	
-	/**
-	 * Set Backend Module Templates
-	 * @return void
-	 */
-	private function setBackendModuleTemplates(){
-		$frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-		$viewConfiguration = array(
-			'view' => array(
-				'templateRootPath' => 'EXT:sr_freecap/Resources/Private/Backend/Templates/',
-				'partialRootPath' => 'EXT:sr_freecap/Resources/Private/Partials/',
-				'layoutRootPath' => 'EXT:sr_freecap/Resources/Private/Backend/Layouts/'
-			)
-		);
-		$this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $viewConfiguration));        
-	}
-
-	/**
 	 * Display the font maker form
 	 *
 	 * @param \SJBR\SrFreecap\Domain\Model\Font $font
