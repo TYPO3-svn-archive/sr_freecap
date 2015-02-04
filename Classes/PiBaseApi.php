@@ -119,7 +119,7 @@ class PiBaseApi {
 		// Get the validator
 		$validator = $this->objectManager->get('SJBR\\SrFreecap\\Validation\\Validator\\CaptchaValidator');
 		// Check word
-		return $validator->isValid($word);
+		return !$validator->validate($word)->hasErrors();
 	}
 }
 class_alias('SJBR\\SrFreecap\\PiBaseApi', 'tx_srfreecap_pi2');

@@ -42,7 +42,6 @@ class TtfFileValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
 	 */
 	protected function isValid ($value) {
 		$isValid = TRUE;
-		$this->errors = array();
 
 		$absoluteFileName = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($value);
 

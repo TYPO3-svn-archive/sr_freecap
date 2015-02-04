@@ -1,3 +1,7 @@
+2015-02-04  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #64847: Fatal error on CaptchaValidator::isValid() from context PiBaseApi
+
 2015-01-28  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Cleanup
