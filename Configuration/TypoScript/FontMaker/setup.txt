@@ -3,8 +3,8 @@ module.tx_srfreecap {
 	features.rewrittenPropertyMapper = 1
 	## Paths for backend templates
 	view {
-		templateRootPath = EXT:sr_freecap/Resources/Private/Backend/Templates/
-		partialRootPath = EXT:sr_freecap/Resources/Private/Partials/
-		layoutRootPath = EXT:sr_freecap/Resources/Private/Backend/Layouts/
+		templateRootPaths.0 = EXT:sr_freecap/Resources/Private/Backend/Templates/
+		partialRootPaths.0 = EXT:sr_freecap/Resources/Private/Partials/
+		layoutRootPaths.0 = EXT:sr_freecap/Resources/Private/Backend/Layouts/
 	}
 }

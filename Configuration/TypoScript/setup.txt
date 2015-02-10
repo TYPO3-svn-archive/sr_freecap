@@ -32,9 +32,9 @@ plugin.tx_srfreecap {
 		salutation = {$plugin.tx_srfreecap.salutation}
 	}
 	view {
-		templateRootPath = {$plugin.tx_srfreecap.view.templateRootPath}
-		partialRootPath = {$plugin.tx_srfreecap.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_srfreecap.view.layoutRootPath}
+		templateRootPaths.0 = {$plugin.tx_srfreecap.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_srfreecap.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_srfreecap.view.layoutRootPath}
 	}
 	_CSS_DEFAULT_STYLE (
 		.tx-srfreecap-captcha label { display: inline-block; width: 150px; }
