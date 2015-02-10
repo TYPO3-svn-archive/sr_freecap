@@ -2,6 +2,7 @@
 
 	* Resolves #64517: Revert CaptchaValidator::isValid should be protected
 	* Resolves #64972: New view configuration in TYPO3 CMS 6.2
+	* Require TYPO3 CMS 6.2
 
 2015-02-04  Stanislas Rolland  <typo3@sjbr.ca>
 
