@@ -31,6 +31,17 @@ namespace SJBR\SrFreecap\Validation\Validator;
 class CaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
 
 	/**
+	 * Specifies whether this validator accepts empty values.
+	 *
+	 * If this is TRUE, the validators isValid() method is not called in case of an empty value
+	 * Note: A value is considered empty if it is NULL or an empty string!
+	 * By default all validators except for NotEmpty and the Composite Validators accept empty values
+	 *
+	 * @var bool
+	 */
+	protected $acceptsEmptyValues = FALSE;
+
+	/**
 	 * @var string Name of the extension this controller belongs to
 	 */
 	protected $extensionName = 'SrFreecap';
