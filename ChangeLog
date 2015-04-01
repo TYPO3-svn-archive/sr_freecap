@@ -1,6 +1,11 @@
+2015-03-31  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #64524: SJBR\SrFreecap\Domain\Model\Font raises warning on PHP 5.4+
+
 2015-03-18  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #65649: $this->freeCap->checkWord accepts empty postvar
+	* Resolves #64524: SJBR\SrFreecap\Domain\Model\Font raises warning on PHP 5.4+
 
 2015-02-10  Stanislas Rolland  <typo3@sjbr.ca>
 
