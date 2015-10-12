@@ -1,3 +1,7 @@
+2015-10-11  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Cleanup
+
 2015-03-31  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #64524: SJBR\SrFreecap\Domain\Model\Font raises warning on PHP 5.4+

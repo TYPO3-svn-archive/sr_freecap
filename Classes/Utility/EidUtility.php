@@ -123,11 +123,7 @@ class EidUtility {
 		$bootstrap->initialize($configuration);
 		$request = $this->buildRequest();
 		/* @var $response \TYPO3\CMS\Extbase\Mvc\Web\Response */
-		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
-			$response = $this->objectManager->create('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
-		} else {
-			$response = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
-		}
+		$response = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
 		/* @var $dispatcher \TYPO3\CMS\Extbase\Mvc\Dispatcher */
 		$dispatcher = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Dispatcher');
 		$dispatcher->dispatch($request, $response);
@@ -143,10 +139,6 @@ class EidUtility {
 	 * @return \SJBR\SrFreecap\Utility\EidDispatcher
 	 */
 	protected function initTypoScriptFrontendController() {
-		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
-			//Connect to database
-			\TYPO3\CMS\Frontend\Utility\EidUtility::connectDB();
-		}
 		// Get page uid and mount point, if any
 		$this->pageUid = GeneralUtility::_GET('id');
 		if (!isset($this->pageUid)) {
@@ -159,9 +151,6 @@ class EidUtility {
 		$GLOBALS['TSFE']->sys_page = $this->objectManager->get('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 		$GLOBALS['TSFE']->initFeUser();
 		$GLOBALS['TSFE']->determineId();
-		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
-			$GLOBALS['TSFE']->getCompressedTCarray();
-		}
 		return $this;
 	}
 
@@ -236,11 +225,7 @@ class EidUtility {
 	protected function setRequestArgumentsFromJSON($request) {
 		$requestArray = json_decode($request, TRUE);
 		if (is_array($requestArray)) {
-			if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6002000) {
-				$this->requestArguments = GeneralUtility::array_merge_recursive_overrule($this->requestArguments, $requestArray);
-			} else {
-				\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->requestArguments, $requestArray);
-			}
+			\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->requestArguments, $requestArray);
 		}
 	}
 
@@ -326,4 +311,3 @@ class EidUtility {
 		return $this;
 	}
 }
-?>
