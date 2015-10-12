@@ -1,7 +1,6 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-	die('Access denied.');
-}
+defined('TYPO3_MODE') or die();
+
 // Unserializing the configuration so we can use it here
 $_EXTCONF = unserialize($_EXTCONF);
 
@@ -44,5 +43,3 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['sr_freecap_EidDispatcher'] = '
 		'AudioPlayer' => 'play',
 	)
 );
-
-?>
