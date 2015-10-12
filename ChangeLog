@@ -4,6 +4,7 @@
 	* Add composer.json
 	* Move static template registration to TCA overrides
 	* Compatibility with TYPO3 CMS 7
+	* Improve template handling
 	* Update verion to 2.3.0
 
 2015-03-31  Stanislas Rolland  <typo3@sjbr.ca>
