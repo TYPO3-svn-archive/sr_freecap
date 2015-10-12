@@ -1,11 +1,6 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-$extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
-
-// Add TypoScript settings
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'freeCap CAPTCHA');
-
 if (TYPO3_MODE == 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 	/**
 	 * Registers a Backend Module

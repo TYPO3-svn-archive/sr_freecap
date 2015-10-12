@@ -2,6 +2,7 @@
 
 	* Cleanup
 	* Add composer.json
+	* Move static template registration to TCA overrides
 
 2015-03-31  Stanislas Rolland  <typo3@sjbr.ca>
 
