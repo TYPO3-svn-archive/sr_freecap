@@ -1,9 +1,10 @@
 <?php
 namespace SJBR\SrFreecap\Domain\Session;
-/***************************************************************
+
+/*
  *  Copyright notice
  *
- *  (c) 2012-2014 Stanislas Rolland <typo3@sjbr.ca>
+ *  (c) 2012-2015 Stanislas Rolland <typo3@sjbr.ca>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,13 +25,14 @@ namespace SJBR\SrFreecap\Domain\Session;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 /**
  * Session storage
  *
  * @author Stanislas Rolland <typo3@sjbr.ca>
  */
-class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
+class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface
+{
 	
 	const SESSIONNAMESPACE = 'tx_srfreecap';
  
@@ -39,7 +41,8 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	 *
 	 * @return Object the stored object
 	 */
-	public function restoreFromSession () {
+	public function restoreFromSession()
+	{
 		$sessionData = $this->getFrontendUser()->getKey('ses', self::SESSIONNAMESPACE);
 		return unserialize($sessionData);
 	}
@@ -50,7 +53,8 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @param $object any serializable object to store into the session
 	 * @return \SJBR\SrFreecap\Domain\Session\SessionStorage
 	 */
-	public function writeToSession ($object) {
+	public function writeToSession($object)
+	{
 		$sessionData = serialize($object);
 		$this->getFrontendUser()->setKey('ses', self::SESSIONNAMESPACE, $sessionData);
 		return $this;
@@ -61,7 +65,8 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	 *
 	 * @return \SJBR\SrFreecap\Domain\Session\SessionStorage
 	 */
-	public function cleanUpSession () {
+	public function cleanUpSession()
+	{
 		$this->getFrontendUser()->setKey('ses', self::SESSIONNAMESPACE, NULL);
 		return $this;
 	}
@@ -72,11 +77,11 @@ class SessionStorage implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return	\TYPO3\CMS\Frontend\Authentication\FrontendUserAuthtenication	The current frontend user object
 	 * @throws	LogicException
 	 */
-	protected function getFrontendUser () {
+	protected function getFrontendUser()
+	{
 		if ($GLOBALS ['TSFE']->fe_user) {
 			return $GLOBALS ['TSFE']->fe_user;
 		}
 		throw new LogicException ('No Frontentuser found in session!');
 	}
 }
-?>

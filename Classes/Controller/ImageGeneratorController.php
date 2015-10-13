@@ -1,5 +1,6 @@
 <?php
 namespace SJBR\SrFreecap\Controller;
+
 /***************************************************************
 *  Copyright notice
 *

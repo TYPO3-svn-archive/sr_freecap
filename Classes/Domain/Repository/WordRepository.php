@@ -1,9 +1,10 @@
 <?php
 namespace SJBR\SrFreecap\Domain\Repository;
-/***************************************************************
+
+/*
  *  Copyright notice
  *
- *  (c) 2012 Stanislas Rolland <typo3@sjbr.ca>
+ *  (c) 2012-2015 Stanislas Rolland <typo3@sjbr.ca>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,14 +25,13 @@ namespace SJBR\SrFreecap\Domain\Repository;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 /**
  * Word repository in session storage
- *
- * @author Stanislas Rolland <typo3@sjbr.ca>
  */
-class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
  
 	/**
 	 * The session sorage handler
@@ -44,7 +44,8 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 *
 	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
 	 */
-	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager = NULL) {
+	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager = NULL)
+	{
 		// Get the object manager
 		if ($objectManager === NULL) {
 			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
@@ -59,15 +60,12 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 *
 	 * @return \SJBR\SrFreecap\Domain\Model\Word the stored object
 	 */
-	public function getWord() {
+	public function getWord()
+	{
 		$word = $this->sessionStorage->restoreFromSession();
 		// If no Word object is found in session data, initialize a new one
 		if (!is_object($word)) {
-			if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
-				$word = $this->objectManager->create('SJBR\\SrFreecap\\Domain\\Model\\Word');
-			} else {
-				$word = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Model\\Word');
-			}
+			$word = $this->objectManager->get('SJBR\\SrFreecap\\Domain\\Model\\Word');
 		}
 		return $word;
 	}
@@ -78,7 +76,8 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param \SJBR\SrFreecap\Domain\Model\Word the object to be stored
 	 * @return \SJBR\SrFreecap\Domain\Repository\WordRepository
 	 */
-	public function setWord(\SJBR\SrFreecap\Domain\Model\Word $object) {
+	public function setWord(\SJBR\SrFreecap\Domain\Model\Word $object)
+	{
 		$this->sessionStorage->writeToSession($object);
 		return $this;
 	}
@@ -88,9 +87,9 @@ class WordRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 *
 	 * @return \SJBR\SrFreecap\Domain\Repository\WordRepository
 	 */
-	public function cleanUpWord() {
+	public function cleanUpWord()
+	{
 		$this->sessionStorage->cleanUpSession();
 		return $this;
 	}
 }
-?>

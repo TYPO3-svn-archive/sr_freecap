@@ -1,30 +1,30 @@
 <?php
 namespace SJBR\SrFreecap\Utility;
-/***************************************************************
-*  Copyright notice
-*
-*  (c) 2012-2013 Stanislas Rolland <typo3(arobas)sjbr.ca>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*  A copy is found in the textfile GPL.txt and important notices to the license
-*  from the author is found in LICENSE.txt distributed with these scripts.
-*
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+
+/*
+ *  Copyright notice
+ *
+ *  (c) 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *  A copy is found in the textfile GPL.txt and important notices to the license
+ *  from the author is found in LICENSE.txt distributed with these scripts.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ */
 /************************************************************\
 *
 *		freeCap v1.4.1 Copyright 2005 Howard Yeend
@@ -48,10 +48,12 @@ namespace SJBR\SrFreecap\Utility;
 *
 *
 \************************************************************/
+
+use SJBR\SrFreecap\Utility\RandomContentUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Utility dealing with image content
- *
- * @author	Stanislas Rolland	<typo3(arobas)sjbr.ca>
  */
 class ImageContentUtility {
 	
@@ -80,10 +82,10 @@ class ImageContentUtility {
 	 * @param array $fontLocations: array of font files locations
 	 * @param array $fontWidths: array of font widths
 	 * @param int $morphfactor: text morphing factor
-	 *
 	 * @return string GD image identifier of noisy background
 	 */
-	public static function writeWordOnImage ($width, $height, $word, $textColorType, $textPosition, $colorMaximum, $backgroundType, $fontLocations, $fontWidths, $morphFactor = 1) {
+	public static function writeWordOnImage($width, $height, $word, $textColorType, $textPosition, $colorMaximum, $backgroundType, $fontLocations, $fontWidths, $morphFactor = 1)
+	{
 
 		$image = ImageCreate($width, $height);
 		$image2 = ImageCreate($width, $height);
@@ -102,12 +104,12 @@ class ImageContentUtility {
 		ImageFill($image2, 0, 0, $background2);
 
 		// Write word in random starting X position
-		$word_start_x = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(5, $textPosition['horizontal']);
+		$word_start_x = RandomContentUtility::getRandomNumberInRange(5, $textPosition['horizontal']);
 		// Y positions jiggled about later
 		$word_start_y = $textPosition['vertical'];
 		// Get uniform color
 		if ($textColorType == self::TEXT_COLOR_UNIFORM) {
-			$textColor = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomColor($colorMaximum['darkness'], $colorMaximum['lightness'], $backgroundType == self::BACKGROUND_TYPE_MORPHED_IMAGE_BLOCKS);
+			$textColor = RandomContentUtility::getRandomColor($colorMaximum['darkness'], $colorMaximum['lightness'], $backgroundType == self::BACKGROUND_TYPE_MORPHED_IMAGE_BLOCKS);
 			$textColor2 = ImageColorAllocate($image2, $textColor[0], $textColor[1], $textColor[2]);
 		}
 		// Write each character in different font
@@ -116,10 +118,10 @@ class ImageContentUtility {
 		for ($i = 0; $i < strlen($word); $i++) {
 			// Get changing color
 			if ($textColorType == self::TEXT_COLOR_ONE_PER_CHARACTER) {
-				$textColor = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomColor($colorMaximum['darkness'], $colorMaximum['lightness'], $backgroundType == self::BACKGROUND_TYPE_MORPHED_IMAGE_BLOCKS);
+				$textColor = RandomContentUtility::getRandomColor($colorMaximum['darkness'], $colorMaximum['lightness'], $backgroundType == self::BACKGROUND_TYPE_MORPHED_IMAGE_BLOCKS);
 				$textColor2 = ImageColorAllocate($image2, $textColor[0], $textColor[1], $textColor[2]);
 			}
-			$fontIndex = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(0, sizeof($fontLocations)-1);
+			$fontIndex = RandomContentUtility::getRandomNumberInRange(0, sizeof($fontLocations)-1);
 			$font = ImageLoadFont($fontLocations[$fontIndex]);
 			ImageString($image2, $font, $x_pos, $word_start_y, $word{$i}, $textColor2);
 			$textFontWidths[$i] = $fontWidths[$fontIndex];
@@ -135,7 +137,7 @@ class ImageContentUtility {
 			// Deviate at least 4 pixels between each letter
 			$prev_y = $y_pos;
 			do {
-				$y_pos = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-5, 5);
+				$y_pos = RandomContentUtility::getRandomNumberInRange(-5, 5);
 			} while ($y_pos < $prev_y + 2 && $y_pos > $prev_y - 2);
 			ImageCopy($image, $image2, $x_pos, $y_pos, $x_pos, 0, $textFontWidths[$i], $height);
 			$x_pos += $textFontWidths[$i];
@@ -154,7 +156,7 @@ class ImageContentUtility {
 				// morph x += so that instead of deviating from orig x each time, we deviate from where we last deviated to
 				// get it? instead of a zig zag, we get more of a sine wave.
 				// I wish we could deviate more but it looks crap if we do.
-				$morph_x += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-$morphFactor, $morphFactor);
+				$morph_x += RandomContentUtility::getRandomNumberInRange(-$morphFactor, $morphFactor);
 				// had to change this to ImageCopyMerge when starting using ImageCreateTrueColor
 				// according to the manual; "when (pct is) 100 this function behaves identically to imagecopy()"
 				// but this is NOT true when dealing with transparencies...
@@ -171,7 +173,7 @@ class ImageContentUtility {
 			// Can result in image going too far off on Y-axis;
 			// not much I can do about that, apart from make image bigger
 			// again, I wish I could do 1.5 pixels
-			$y_pos += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-1, 1);
+			$y_pos += RandomContentUtility::getRandomNumberInRange(-1, 1);
 			ImageCopy($image, $image2, $i, $y_pos, $i, 0, $x_chunk, $height);
 		}
 
@@ -191,10 +193,10 @@ class ImageContentUtility {
 	 * @param array $backgroundImages: array of background image file names
 	 * @param boolean $morphBackground: if TRUE, the background will be morphed
 	 * @param boolean $blurBackground: if TRUE, the background will be blurred
-	 *
 	 * @return string GD image identifier of noisy background
 	 */
-	public static function generateNoisyBackground ($width, $height, $word, $backgroundType, $backgroundImages = array(), $morphBackground = TRUE, $blurBackground = TRUE) {
+	public static function generateNoisyBackground($width, $height, $word, $backgroundType, $backgroundImages = array(), $morphBackground = TRUE, $blurBackground = TRUE)
+	{
 		$image = ImageCreateTrueColor($width, $height);
 		if ($backgroundType != self::BACKGROUND_TYPE_TRANSPARENT) {
 
@@ -218,16 +220,16 @@ class ImageContentUtility {
 			switch ($backgroundType) {
 				case self::BACKGROUND_TYPE_WHITE_WITH_GRID:
 					// Draw grid on x
-					for ($i = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(6, 20); $i < $width*2; $i += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(10, 25)) {
-						ImageSetThickness($tempBackground, \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(2, 6));
-						$textColor = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomColor(100, 150);
+					for ($i = RandomContentUtility::getRandomNumberInRange(6, 20); $i < $width*2; $i += RandomContentUtility::getRandomNumberInRange(10, 25)) {
+						ImageSetThickness($tempBackground, RandomContentUtility::getRandomNumberInRange(2, 6));
+						$textColor = RandomContentUtility::getRandomColor(100, 150);
 						$textColor2 = ImageColorAllocate($tempBackground, $textColor[0], $textColor[1], $textColor[2]);
 						ImageLine($tempBackground, $i, 0, $i, $height*2, $textColor2);
 					}
 					// Draw grid on y
-					for ($i = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(6, 20); $i < $height*2 ; $i += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(10, 25)) {
-						ImageSetThickness($tempBackground, \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(2, 6));
-						$textColor = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomColor(100, 150);
+					for ($i = RandomContentUtility::getRandomNumberInRange(6, 20); $i < $height*2 ; $i += RandomContentUtility::getRandomNumberInRange(10, 25)) {
+						ImageSetThickness($tempBackground, RandomContentUtility::getRandomNumberInRange(2, 6));
+						$textColor = RandomContentUtility::getRandomColor(100, 150);
 						$textColor2 = ImageColorAllocate($tempBackground, $textColor[0], $textColor[1], $textColor[2]);
 						ImageLine($tempBackground, 0, $i, $width*2, $i , $textColor2);
 					}
@@ -235,7 +237,7 @@ class ImageContentUtility {
 				case self::BACKGROUND_TYPE_WHITE_WITH_SQUIGGLES:
 					ImageSetThickness($tempBackground, 4);
 					for ($i = 0; $i < strlen($word)+1; $i++) {
-						$textColor = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomColor(100, 150);
+						$textColor = RandomContentUtility::getRandomColor(100, 150);
 						$textColor2 = ImageColorAllocate($tempBackground, $textColor[0], $textColor[1], $textColor[2]);
 						$points = Array();
 						// Draw random squiggle for each character
@@ -243,9 +245,9 @@ class ImageContentUtility {
 						// keep random so OCR can't say "if found shape has 10 points, ignore it"
 						// each squiggle will, however, be a closed shape, so OCR could try to find
 						// line terminations and start from there. (I don't think they're that advanced yet..)
-						for ($j = 1; $j < \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(5, 10); $j++) {
-							$points[] = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(1*(20*($i+1)), 1*(50*($i+1)));
-							$points[] = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(30, $height+30);
+						for ($j = 1; $j < RandomContentUtility::getRandomNumberInRange(5, 10); $j++) {
+							$points[] = RandomContentUtility::getRandomNumberInRange(1*(20*($i+1)), 1*(50*($i+1)));
+							$points[] = RandomContentUtility::getRandomNumberInRange(30, $height+30);
 						}
 						ImagePolygon($tempBackground, $points, intval(sizeof($points)/2), $textColor2);
 					}
@@ -254,17 +256,17 @@ class ImageContentUtility {
 					// Take random chunks of $backgroundImages and paste them onto the background
 					for ($i = 0; $i < sizeof($backgroundImages); $i++) {
 						// Read each image and its size
-						$tempImages[$i] = ImageCreateFromJPEG(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($backgroundImages[$i]));
+						$tempImages[$i] = ImageCreateFromJPEG(GeneralUtility::getFileAbsFileName($backgroundImages[$i]));
 						$tempWidths[$i] = imagesx($tempImages[$i]);
 						$tempHeights[$i] = imagesy($tempImages[$i]);
 					}
-					$blocksize = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(20, 60);
+					$blocksize = RandomContentUtility::getRandomNumberInRange(20, 60);
 					for ($i = 0; $i < $width*2; $i += $blocksize) {
 						// Could randomise blocksize here... hardly matters
 						for ($j = 0; $j < $height*2; $j += $blocksize) {
-							$imageIndex = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(0, sizeof($tempImages)-1);
-							$cut_x = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(0, $tempWidths[$imageIndex]-$blocksize);
-							$cut_y = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(0, $tempHeights[$imageIndex]-$blocksize);
+							$imageIndex = RandomContentUtility::getRandomNumberInRange(0, sizeof($tempImages)-1);
+							$cut_x = RandomContentUtility::getRandomNumberInRange(0, $tempWidths[$imageIndex]-$blocksize);
+							$cut_y = RandomContentUtility::getRandomNumberInRange(0, $tempHeights[$imageIndex]-$blocksize);
 							ImageCopy($tempBackground, $tempImages[$imageIndex], $i, $j, $cut_x, $cut_y, $blocksize, $blocksize);
 						}
 					}
@@ -286,11 +288,11 @@ class ImageContentUtility {
 				// this is a different and less perfect morph than the one we do on the CAPTCHA
 				// occasonally you get some dark background showing through around the edges
 				// it doesn't need to be perfect as it's only the background.
-				$morph_chunk = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(1, 5);
+				$morph_chunk = RandomContentUtility::getRandomNumberInRange(1, 5);
 				$morph_y = 0;
 				for ($x = 0; $x < $width; $x += $morph_chunk) {
-					$morph_chunk = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(1, 5);
-					$morph_y += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-1, 1);
+					$morph_chunk = RandomContentUtility::getRandomNumberInRange(1, 5);
+					$morph_y += RandomContentUtility::getRandomNumberInRange(-1, 1);
 					ImageCopy($image, $tempBackground, $x, 0, $x+30, 30+$morph_y, $morph_chunk, $height*2);
 				}
 				
@@ -298,8 +300,8 @@ class ImageContentUtility {
 				
 				$morph_x = 0;
 				for ($y = 0; $y <= $height; $y += $morph_chunk) {
-					$morph_chunk = \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(1, 5);
-					$morph_x += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-1, 1);
+					$morph_chunk = RandomContentUtility::getRandomNumberInRange(1, 5);
+					$morph_x += RandomContentUtility::getRandomNumberInRange(-1, 1);
 					ImageCopy($image, $tempBackground, $morph_x, $y, 0, $y, $width, $morph_chunk);
 				
 				}
@@ -327,10 +329,10 @@ class ImageContentUtility {
 	 * @param string $backgroundType (see constants)
 	 * @param int $mergeType: 0 - Background over captcha, 1 - Captcha over background (see constants)
 	 * @param int $backgroundFadePercentage: fading factor for background	 
-	 *
 	 * @return string GD image identifier of merged image
 	 */
-	public static function mergeCaptchaWithBackground ($width, $height, $captchaImage, $backgroundImage, $backgroundType, $mergeType) {
+	public static function mergeCaptchaWithBackground($width, $height, $captchaImage, $backgroundImage, $backgroundType, $mergeType)
+	{
 		if ($backgroundType != self::BACKGROUND_TYPE_TRANSPARENT) {
 			// How faded should the background be? (100=totally gone, 0=bright as the day)
 			// to test how much protection the bg noise gives, take a screenshot of the freeCap image
@@ -346,7 +348,7 @@ class ImageContentUtility {
 					break;
 			}
 			// Slightly randomize the background fade
-			$backgroundFadePercentage += \SJBR\SrFreecap\Utility\RandomContentUtility::getRandomNumberInRange(-2, 2);
+			$backgroundFadePercentage += RandomContentUtility::getRandomNumberInRange(-2, 2);
 			// Fade background
 			if ($backgroundType != self::BACKGROUND_TYPE_MORPHED_IMAGE_BLOCKS) {
 				$tempImage = ImageCreateTrueColor($width, $height);
@@ -375,10 +377,10 @@ class ImageContentUtility {
 	 * Blurs an image
 	 *
 	 * @param string $image: a GD image identifier
-	 *
 	 * @return string GD image identifier of blurred image
 	 */
-	public static function blurImage($image) {
+	public static function blurImage($image)
+	{
 		// w00t. my very own blur function
 		// in GD2, there's a gaussian blur function. bunch of bloody show-offs... :-)
 
@@ -415,10 +417,10 @@ class ImageContentUtility {
 	 *
 	 * @param string $image: a GD image identifier
 	 * @param string $imageType: type of image (jpg, gif or png)
-	 *
 	 * @return	void
 	 */
-	public static function sendImage($image, $imageType) {
+	public static function sendImage($image, $imageType)
+	{
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 		header('Pragma: no-cache');
@@ -440,4 +442,3 @@ class ImageContentUtility {
 		}
 	}
 }
-?>

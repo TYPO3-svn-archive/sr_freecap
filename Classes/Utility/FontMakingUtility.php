@@ -1,6 +1,7 @@
 <?php
 namespace SJBR\SrFreecap\Utility;
-/***************************************************************
+
+/*
  *  Copyright notice
  *
  *  (c) 2012-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
@@ -24,17 +25,16 @@ namespace SJBR\SrFreecap\Utility;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 /**
  * Utility for making GD fonts
- *
- * @author	Stanislas Rolland	<typo3(arobas)sjbr.ca>
  */
-class FontMakingUtility {
+class FontMakingUtility
+{
 
 	/**
 	 * Returns an image displaying a list of characters with specified font file and character size
@@ -45,7 +45,8 @@ class FontMakingUtility {
 	 * @param string $height: height of the image
 	 * @return array image file info array
 	 */
-	public static function makeFontImage ($characters, $font, $width = 34, $height = 50) {
+	public static function makeFontImage($characters, $font, $width = 34, $height = 50)
+	{
 		
 		$size = intval($height * .8);
 		$vertOffset = intval($height * .7);
@@ -80,11 +81,7 @@ class FontMakingUtility {
 			$gifObjArray[$ic . '0.']['offset'] = (($ic-1) * $width + $hOffset) . ',' . $vertOffset;
 		}
 		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-		if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6001000) {
-			$gifCreator = $objectManager->create('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
-		} else {
-			$gifCreator = $objectManager->get('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
-		}
+		$gifCreator = $objectManager->get('SJBR\\SrFreecap\\Utility\\GifBuilderUtility');
 		$gifCreator->init();
 		if ($GLOBALS['TYPO3_CONF_VARS']['GFX']['gdlib']) {
 			$gifCreator->start($gifObjArray, array());
@@ -117,7 +114,8 @@ class FontMakingUtility {
 	*
 	*
 	\************************************************************/
-	public static function makeFont ($image, $numchars, $startchar, $pixelwidth, $pixelheight, $endianness = 0) {
+	public static function makeFont($image, $numchars, $startchar, $pixelwidth, $pixelheight, $endianness = 0)
+	{
 		$startchar = ord($startchar);
 		// encode this at start of font
 		if ($endianness) {
