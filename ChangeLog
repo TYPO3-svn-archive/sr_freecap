@@ -6,6 +6,7 @@
 	* Compatibility with TYPO3 CMS 7
 	* Improve template handling
 	* Cleanup references to versions of TYPO3 CMS lower than 6.2
+	* Delete directory mod1
 	* Update verion to 2.3.0
 
 2015-03-31  Stanislas Rolland  <typo3@sjbr.ca>
